@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { decrement, increment } from './store/slises/testSlise';
 import { getCounter } from './store/selectors/testSelector';
+import { thunkFunction } from './store/actions/testActions';
+import { AppDispatch } from './types';
 
 export const App = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const count = useSelector(getCounter);
+
+  // Added for an example how to use middleware. Needs to delete
+  useEffect(() => {
+    dispatch(thunkFunction);
+  }, []);
 
   return (
     <div>

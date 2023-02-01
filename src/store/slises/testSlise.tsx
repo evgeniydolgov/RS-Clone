@@ -18,9 +18,12 @@ export const counterSlice = createSlice({
     decrement: (state) => {
       state.counter -= 1;
     },
+    testForCheckAsync: (state, { payload }) => {
+      state.counter = payload;
+    },
   },
 });
 
-export const { increment, decrement } = counterSlice.actions;
+export const { increment, decrement, testForCheckAsync } = counterSlice.actions;
 
 export const testReducer = counterSlice.reducer;
