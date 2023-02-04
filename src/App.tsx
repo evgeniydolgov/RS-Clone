@@ -5,6 +5,7 @@ import { decrement, increment } from './store/slises/testSlise';
 import { getCounter } from './store/selectors/testSelector';
 import { thunkFunction } from './store/actions/testActions';
 import { AppDispatch } from './types';
+import { Header } from './components/Header';
 
 export const App = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -17,9 +18,12 @@ export const App = () => {
 
   return (
     <div>
-      <button type="button" onClick={() => dispatch(decrement())}>-</button>
-      <div>{`Current value is ${count}`}</div>
-      <button type="button" onClick={() => dispatch(increment())}>+</button>
+      <Header />
+      <div className="example">
+        <button type="button" onClick={() => dispatch(decrement())}>-</button>
+        <div>{`Current value is ${count}`}</div>
+        <button type="button" onClick={() => dispatch(increment())}>+</button>
+      </div>
     </div>
   );
 };
