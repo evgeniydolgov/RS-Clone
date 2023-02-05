@@ -31,7 +31,7 @@ button {
     background-color: transparent;
 }
 li {
-    list-style-type: none; 
+    list-style-type: none;
 }
 a {
     text-decoration: none;
@@ -51,6 +51,5 @@ a {
 .btn {
     background-color: #0E5984;
     border-radius: 20px;
-    border: 2px solid #1C6189
-    ;
+    border: 2px solid #1C6189;
 }

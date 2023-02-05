@@ -6,6 +6,7 @@ import { getCounter } from './store/selectors/testSelector';
 import { thunkFunction } from './store/actions/testActions';
 import { AppDispatch } from './types';
 import { Header } from './components/Header';
+import { RecipePage } from './components/RecipePage';
 
 export const App = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -19,6 +20,7 @@ export const App = () => {
   return (
     <div>
       <Header />
+      <RecipePage />
       <div className="example">
         <button type="button" onClick={() => dispatch(decrement())}>-</button>
         <div>{`Current value is ${count}`}</div>
