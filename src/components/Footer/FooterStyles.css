@@ -7,24 +7,49 @@
 
 .footer-wrapper {
   max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .github-list{
-  display: flex;
-  gap: 5%;
-  align-items: center;
-  justify-content: center;
+  margin: 5px 0 5px 0;
+  display: grid;
+  gap: 5px 5px;
+  grid-template-areas:
+    "authors authors authors"
+    "git-image git-image git-image";
 }
 
-.github-list>li {
-  margin: 15px 0 15px 0;
+.github-list__name {
+  font-family: 'Rufina', serif;
+  font-size: 20px;
+  font-weight: 700;
+  grid-area: authors;
 }
 
 .git-img {
+  grid-area: git-image;
   display: inline-block;
-  width: 3rem;
-  height: 3rem;
-  border: 1px solid black;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
-  background: url('../../assets/svg/github.svg')0 50%/cover no-repeat;;
+  background: url('../../assets/svg/github.svg')0 50%/cover no-repeat;
+}
+
+.year-creation {
+  font-family: 'Rufina', serif;
+  font-weight: 700;
+}
+
+.rs-container {
+  display: flex;
+  align-items: center;
+}
+
+.rs-link {
+  height: 40px;
+  width: 100px;
+  background: url('../../assets/svg/rs-logo.svg') 0 0/contain no-repeat;
 }
