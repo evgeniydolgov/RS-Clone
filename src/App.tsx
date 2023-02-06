@@ -6,7 +6,8 @@ import { getCounter } from './store/selectors/testSelector';
 import { thunkFunction } from './store/actions/testActions';
 import { AppDispatch } from './types';
 import { Header } from './components/Header';
-import { Footer } from './components/Footer/Footer';
+import { Footer } from './components/Footer';
+import { MainPage } from './components/MainPage';
 import { RecipePage } from './components/RecipePage';
 
 export const App = () => {
@@ -19,8 +20,9 @@ export const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className="page">
       <Header />
+      <MainPage />
       <RecipePage />
       <Footer />
       <div className="example">

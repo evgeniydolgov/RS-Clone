@@ -1,1 +1,0 @@
-export { ConsistName } from './ConsistName';
