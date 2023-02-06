@@ -12,7 +12,7 @@
   width: 100%;
   max-width: 1400px;
   height: 500px;
-  background: url('../../assets/svg/main-page/main-board.svg') 80% 0/cover no-repeat;
+  background: url('../../assets/webp/main-board.webp') 80% 0/cover no-repeat;
 }
 
 .mainpage__message {
@@ -67,7 +67,7 @@ font-weight: 400;
   align-items: center;
   max-width: 1400px;
   width: 100%;
-  background: url('../../assets/svg/main-page/wood-table.svg');
+  background: url('../../assets/webp/wood-table.webp');
 }
 
 .selection-category {
