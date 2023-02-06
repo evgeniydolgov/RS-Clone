@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConsistName } from '../ConsistName';
+import { RecipeAnswer } from '../RecipeAnswer';
 import './RecipePageStyles.css';
 
 export const RecipePage = () => {
@@ -10,7 +10,7 @@ export const RecipePage = () => {
         <div className="RecipePage-board">
           <div className="dish-picture" />
           <div className="dish-composition">
-            {goods.map((el, i) => <ConsistName key={el.toString()} product={el} number={i} />)}
+            {goods.map((el, i) => <RecipeAnswer key={el.toString()} product={el} number={i} />)}
           </div>
         </div>
       </div>
