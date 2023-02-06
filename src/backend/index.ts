@@ -1,0 +1,63 @@
+import express from 'express';
+import bodyParser, { OptionsUrlencoded } from 'body-parser';
+import mysql from 'mysql';
+import cors from 'cors';
+
+import { IcorsOption } from './interfaces';
+
+const app = express();
+
+const port: number = 3001;
+
+const corsOptions: IcorsOption = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+app.use(bodyParser.urlencoded({ extended: true } as OptionsUrlencoded | undefined));
+app.use(bodyParser.json());
+app.use(cors(corsOptions));
+
+const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlencoded | undefined);
+
+const pool: mysql.Pool = mysql.createPool({
+  host: 'sql7.freemysqlhosting.net',
+  user: 'sql7595528',
+  password: 'JHGwZJt4Iz',
+  database: 'sql7595528',
+  port: 3306,
+});
+
+app.listen(port as number, () => {
+  console.log(`App listen on port ${port as number}` as string);
+});
+
+app.get('/', (req, res) => {
+  pool.query('SELECT * FROM users' as string, (err: Error, data: Object[]) => {
+    if (err as Error) throw err as Error;
+    res.send(data as Object[]);
+  });
+});
+
+app.post('/create', urlencodedParser, (req, res) => {
+  if (!req.body) res.sendStatus(400);
+  const { id } = req.body;
+  const { name } = req.body;
+  pool.query(
+    'INSERT INTO users (id, name) VALUES (?,?)' as string,
+    [id as number, name as string],
+    (err, data) => {
+      if (err as Error) throw err as Error;
+      res.send(data as Object[]);
+    },
+  );
+});
+
+app.delete('/delete/:id', (req, res) => {
+  const id: number = +req.params.id;
+  pool.query('DELETE FROM users WHERE id=?' as string, [id as number], (err, data) => {
+    if (err as Error) throw err as Error;
+    res.send(data as Object[]);
+  });
+});
