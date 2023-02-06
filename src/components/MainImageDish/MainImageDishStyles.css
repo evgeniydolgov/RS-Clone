@@ -1,0 +1,23 @@
+.one-dish {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 0 7px 6px 3px;
+  width: 320px;
+  height: 320px;
+  border-radius: 10px;
+  background: url('../../assets/svg/main-page/dish-img.svg') 0 0/cover no-repeat;
+}
+
+.one-dish_name {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: end;
+  padding: 0 0 5% 5%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 24px;
+  color: #FAFAFA;
+  border-radius: 0 0 10px 10px;
+  background: #221725d9 url('../../assets/svg/main-page/white-pot.svg') 90% 75%/40px  no-repeat;
+}

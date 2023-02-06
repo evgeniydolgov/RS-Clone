@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rum+Raisin&family=Sansita&display=swap');
+
 html,
 body,
 .root {
@@ -52,4 +54,14 @@ a {
     background-color: #0E5984;
     border-radius: 20px;
     border: 2px solid #1C6189;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.example {
+    display: none;
 }
