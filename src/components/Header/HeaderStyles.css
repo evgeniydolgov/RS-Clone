@@ -7,7 +7,7 @@ header {
     background: url('../../assets/jpeg/back_header.jpg') center no-repeat;
     background-size: cover;
     width: 100%;
-    /* max-width: 1400px; */
+    max-width: 1200px;
     height: 80px;
     margin: 0 auto;
 
