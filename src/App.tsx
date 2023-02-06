@@ -7,6 +7,7 @@ import { thunkFunction } from './store/actions/testActions';
 import { AppDispatch } from './types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer/Footer';
+import { RecipePage } from './components/RecipePage';
 
 export const App = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -20,12 +21,13 @@ export const App = () => {
   return (
     <div>
       <Header />
+      <RecipePage />
+      <Footer />
       <div className="example">
         <button type="button" onClick={() => dispatch(decrement())}>-</button>
         <div>{`Current value is ${count}`}</div>
         <button type="button" onClick={() => dispatch(increment())}>+</button>
       </div>
-      <Footer />
     </div>
   );
 };
