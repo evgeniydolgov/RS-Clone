@@ -1,16 +1,17 @@
 .footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  width: 100%;
+  background: url('../../assets/jpeg/back_header.jpg') center no-repeat;
+  background-size: cover;
   background-color: #A7DCE5;
 }
 
 .footer-wrapper {
-  max-width: 1400px;
+  max-width: 1200px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0 auto;
 }
 
 .github-list{
