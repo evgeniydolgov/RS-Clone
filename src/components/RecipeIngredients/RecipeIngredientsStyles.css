@@ -1,0 +1,41 @@
+.recipe__ingredient p{
+    margin-bottom: 15px;
+}
+.recipe__ingredients::after,
+.recipe__ingredients::before {
+    content: "";
+    background-color: #4982A3;
+    position: absolute;
+    width: 2px;
+    height: 285px;
+    top: 0px;
+    left: 49%;
+    display: block;
+    
+}
+.recipe__ingredients::before {
+    left: 50%;
+}
+
+.ingredients__item {
+    display: flex;
+}
+.ingredients__list {
+    padding: 0;
+}
+.ingredients__list li {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 0.5em; 
+    
+}
+.ingredients__list li::before {
+    content: '';
+    border-bottom: 1px dashed #ccc;
+    flex-grow: 1; 
+    order: 2; 
+    margin: 0 5px; 
+}
+.ingredients__list span {
+    order: 3; 
+   }

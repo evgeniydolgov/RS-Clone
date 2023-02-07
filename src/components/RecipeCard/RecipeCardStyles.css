@@ -1,0 +1,25 @@
+.recipe-card {
+    background: url('../../assets/jpeg/back_recipу-card.jpg') 0 0/100% auto;
+    margin-bottom: 50px;
+}
+
+.recipe-card__inner {
+    background: url('../../assets/jpeg/sub_back.jpg') center no-repeat;
+    border: 1px solid #000000;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+    font-family: 'Alegreya';
+    font-weight: 400;
+    font-size: 20px;
+    color: #052E45;
+}
+.recipe-card__inner h1 {
+    font-size: 45px;
+    padding-top: 25px;
+    
+}
+.recipe-card__inner h3 span {
+    font-weight: 600;
+}

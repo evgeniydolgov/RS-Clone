@@ -1,19 +1,20 @@
 header {
+    width: 100%;
+    background: url('../../assets/jpeg/back_header.jpg') center no-repeat;
+    background-size: cover;
+}
+.header__inner {
     font-family: 'Rufina', serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
     display: flex;
-    background: url('../../assets/jpeg/back_header.jpg') center no-repeat;
     background-size: cover;
-    width: 100%;
-    /* max-width: 1400px; */
+    max-width: 1200px;
     height: 80px;
     margin: 0 auto;
-
     padding: 0 60px;
     align-items: center;
-
     justify-content: space-between;
 }
 .header-info {
@@ -25,6 +26,7 @@ header {
     width: 77px;
     height: 65px;
     margin-right: 45px;
+    cursor: pointer;
 }
 .header-list {
     display: flex;

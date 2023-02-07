@@ -1,23 +1,59 @@
+.dish__cart {
+  display: flex;
+  flex-wrap: wrap;
+}
 .one-dish {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  padding: 0 7px 6px 3px;
-  width: 320px;
-  height: 320px;
   border-radius: 10px;
-  background: url('../../assets/svg/main-page/dish-img.svg') 0 0/cover no-repeat;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: solid 2px rgb(178 164 112);
+  border: solid 2px rgb(118 113 75);
+  overflow: hidden;
+
 }
 
-.one-dish_name {
+.dish__img {
+  border-radius: 10px;
+  width: 315px;
+  height: 315px;
+  display: block;
+  transition: 0.5s;
+}
+.dish__img:hover {
+  filter: brightness(60%);
+  transform: scale(1.1);
+}
+.dish-back {
+  background: rgba(25, 22, 47, 0.5);
   width: 100%;
   height: 70px;
+  position: absolute;
   display: flex;
-  align-items: end;
-  padding: 0 0 5% 5%;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 0px 0px 10px 10px;
+  transition: 0.5s;
+}
+.dish-logo {
+  background: url('../../assets/svg/logo_dish_img.svg') no-repeat;
+  width: 65px;
+  height: 35px;
+  z-index: 10;
+  transition: 0.5s;
+}
+.dish-title {
+  text-align: start;
+  width: 100%;
+  font-family: 'Roboto';
   font-size: 24px;
-  color: #FAFAFA;
-  border-radius: 0 0 10px 10px;
-  background: #221725d9 url('../../assets/svg/main-page/white-pot.svg') 90% 75%/40px  no-repeat;
+  color: #fafafa;
+  transition: 0.5s;
+}
+.dish-title:hover {
+  color: #adb8d0;
+  
 }

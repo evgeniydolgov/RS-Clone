@@ -8,6 +8,7 @@ import { thunkFunction } from './store/actions/testActions';
 import { AppDispatch } from './types';
 import { MainPage } from './components/MainPage';
 import { RecipePage } from './components/RecipePage';
+import { RecipeCard } from './components/RecipeCard';
 import { Layout } from './components/Layout';
 
 export const App = () => {
@@ -24,13 +25,15 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
-          <Route path="recipe" element={<RecipePage />} />
+          <Route path="quiz" element={<RecipePage />} />
+          <Route path="recipe" element={<RecipeCard />} />
         </Route>
       </Routes>
 
       {/* <Header />
       <MainPage />
       <RecipePage />
+      <RecipeCard />
       <Footer /> */}
       <div className="example">
         <button type="button" onClick={() => dispatch(decrement())}>-</button>
