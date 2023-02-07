@@ -1,6 +1,6 @@
 .recipe-card {
     background: url('../../assets/jpeg/back_recipу-card.jpg') 0 0/100% auto;
-
+    margin-bottom: 50px;
 }
 
 .recipe-card__inner {
