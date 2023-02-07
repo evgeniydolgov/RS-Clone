@@ -1,11 +1,18 @@
-/* eslint-disable max-len */
 import React from 'react';
+// import { useAppDispatch } from '../../hooks';
+// import { loadAllCuisine } from '../../store/actions/commonActions';
 import { MainBtnDish } from '../MainBtnDish';
 import { MainImageDish } from '../MainImageDish';
 import './MainPageStyles.css';
 
 export const MainPage = () => {
   const cookingDishes = ['American', 'British', 'American', 'British', 'American', 'British', 'American', 'British', 'American'];
+  // const dispatch = useAppDispatch();
+
+  // useEffect(() => {
+  //   dispatch(loadAllCuisine());
+  // }, []);
+
   return (
     <div className="mainpage__container">
       <div className="mainpage__vegetables-board">
@@ -21,11 +28,23 @@ export const MainPage = () => {
       </div>
 
       <div className="mainpage__food-table">
-        <div className="selection-category">
-          {cookingDishes.map((el, i) => <MainBtnDish key={el + i.toString()} name={el} number={i} />)}
+        <div className="selection-category dish-category">
+          {cookingDishes.map((el, i) => (
+            <MainBtnDish
+              key={el + i.toString()}
+              name={el}
+              number={i}
+            />
+          ))}
         </div>
-        <div className="dishes-image">
-          {cookingDishes.map((el, i) => <MainImageDish key={el + i.toString()} name={el} number={i} />)}
+        <div className="dish-cart">
+          {cookingDishes.map((el, i) => (
+            <MainImageDish
+              key={el + i.toString()}
+              name={el}
+              number={i}
+            />
+          ))}
         </div>
       </div>
     </div>
