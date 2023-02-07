@@ -20,7 +20,7 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="page">
+    <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
@@ -37,6 +37,6 @@ export const App = () => {
         <div>{`Current value is ${count}`}</div>
         <button type="button" onClick={() => dispatch(increment())}>+</button>
       </div>
-    </div>
+    </>
   );
 };
