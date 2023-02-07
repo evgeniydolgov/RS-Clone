@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import './styles.css';
 import { useSelector, useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import { decrement, increment } from './store/slises/testSlise';
 import { getCounter } from './store/selectors/testSelector';
 import { thunkFunction } from './store/actions/testActions';
 import { AppDispatch } from './types';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
 import { MainPage } from './components/MainPage';
 import { RecipePage } from './components/RecipePage';
 import { RecipeCard } from './components/RecipeCard';
+import { Layout } from './components/Layout';
 
 export const App = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -21,17 +21,25 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="page">
-      <Header />
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path="quiz" element={<RecipePage />} />
+          <Route path="recipe" element={<RecipeCard />} />
+        </Route>
+      </Routes>
+
+      {/* <Header />
       <MainPage />
       <RecipePage />
       <RecipeCard />
-      <Footer />
+      <Footer /> */}
       <div className="example">
         <button type="button" onClick={() => dispatch(decrement())}>-</button>
         <div>{`Current value is ${count}`}</div>
         <button type="button" onClick={() => dispatch(increment())}>+</button>
       </div>
-    </div>
+    </>
   );
 };
