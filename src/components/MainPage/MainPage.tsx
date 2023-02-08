@@ -1,17 +1,28 @@
-import React from 'react';
-// import { useAppDispatch } from '../../hooks';
-// import { loadAllCuisine } from '../../store/actions/commonActions';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../hooks';
+import { loadAllCuisine, loadRandomSelection } from '../../store/actions/commonActions';
+import { getAllCuisine, getRandomSelection } from '../../store/selectors/commonSelectors';
 import { MainBtnDish } from '../MainBtnDish';
 import { MainImageDish } from '../MainImageDish';
 import './MainPageStyles.css';
 
 export const MainPage = () => {
-  const cookingDishes = ['American', 'British', 'American', 'British', 'American', 'British', 'American', 'British', 'American'];
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+  const allCuisine = useSelector(getAllCuisine);
 
-  // useEffect(() => {
-  //   dispatch(loadAllCuisine());
-  // }, []);
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(loadAllCuisine());
+  }, []);
+
+  const randomSelection = useSelector(getRandomSelection);
+  console.log(randomSelection);
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(loadRandomSelection());
+  }, []);
 
   return (
     <div className="mainpage__container">
@@ -29,20 +40,20 @@ export const MainPage = () => {
 
       <div className="mainpage__food-table">
         <div className="selection-category dish-category">
-          {cookingDishes.map((el, i) => (
+          {allCuisine.map(({ strArea }, i) => (
             <MainBtnDish
-              key={el + i.toString()}
-              name={el}
+              key={strArea}
+              name={strArea}
               number={i}
             />
           ))}
         </div>
         <div className="dish-cart">
-          {cookingDishes.map((el, i) => (
+          {randomSelection.map(({ strMeal, idMeal, strMealThumb }) => (
             <MainImageDish
-              key={el + i.toString()}
-              name={el}
-              number={i}
+              key={idMeal}
+              url={strMealThumb}
+              name={strMeal}
             />
           ))}
         </div>
