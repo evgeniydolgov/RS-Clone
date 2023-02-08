@@ -1,8 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import './RecipeAnswerStyles.css';
+import './QuizAnswerStyles.css';
 
-export const RecipeAnswer = (props: any) => {
+export const QuizAnswer = (props: any) => {
   if (props.number % 2 === 0) {
     return (
       <div className="first-product product">{props.product}</div>

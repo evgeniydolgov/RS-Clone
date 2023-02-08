@@ -1,8 +1,8 @@
-.RecipePage {
+.QuizPage {
   background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
 }
 
-.RecipePage-container {
+.QuizPage-container {
   /* display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +10,7 @@
   padding: 50px;
 }
 
-.RecipePage-board {
+.QuizPage-board {
   max-width: 1200px;
   border-radius: 25px;
   width: 100%;

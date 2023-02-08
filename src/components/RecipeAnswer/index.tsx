@@ -1,1 +1,0 @@
-export { RecipeAnswer } from './RecipeAnswer';

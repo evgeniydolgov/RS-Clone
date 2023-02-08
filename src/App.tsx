@@ -7,9 +7,9 @@ import { getCounter } from './store/selectors/testSelector';
 import { thunkFunction } from './store/actions/testActions';
 import { AppDispatch } from './types';
 import { MainPage } from './components/MainPage';
-import { RecipePage } from './components/RecipePage';
 import { RecipeCard } from './components/RecipeCard';
 import { Layout } from './components/Layout';
+import { QuizPage } from './components/QuizPage';
 
 export const App = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -25,7 +25,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
-          <Route path="quiz" element={<RecipePage />} />
+          <Route path="quiz" element={<QuizPage />} />
           <Route path="recipe" element={<RecipeCard />} />
         </Route>
       </Routes>
