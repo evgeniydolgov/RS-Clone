@@ -10,6 +10,7 @@ import { MainPage } from './components/MainPage';
 import { RecipeCard } from './components/RecipeCard';
 import { Layout } from './components/Layout';
 import { QuizPage } from './components/QuizPage';
+import { AuthorizePage } from './components/AuthorizePage';
 
 export const App = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -26,6 +27,7 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
           <Route path="quiz" element={<QuizPage />} />
+          <Route path="authorize" element={<AuthorizePage />} />
           <Route path="recipe" element={<RecipeCard />} />
         </Route>
       </Routes>

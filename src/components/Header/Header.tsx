@@ -16,8 +16,8 @@ export const Header = () => (
         </nav>
       </div>
       <div className="header-authorization">
-        <button type="button" className="btn authorization__btn">Login</button>
-        <button type="button" className="btn authorization__btn">Sign Up</button>
+        <button type="button" className="btn authorization__btn"><Link className="btn__link" to="/authorize">Login</Link></button>
+        <button type="button" className="btn authorization__btn"><Link className="btn__link" to="/authorize">Sign Up</Link></button>
       </div>
     </div>
   </header>
