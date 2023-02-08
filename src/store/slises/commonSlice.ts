@@ -4,13 +4,22 @@ import { createSlice } from '@reduxjs/toolkit';
 interface ICuisine {
   strArea: string
 }
+interface IRandomSelection {
+  strMeal: string;
+  strArea: string;
+  strMealThumb: string;
+  idMeal: number;
+}
 
 export interface IState {
   allCuisines: ICuisine[];
+  randomSelection: IRandomSelection[];
+
 }
 
 const initialState: IState = {
   allCuisines: [],
+  randomSelection: [],
 };
 
 export const commonSlice = createSlice({
@@ -20,9 +29,12 @@ export const commonSlice = createSlice({
     saveAllCuisine: (state: IState, { payload }) => {
       state.allCuisines = payload;
     },
+    saveRandomSelection: (state: IState, { payload }) => {
+      state.randomSelection = payload;
+    },
   },
 });
 
-export const { saveAllCuisine } = commonSlice.actions;
+export const { saveAllCuisine, saveRandomSelection } = commonSlice.actions;
 
 export const commonReducer = commonSlice.reducer;

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../hooks';
-import { loadAllCuisine } from '../../store/actions/commonActions';
-import { getAllCuisine } from '../../store/selectors/commonSelectors';
+import { loadAllCuisine, loadRandomSelection } from '../../store/actions/commonActions';
+import { getAllCuisine, getRandomSelection } from '../../store/selectors/commonSelectors';
 import { MainBtnDish } from '../MainBtnDish';
 import { MainImageDish } from '../MainImageDish';
 import './MainPageStyles.css';
@@ -13,15 +13,16 @@ export const MainPage = () => {
 
   useEffect(() => {
     // @ts-ignore
-    dispatch(loadAllCuisine(''));
+    dispatch(loadAllCuisine());
   }, []);
 
-  // const randomSelection = useSelector(getRandomSelection);
+  const randomSelection = useSelector(getRandomSelection);
+  console.log(randomSelection);
 
-  // useEffect(() => {
-  //   // @ts-ignore
-  //   dispatch(loadRandomSelection(''));
-  // }, []);
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(loadRandomSelection());
+  }, []);
 
   return (
     <div className="mainpage__container">
@@ -48,11 +49,11 @@ export const MainPage = () => {
           ))}
         </div>
         <div className="dish-cart">
-          {allCuisine.map(({ strArea }, i) => (
+          {randomSelection.map(({ strMeal, idMeal, strMealThumb }) => (
             <MainImageDish
-              key={strArea}
-              name={strArea}
-              number={i}
+              key={idMeal}
+              url={strMealThumb}
+              name={strMeal}
             />
           ))}
         </div>

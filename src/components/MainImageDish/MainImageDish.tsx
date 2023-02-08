@@ -2,11 +2,15 @@
 import React from 'react';
 import './MainImageDishStyles.css';
 
-export const MainImageDish = (props: any) => (
+interface IMainImage {
+  name: string;
+  url: string;
+}
+export const MainImageDish = ({ name, url }: IMainImage) => (
   <div className="one-dish">
-    <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg" className="dish__img" alt="Dish" />
+    <img src={url} className="dish__img" alt="Dish" />
     <div className="dish-back">
-      <h3 className="dish-title">{props.name}</h3>
+      <h3 className="dish-title">{name}</h3>
       <div className="dish-logo" />
     </div>
   </div>
