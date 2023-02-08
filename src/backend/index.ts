@@ -21,26 +21,41 @@ app.use(cors(corsOptions));
 
 const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlencoded | undefined);
 
-const pool: mysql.Pool = mysql.createPool({
+/* const pool: mysql.Pool = mysql.createPool({
   host: 'sql7.freemysqlhosting.net',
   user: 'sql7595528',
   password: 'JHGwZJt4Iz',
   database: 'sql7595528',
   port: 3306,
-});
+}); */
 
 app.listen(port as number, () => {
   console.log(`App listen on port ${port as number}` as string);
 });
 
 app.get('/', (req, res) => {
+  const pool: mysql.Pool = mysql.createPool({
+    host: 'sql7.freemysqlhosting.net',
+    user: 'sql7595528',
+    password: 'JHGwZJt4Iz',
+    database: 'sql7595528',
+    port: 3306,
+  });
   pool.query('SELECT * FROM users' as string, (err: Error, data: Object[]) => {
     if (err as Error) throw err as Error;
     res.send(data as Object[]);
+    pool.end();
   });
 });
 
 app.post('/create', urlencodedParser, (req, res) => {
+  const pool: mysql.Pool = mysql.createPool({
+    host: 'sql7.freemysqlhosting.net',
+    user: 'sql7595528',
+    password: 'JHGwZJt4Iz',
+    database: 'sql7595528',
+    port: 3306,
+  });
   if (!req.body) res.sendStatus(400);
   const { id } = req.body;
   const { name } = req.body;
@@ -50,14 +65,23 @@ app.post('/create', urlencodedParser, (req, res) => {
     (err, data) => {
       if (err as Error) throw err as Error;
       res.send(data as Object[]);
+      pool.end();
     },
   );
 });
 
 app.delete('/delete/:id', (req, res) => {
+  const pool: mysql.Pool = mysql.createPool({
+    host: 'sql7.freemysqlhosting.net',
+    user: 'sql7595528',
+    password: 'JHGwZJt4Iz',
+    database: 'sql7595528',
+    port: 3306,
+  });
   const id: number = +req.params.id;
   pool.query('DELETE FROM users WHERE id=?' as string, [id as number], (err, data) => {
     if (err as Error) throw err as Error;
     res.send(data as Object[]);
+    pool.end();
   });
 });
