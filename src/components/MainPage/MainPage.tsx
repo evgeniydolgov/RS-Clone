@@ -1,16 +1,26 @@
-import React from 'react';
-// import { useAppDispatch } from '../../hooks';
-// import { loadAllCuisine } from '../../store/actions/commonActions';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../hooks';
+import { loadAllCuisine } from '../../store/actions/commonActions';
+import { getAllCuisine } from '../../store/selectors/commonSelectors';
 import { MainBtnDish } from '../MainBtnDish';
 import { MainImageDish } from '../MainImageDish';
 import './MainPageStyles.css';
 
 export const MainPage = () => {
-  const cookingDishes = ['American', 'British', 'American', 'British', 'American', 'British', 'American', 'British', 'American'];
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+  const allCuisine = useSelector(getAllCuisine);
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(loadAllCuisine(''));
+  }, []);
+
+  // const randomSelection = useSelector(getRandomSelection);
 
   // useEffect(() => {
-  //   dispatch(loadAllCuisine());
+  //   // @ts-ignore
+  //   dispatch(loadRandomSelection(''));
   // }, []);
 
   return (
@@ -29,19 +39,19 @@ export const MainPage = () => {
 
       <div className="mainpage__food-table">
         <div className="selection-category dish-category">
-          {cookingDishes.map((el, i) => (
+          {allCuisine.map(({ strArea }, i) => (
             <MainBtnDish
-              key={el + i.toString()}
-              name={el}
+              key={strArea}
+              name={strArea}
               number={i}
             />
           ))}
         </div>
         <div className="dish-cart">
-          {cookingDishes.map((el, i) => (
+          {allCuisine.map(({ strArea }, i) => (
             <MainImageDish
-              key={el + i.toString()}
-              name={el}
+              key={strArea}
+              name={strArea}
               number={i}
             />
           ))}

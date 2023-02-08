@@ -12,31 +12,27 @@ export class RecipeApi {
   }
 
   async fetch({ method = 'GET', path = '' }: IFetch) {
-    const fullPath = `${this.baseUrl}/${path}`;
-    debugger;
-    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata', {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'Access-Control-Allow-Headers': 'Content-Type, x-requested-with',
-        'Access-Control-Allow-Origin': '*',
-        origin: 'http://localhost:3000',
-        mode: 'no-cors',
-      },
-    });
+    try {
+      const fullPath = `${this.baseUrl}/${path}`;
+      const response = await fetch(`https://${fullPath}/9973533/${path}`, {
+        method,
+      });
 
-    if (response.ok) {
-      const body = await response.json();
-      return body;
+      if (response.ok) {
+        const body = await response.json();
+
+        return body;
+      }
+
+      throw new Error('Problem with fetch');
+    } catch (error) {
+      return { success: false };
     }
-
-    return { success: false };
   }
 
-  loadAllCategories() {
+  loadRandomSelection() {
     return this.fetch({
-      path: 'categories.php',
+      path: 'randomselection.php',
     });
   }
 
@@ -47,4 +43,4 @@ export class RecipeApi {
   }
 }
 
-export const api = new RecipeApi('www.themealdb.com/api/json/v1/1');
+export const api = new RecipeApi('www.themealdb.com/api/json/v2/9973533');
