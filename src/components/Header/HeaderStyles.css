@@ -59,3 +59,7 @@ header {
     transform: scale(1.1);
     background-color: #111266;
 }
+
+.btn__link {
+    color: #F0F0F0;
+}
