@@ -32,14 +32,14 @@ interface IRecipeById {
 export interface IState {
   allCuisines: ICuisine[];
   randomSelection: IRandomSelection[];
-  recipeById: IRecipeById[];
+  activeRecipe: IRecipeById | null;
 
 }
 
 const initialState: IState = {
   allCuisines: [],
   randomSelection: [],
-  recipeById: [],
+  activeRecipe: null,
 };
 
 export const commonSlice = createSlice({
@@ -52,12 +52,12 @@ export const commonSlice = createSlice({
     saveRandomSelection: (state: IState, { payload }) => {
       state.randomSelection = payload;
     },
-    saveRecipeById: (state: IState, { payload }) => {
-      state.recipeById = payload;
+    saveActiveRecipe: (state: IState, { payload }) => {
+      state.activeRecipe = payload;
     },
   },
 });
 
-export const { saveAllCuisine, saveRandomSelection, saveRecipeById } = commonSlice.actions;
+export const { saveAllCuisine, saveRandomSelection, saveActiveRecipe } = commonSlice.actions;
 
 export const commonReducer = commonSlice.reducer;

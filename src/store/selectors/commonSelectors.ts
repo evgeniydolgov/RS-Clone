@@ -6,4 +6,4 @@ export const getAllCuisine = (state: RootState) => getCommon(state).allCuisines;
 
 export const getRandomSelection = (state: RootState) => getCommon(state).randomSelection;
 
-export const getRecipeById = (state: RootState) => getCommon(state).recipeById;
+export const getActiveRecipe = (state: RootState) => getCommon(state).activeRecipe;
