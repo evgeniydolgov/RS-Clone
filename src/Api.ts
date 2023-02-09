@@ -41,7 +41,7 @@ export class RecipeApi {
     });
   }
 
-  loadRecipeById(id:number) {
+  loadRecipeById(id:string) {
     return this.fetch({
       path: `lookup.php?i=${id}`,
     });

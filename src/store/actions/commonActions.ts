@@ -16,7 +16,7 @@ export const loadRandomSelection = () => async (dispatch: AppDispatch): Promise<
 
   dispatch(saveRandomSelection(date.meals));
 };
-export const loadRecipeById = (id: number) => async (dispatch: AppDispatch): Promise<void> => {
+export const loadRecipeById = (id: string) => async (dispatch: AppDispatch): Promise<void> => {
   const date = await api.loadRecipeById(id);
 
   dispatch(saveActiveRecipe(date.meals[0]));
