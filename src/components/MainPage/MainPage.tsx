@@ -22,7 +22,7 @@ export const MainPage = () => {
     dispatch(loadRandomSelection());
   }, []);
 
-  const onDishClick = (id: number) => {
+  const onDishClick = (id: string) => {
     if (id) { dispatch(loadRecipeById(id)); }
   };
 
@@ -51,14 +51,11 @@ export const MainPage = () => {
           ))}
         </div>
         <div className="dish-cart">
-          {randomSelection.map(({
-            strMeal, idMeal, strMealThumb,
-          }, index) => {
+          {randomSelection.map(({ strMeal, idMeal, strMealThumb }, index) => {
             if (index <= 8) {
               return (
-                <Link to="/recipe">
+                <Link to="/recipe" key={idMeal}>
                   <MainImageDish
-                    key={idMeal}
                     url={strMealThumb}
                     name={strMeal}
                     onDishClick={onDishClick}

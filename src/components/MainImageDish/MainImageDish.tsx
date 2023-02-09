@@ -4,8 +4,8 @@ import './MainImageDishStyles.css';
 interface IMainImage {
   name: string;
   url: string;
-  id: number;
-  onDishClick: (id: number) => void;
+  id: string;
+  onDishClick: (id: string) => void;
 }
 export const MainImageDish = ({
   name, url, id, onDishClick,
