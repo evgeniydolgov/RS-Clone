@@ -1,13 +1,17 @@
 .recipe__ingredient p{
     margin-bottom: 15px;
 }
+.recipe__ingredient {
+    width: 35%;
+
+}
 .recipe__ingredients::after,
 .recipe__ingredients::before {
     content: "";
     background-color: #4982A3;
     position: absolute;
     width: 2px;
-    height: 285px;
+    height: 100%;
     top: 0px;
     left: 49%;
     display: block;
