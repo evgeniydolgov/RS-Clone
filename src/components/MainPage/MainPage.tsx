@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks';
-import { loadAllCuisine, loadRandomSelection } from '../../store/actions/commonActions';
-import { getAllCuisine, getRandomSelection } from '../../store/selectors/commonSelectors';
+import { loadAllCuisine, loadRandomSelection, loadRecipeById } from '../../store/actions/commonActions';
+import { getAllCuisine, getRandomSelection, getRecipeById } from '../../store/selectors/commonSelectors';
 import { MainBtnDish } from '../MainBtnDish';
 import { MainImageDish } from '../MainImageDish';
 import './MainPageStyles.css';
@@ -17,12 +18,19 @@ export const MainPage = () => {
   }, []);
 
   const randomSelection = useSelector(getRandomSelection);
-  console.log(randomSelection);
 
   useEffect(() => {
     // @ts-ignore
     dispatch(loadRandomSelection());
   }, []);
+
+  const recipeById = useSelector(getRecipeById);
+  console.log(recipeById);
+
+  const onDishClick = (id: number) => {
+    // @ts-ignore
+    if (id) { dispatch(loadRecipeById(id)); }
+  };
 
   return (
     <div className="mainpage__container">
@@ -35,7 +43,7 @@ export const MainPage = () => {
           Take the test from
           <span> ShchiBorshci</span>
         </h3>
-        <button type="button" className="start-test_btn">TEST</button>
+        <Link to="/quiz"><button type="button" className="start-test_btn">TEST</button></Link>
       </div>
 
       <div className="mainpage__food-table">
@@ -49,13 +57,21 @@ export const MainPage = () => {
           ))}
         </div>
         <div className="dish-cart">
-          {randomSelection.map(({ strMeal, idMeal, strMealThumb }) => (
-            <MainImageDish
-              key={idMeal}
-              url={strMealThumb}
-              name={strMeal}
-            />
-          ))}
+          {randomSelection.map(({
+            strMeal, idMeal, strMealThumb,
+          }, index) => {
+            if (index <= 8) {
+              return (
+                <MainImageDish
+                  key={idMeal}
+                  url={strMealThumb}
+                  name={strMeal}
+                  onDishClick={onDishClick}
+                  id={idMeal}
+                />
+              );
+            } return null;
+          })}
         </div>
       </div>
     </div>
