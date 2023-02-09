@@ -13,8 +13,7 @@ export class RecipeApi {
 
   async fetch({ method = 'GET', path = '' }: IFetch) {
     try {
-      const fullPath = `${this.baseUrl}/${path}`;
-      const response = await fetch(`https://${fullPath}/9973533/${path}`, {
+      const response = await fetch(`https://${this.baseUrl}/${path}`, {
         method,
       });
 
@@ -39,6 +38,12 @@ export class RecipeApi {
   loadAllCuisine() {
     return this.fetch({
       path: 'list.php?a=list',
+    });
+  }
+
+  loadRecipeById(id:number) {
+    return this.fetch({
+      path: `lookup.php?i=${id}`,
     });
   }
 }
