@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks';
 import { loadAllCuisine, loadRandomSelection, loadRecipeById } from '../../store/actions/commonActions';
-import { getAllCuisine, getRandomSelection, getRecipeById } from '../../store/selectors/commonSelectors';
+import { getAllCuisine, getRandomSelection } from '../../store/selectors/commonSelectors';
 import { MainBtnDish } from '../MainBtnDish';
 import { MainImageDish } from '../MainImageDish';
 import './MainPageStyles.css';
@@ -13,22 +13,16 @@ export const MainPage = () => {
   const allCuisine = useSelector(getAllCuisine);
 
   useEffect(() => {
-    // @ts-ignore
     dispatch(loadAllCuisine());
   }, []);
 
   const randomSelection = useSelector(getRandomSelection);
 
   useEffect(() => {
-    // @ts-ignore
     dispatch(loadRandomSelection());
   }, []);
 
-  const recipeById = useSelector(getRecipeById);
-  console.log(recipeById);
-
   const onDishClick = (id: number) => {
-    // @ts-ignore
     if (id) { dispatch(loadRecipeById(id)); }
   };
 
@@ -62,13 +56,15 @@ export const MainPage = () => {
           }, index) => {
             if (index <= 8) {
               return (
-                <MainImageDish
-                  key={idMeal}
-                  url={strMealThumb}
-                  name={strMeal}
-                  onDishClick={onDishClick}
-                  id={idMeal}
-                />
+                <Link to="/recipe">
+                  <MainImageDish
+                    key={idMeal}
+                    url={strMealThumb}
+                    name={strMeal}
+                    onDishClick={onDishClick}
+                    id={idMeal}
+                  />
+                </Link>
               );
             } return null;
           })}

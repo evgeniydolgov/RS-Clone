@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import './MainImageDishStyles.css';
 
@@ -11,7 +10,6 @@ interface IMainImage {
 export const MainImageDish = ({
   name, url, id, onDishClick,
 }: IMainImage) => {
-  // debugger
   const onClick = () => onDishClick(id);
 
   return (
