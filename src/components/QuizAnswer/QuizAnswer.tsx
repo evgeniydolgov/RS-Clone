@@ -1,14 +1,15 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import { IRandomSelection } from '../../store/slises/commonSlice';
 import './QuizAnswerStyles.css';
 
-export const QuizAnswer = (props: any) => {
-  if (props.number % 2 === 0) {
-    return (
-      <div className="first-product product">{props.product}</div>
-    );
-  }
-  return (
-    <div className="second-product product">{props.product}</div>
-  );
-};
+interface IQuizAnswer {
+  dishesName: string;
+  index: number;
+  rigthAnswer: IRandomSelection;
+}
+
+export const QuizAnswer = (props: IQuizAnswer) => (
+  <button type="button" className={props.index % 2 === 0 ? 'first-product product' : 'second-product product'}>{props.dishesName}</button>
+);

@@ -10,13 +10,32 @@ import { QuizAnswer } from '../QuizAnswer';
 import './QuizPageStyles.css';
 
 export const QuizPage = () => {
-  const goods = ['POTATOES', 'MILK', 'CHICKEN', 'LEMON'];
   const [iSLoader, setLoder] = useState(false);
 
   const dispatch = useAppDispatch();
 
   const randomSelection = useSelector(getRandomSelection);
-  const random = Math.floor(Math.random() * (10 - 0) + 0);
+  const rigthAnswer = Math.floor(Math.random() * (10 - 0) + 0);
+
+  function shuffle(array: string[]) {
+    for (let i = array.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  function creatUnicArray() {
+    let arr = [];
+    arr.push(randomSelection[rigthAnswer].strMeal);
+    for (let i = 0; i < 4; i += 1) {
+      arr.push(randomSelection[i].strMeal);
+    }
+    arr = Array.from(new Set(arr)).slice(0, 4);
+    return arr;
+  }
+
+  const UniqueAnswerArr = shuffle(creatUnicArray());
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +46,6 @@ export const QuizPage = () => {
     fetchData();
   }, []);
 
-  console.log(randomSelection);
   if (!iSLoader) {
     return (
       <div>Loading...</div>
@@ -37,9 +55,9 @@ export const QuizPage = () => {
     <section className="QuizPage">
       <div className="QuizPage-container">
         <div className="QuizPage-board">
-          <div className="dish-picture"><img src={randomSelection[random].strMealThumb} alt="dish-img" /></div>
+          <div className="dish-picture"><img src={randomSelection[rigthAnswer].strMealThumb} alt="dish-img" /></div>
           <div className="dish-composition">
-            {goods.map((el, i) => <QuizAnswer key={el.toString()} product={el} number={i} />)}
+            {UniqueAnswerArr.map((el, index) => <QuizAnswer key={el} dishesName={el} index={index} rigthAnswer={randomSelection[rigthAnswer]} />)}
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { IRecipeById } from '../../types';
 interface ICuisine {
   strArea: string
 }
-interface IRandomSelection {
+export interface IRandomSelection {
   strMeal: string;
   strArea: string;
   strMealThumb: string;
