@@ -1,0 +1,1 @@
+export { AuthorizePopup } from './AuthorizePopup';
