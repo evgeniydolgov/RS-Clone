@@ -23,7 +23,13 @@
   margin: 0 auto;
   width: 400px;
   height: 400px;
-  background: url("../../assets/svg/recipe-page/recipe-demo.svg")0 0/100% auto no-repeat;;
+  /* background: url("../../assets/svg/recipe-page/recipe-demo.svg")0 0/100% auto no-repeat;; */
+}
+
+.dish-picture>img {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid black;
 }
 
 .dish-composition {
