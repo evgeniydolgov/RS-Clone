@@ -1,20 +1,23 @@
 import { useDispatch } from 'react-redux';
 import { api } from '../../Api';
 import { AppDispatch } from '../../types';
-import { saveAllCuisine, saveRandomSelection } from '../slises/commonSlice';
+import { saveAllCuisine, saveRandomSelection, saveActiveRecipe } from '../slises/commonSlice';
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 
-export const loadAllCuisine = () => async (dispatch: typeof useAppDispatch): Promise<void> => {
+export const loadAllCuisine = () => async (dispatch: AppDispatch): Promise<void> => {
   const date = await api.loadAllCuisine();
 
-  // @ts-ignore
   dispatch(saveAllCuisine(date.meals));
 };
 
-export const loadRandomSelection = () => async (dispatch: typeof useAppDispatch): Promise<void> => {
+export const loadRandomSelection = () => async (dispatch: AppDispatch): Promise<void> => {
   const date = await api.loadRandomSelection();
 
-  // @ts-ignore
   dispatch(saveRandomSelection(date.meals));
+};
+export const loadRecipeById = (id: string) => async (dispatch: AppDispatch): Promise<void> => {
+  const date = await api.loadRecipeById(id);
+
+  dispatch(saveActiveRecipe(date.meals[0]));
 };
