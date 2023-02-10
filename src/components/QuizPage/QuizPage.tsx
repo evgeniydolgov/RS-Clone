@@ -36,6 +36,7 @@ export const QuizPage = () => {
   }
 
   const UniqueAnswerArr = shuffle(creatUnicArray());
+  const RigthAnswer = randomSelection[rigthAnswer].strMeal;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,7 +58,7 @@ export const QuizPage = () => {
         <div className="QuizPage-board">
           <div className="dish-picture"><img src={randomSelection[rigthAnswer].strMealThumb} alt="dish-img" /></div>
           <div className="dish-composition">
-            {UniqueAnswerArr.map((el, index) => <QuizAnswer key={el} dishesName={el} index={index} rigthAnswer={randomSelection[rigthAnswer]} />)}
+            {UniqueAnswerArr.map((el, index) => <QuizAnswer key={el} dishesName={el} index={index} rigthAnswer={RigthAnswer} />)}
           </div>
         </div>
       </div>
