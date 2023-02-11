@@ -17,6 +17,21 @@ export const QuizPage = () => {
   const randomSelection = useSelector(getRandomSelection);
   const rigthAnswer = Math.floor(Math.random() * (10 - 0) + 0);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      // @ts-ignore
+      await dispatch(loadRandomSelection());
+      setLoder(!iSLoader);
+    };
+    fetchData();
+  }, []);
+
+  if (!iSLoader) {
+    return (
+      <div>Loading...</div>
+    );
+  }
+
   function shuffle(array: string[]) {
     for (let i = array.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -38,27 +53,13 @@ export const QuizPage = () => {
   const UniqueAnswerArr = shuffle(creatUnicArray());
   const RigthAnswer = randomSelection[rigthAnswer].strMeal;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // @ts-ignore
-      await dispatch(loadRandomSelection());
-      setLoder(!iSLoader);
-    };
-    fetchData();
-  }, []);
-
-  if (!iSLoader) {
-    return (
-      <div>Loading...</div>
-    );
-  }
   return (
     <section className="QuizPage">
       <div className="QuizPage-container">
         <div className="QuizPage-board">
           <div className="dish-picture"><img src={randomSelection[rigthAnswer].strMealThumb} alt="dish-img" /></div>
           <div className="dish-composition">
-            {UniqueAnswerArr.map((el, index) => <QuizAnswer key={el} dishesName={el} index={index} rigthAnswer={RigthAnswer} />)}
+            {UniqueAnswerArr.map((el) => <QuizAnswer key={el} dishesName={el} rigthAnswer={RigthAnswer} />)}
           </div>
         </div>
       </div>

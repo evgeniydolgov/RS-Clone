@@ -1,29 +1,30 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable no-console */
-/* eslint-disable react/no-unused-prop-types */
-/* eslint-disable react/destructuring-assignment */
-import React from 'react';
+import React, { useState } from 'react';
 import './QuizAnswerStyles.css';
 
 interface IQuizAnswer {
   dishesName: string;
-  index: number;
   rigthAnswer: string;
 }
 
-export const QuizAnswer = (props: IQuizAnswer) => {
-  const checkigClickBtn = (element: any) => {
-    props.rigthAnswer === element.target.name ? console.log('урааааа') : console.log('мимо!');
+export const QuizAnswer = ({ dishesName, rigthAnswer }: IQuizAnswer) => {
+  const [colorBtn, setColorBtn] = useState('#0E5984');
+
+  const checkigClickBtn: React.MouseEventHandler<HTMLButtonElement> = (element) => {
+    if (rigthAnswer === element.currentTarget.name) {
+      setColorBtn('#187511cb');
+    } else {
+      setColorBtn('#263640');
+    }
   };
   return (
     <button
-      name={props.dishesName}
       type="button"
+      className="product"
+      name={dishesName}
+      style={{ backgroundColor: colorBtn }}
       onClick={checkigClickBtn}
-      className={props.index % 2 === 0 ? 'first-product product' : 'second-product product'}
     >
-      {props.dishesName}
-
+      {dishesName}
     </button>
   );
 };

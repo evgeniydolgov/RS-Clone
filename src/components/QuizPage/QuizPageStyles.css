@@ -1,4 +1,5 @@
 .QuizPage {
+  flex-grow: 1;
   background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
 }
 
@@ -15,8 +16,8 @@
   border-radius: 25px;
   width: 100%;
   margin: 0 auto;
-  padding: 50px;
-  background: url("../../assets/svg/recipe-page/strip-board.svg") 0 0/100% auto no-repeat;
+  /* padding: 50px; */
+  /* background: url("../../assets/svg/recipe-page/strip-board.svg") 0 0/100% auto no-repeat; */
 }
 
 .dish-picture {
@@ -33,10 +34,6 @@
 }
 
 .dish-composition {
-  margin: 20px auto;
-  max-width: 600px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-auto-flow: column;
+  margin: 10px auto;
+  max-width: 60%;
 }
