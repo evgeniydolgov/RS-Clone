@@ -5,6 +5,25 @@ import './AuthorizePageStyles.css';
 
 export const AuthorizePage = () => {
   const [popupActive, setPopupActive] = useState(false);
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [registerStatus, setRegisterStatus] = useState('');
+
+  const register = async (el: React.MouseEvent) => {
+    el.preventDefault();
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        login: { login },
+        password: { password },
+      }),
+    };
+    const response = await fetch('http://localhost:3001/register', requestOptions);
+    const data = await response.json();
+    console.log(data);
+    setRegisterStatus('Account created!');
+  };
 
   return (
     <div className="authorize__container">
@@ -53,16 +72,17 @@ export const AuthorizePage = () => {
         <p>
           <label htmlFor="login">
             Login&nbsp;
-            <input type="text" id="login" />
+            <input type="text" id="login" onChange={(el) => { setLogin(el.target.value); }} required />
           </label>
         </p>
         <p>
           <label htmlFor="password">
             Password&nbsp;
-            <input type="password" id="password" />
+            <input type="password" id="password" onChange={(el) => { setPassword(el.target.value); }} required />
           </label>
         </p>
-        <button type="button" className="popup__button">Sign Up</button>
+        <button type="submit" className="popup__button" onClick={register}>Sign Up</button>
+        <p>{registerStatus}</p>
       </AuthorizePopup>
     </div>
   );

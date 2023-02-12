@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/create', urlencodedParser, (req, res) => {
+/* app.post('/create', urlencodedParser, (req, res) => {
   const pool: mysql.Pool = mysql.createPool({
     host: 'sql7.freemysqlhosting.net',
     user: 'sql7595528',
@@ -62,6 +62,28 @@ app.post('/create', urlencodedParser, (req, res) => {
   pool.query(
     'INSERT INTO users (id, name) VALUES (?,?)' as string,
     [id as number, name as string],
+    (err, data) => {
+      if (err as Error) throw err as Error;
+      res.send(data as Object[]);
+      pool.end();
+    },
+  );
+}); */
+
+app.post('/register', urlencodedParser, (req, res) => {
+  const pool: mysql.Pool = mysql.createPool({
+    host: 'sql7.freemysqlhosting.net',
+    user: 'sql7595528',
+    password: 'JHGwZJt4Iz',
+    database: 'sql7595528',
+    port: 3306,
+  });
+  if (!req.body) res.sendStatus(400);
+  const { login } = req.body.login;
+  const { password } = req.body.password;
+  pool.query(
+    'INSERT INTO users (login, password) VALUES (?,?)' as string,
+    [login as string, password as string],
     (err, data) => {
       if (err as Error) throw err as Error;
       res.send(data as Object[]);
