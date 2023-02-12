@@ -10,10 +10,10 @@ interface IMainBtnDish {
 export const MainBtnDish = ({ name, number }: IMainBtnDish) => {
   if (number % 2 === 0) {
     return (
-      <button type="button" className="dish-change first-btn">{name}</button>
+      <option value="1"><button type="button" className="dish-change first-btn">{name}</button></option>
     );
   }
   return (
-    <button type="button" className="dish-change">{name}</button>
+    <option value="1"><button type="button" className="dish-change">{name}</button></option>
   );
 };

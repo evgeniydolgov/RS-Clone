@@ -41,7 +41,9 @@ export const MainPage = () => {
       </div>
 
       <div className="mainpage__food-table">
-        <div className="selection-category dish-category">
+        {/* <div className="selection-category dish-category"> */}
+        <select name="list" className="selection-category">
+
           {allCuisine.map(({ strArea }, i) => (
             <MainBtnDish
               key={strArea}
@@ -49,7 +51,7 @@ export const MainPage = () => {
               number={i}
             />
           ))}
-        </div>
+        </select>
         <div className="dish-cart">
           {randomSelection.map(({ strMeal, idMeal, strMealThumb }, index) => {
             if (index <= 8) {
