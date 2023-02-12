@@ -46,6 +46,12 @@ export class RecipeApi {
       path: `lookup.php?i=${id}`,
     });
   }
+
+  loadRecipesByCuisineName(strArea: string) {
+    return this.fetch({
+      path: `/filter.php?a=${strArea}`,
+    });
+  }
 }
 
 export const api = new RecipeApi('www.themealdb.com/api/json/v2/9973533');

@@ -11,6 +11,7 @@ import { RecipeCard } from './components/RecipeCard';
 import { Layout } from './components/Layout';
 import { QuizPage } from './components/QuizPage';
 import { AuthorizePage } from './components/AuthorizePage';
+import { SortCuisinesRecipesByArea } from './components/SortCuisinesRecipesByArea';
 
 export const App = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -23,6 +24,7 @@ export const App = () => {
 
   return (
     <>
+      <SortCuisinesRecipesByArea />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
@@ -31,7 +33,6 @@ export const App = () => {
           <Route path="recipe" element={<RecipeCard />} />
         </Route>
       </Routes>
-
       {/* <Header />
       <MainPage />
       <RecipePage />

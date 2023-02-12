@@ -76,7 +76,7 @@ font-weight: 400;
   flex-wrap: wrap ;
   justify-content: center;
   gap: 30px;
-  width: 1200px;
+  max-width: 1200px;
 }
 
 
