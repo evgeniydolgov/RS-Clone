@@ -45,7 +45,7 @@ export const QuizPage = () => {
   }, [nextStage]);
 
   const nextQuestion = () => {
-    if (count < 4) {
+    if (count < 5) {
       setCount(count + 1);
       setNextStage(true);
       (btnRef.current as HTMLButtonElement).style.pointerEvents = 'none';
@@ -97,6 +97,11 @@ export const QuizPage = () => {
       UniqueAnswerArr,
     };
     gameArr.push(gameStage);
+  }
+  if (count === 5) {
+    return (
+      <div>WE HAVE A WINNER</div>
+    );
   }
   return (
     <section className="QuizPage">
