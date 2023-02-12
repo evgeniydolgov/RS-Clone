@@ -8,7 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center; */
-  padding: 50px;
+  padding: 40px;
 }
 
 .QuizPage-board {
@@ -34,6 +34,19 @@
 }
 
 .dish-composition {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
   margin: 10px auto;
   max-width: 60%;
+}
+
+.next_btn {
+  cursor: pointer;
+  margin: 5px;
+  padding: 10px 25px;
+  border-radius: 15px 0;
+  color: aliceblue;
+  background-color: #263640;
+  pointer-events: none;
 }

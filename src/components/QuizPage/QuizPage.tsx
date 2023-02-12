@@ -1,9 +1,7 @@
+/* eslint-disable react/jsx-boolean-value */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-continue */
-/* eslint-disable @typescript-eslint/quotes */
-/* eslint-disable @typescript-eslint/dot-notation */
-/* eslint-disable no-new-object */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../hooks';
 import { loadRandomSelection } from '../../store/actions/commonActions';
@@ -21,12 +19,17 @@ export const QuizPage = () => {
   const [iSLoader, setLoder] = useState(false);
   const [count, setCount] = useState(0);
   const [nextStage, setNextStage] = useState(false);
-  const normalColorBtn = '#0E5984';
   const dispatch = useAppDispatch();
+  const btnRef = useRef<HTMLButtonElement>(null);
 
   const randomSelection = useSelector(getRandomSelection);
   const gameArr: IGameStage[] = [];
   const uniqueRandomNumbers: number[] = [];
+
+  const red = () => {
+    (btnRef.current as HTMLButtonElement).style.pointerEvents = 'all';
+    (btnRef.current as HTMLButtonElement).style.backgroundColor = '#0E5984';
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +43,15 @@ export const QuizPage = () => {
   useEffect(() => {
     setNextStage(false);
   }, [nextStage]);
+
+  const nextQuestion = () => {
+    if (count < 4) {
+      setCount(count + 1);
+      setNextStage(true);
+      (btnRef.current as HTMLButtonElement).style.pointerEvents = 'none';
+      (btnRef.current as HTMLButtonElement).style.backgroundColor = '#263640';
+    }
+  };
 
   if (!iSLoader) {
     return (
@@ -65,7 +77,7 @@ export const QuizPage = () => {
     const creatUnicArray = () => {
       let arr = [];
       arr.push(randomSelection[rigthAnswerNumber].strMeal);
-      for (let i = 0; arr.length < 4;) {
+      for (const i = 0; arr.length < 4;) {
         const randomIndex = Math.floor(Math.random() * (10 - 0) + 0);
         if (!(arr.includes(randomSelection[randomIndex].strMeal))) {
           arr.push(randomSelection[randomIndex].strMeal);
@@ -86,7 +98,6 @@ export const QuizPage = () => {
     };
     gameArr.push(gameStage);
   }
-
   return (
     <section className="QuizPage">
       <div className="QuizPage-container">
@@ -98,21 +109,13 @@ export const QuizPage = () => {
                 key={el}
                 dishesName={el}
                 rigthAnswer={gameArr[count].RigthAnswer}
-                normalColorBtn={normalColorBtn}
                 nextStage={nextStage}
+                red={red}
               />
             ))}
+            <button className="next_btn" ref={btnRef} onClick={nextQuestion} type="button">next</button>
           </div>
         </div>
-        <button
-          onClick={() => {
-            setCount(count + 1);
-            setNextStage(true);
-          }}
-          type="button"
-        >
-          click
-        </button>
       </div>
     </section>
   );
