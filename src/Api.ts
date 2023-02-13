@@ -47,9 +47,9 @@ export class RecipeApi {
     });
   }
 
-  loadRecipesByCuisineName(strArea: string) {
+  loadRecipesByCuisineName(cuisineName: string) {
     return this.fetch({
-      path: `/filter.php?a=${strArea}`,
+      path: `/filter.php?a=${cuisineName}`,
     });
   }
 }
