@@ -7,18 +7,18 @@ interface IQuizAnswer {
   dishesName: string;
   rigthAnswer: string;
   nextStage: boolean;
-  red: () => void;
+  unlockNextBtn: () => void;
 }
 
 export const QuizAnswer = ({
-  dishesName, rigthAnswer, nextStage, red,
+  dishesName, rigthAnswer, nextStage, unlockNextBtn,
 }: IQuizAnswer) => {
   const [colorBtn, setColorBtn] = useState('#0E5984');
 
   const checkigClickBtn: React.MouseEventHandler<HTMLButtonElement> = (element) => {
     if (rigthAnswer === element.currentTarget.name) {
       setColorBtn('#187511cb');
-      red();
+      unlockNextBtn();
     } else {
       setColorBtn('#263640');
     }

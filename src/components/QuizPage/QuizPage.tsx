@@ -1,12 +1,10 @@
-/* eslint-disable react/jsx-boolean-value */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-continue */
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../hooks';
 import { loadRandomSelection } from '../../store/actions/commonActions';
 import { getRandomSelection } from '../../store/selectors/commonSelectors';
-import { QuizAnswer } from '../QuizAnswer';
+import { QuizRander } from '../QuizRender';
 import './QuizPageStyles.css';
 
 interface IGameStage {
@@ -17,19 +15,11 @@ interface IGameStage {
 
 export const QuizPage = () => {
   const [iSLoader, setLoder] = useState(false);
-  const [count, setCount] = useState(0);
-  const [nextStage, setNextStage] = useState(false);
   const dispatch = useAppDispatch();
-  const btnRef = useRef<HTMLButtonElement>(null);
 
   const randomSelection = useSelector(getRandomSelection);
   const gameArr: IGameStage[] = [];
   const uniqueRandomNumbers: number[] = [];
-
-  const red = () => {
-    (btnRef.current as HTMLButtonElement).style.pointerEvents = 'all';
-    (btnRef.current as HTMLButtonElement).style.backgroundColor = '#0E5984';
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,19 +29,6 @@ export const QuizPage = () => {
     };
     fetchData();
   }, []);
-
-  useEffect(() => {
-    setNextStage(false);
-  }, [nextStage]);
-
-  const nextQuestion = () => {
-    if (count < 5) {
-      setCount(count + 1);
-      setNextStage(true);
-      (btnRef.current as HTMLButtonElement).style.pointerEvents = 'none';
-      (btnRef.current as HTMLButtonElement).style.backgroundColor = '#263640';
-    }
-  };
 
   if (!iSLoader) {
     return (
@@ -77,7 +54,7 @@ export const QuizPage = () => {
     const creatUnicArray = () => {
       let arr = [];
       arr.push(randomSelection[rigthAnswerNumber].strMeal);
-      for (const i = 0; arr.length < 4;) {
+      while (arr.length < 4) {
         const randomIndex = Math.floor(Math.random() * (10 - 0) + 0);
         if (!(arr.includes(randomSelection[randomIndex].strMeal))) {
           arr.push(randomSelection[randomIndex].strMeal);
@@ -98,30 +75,8 @@ export const QuizPage = () => {
     };
     gameArr.push(gameStage);
   }
-  if (count === 5) {
-    return (
-      <div>WE HAVE A WINNER</div>
-    );
-  }
+
   return (
-    <section className="QuizPage">
-      <div className="QuizPage-container">
-        <div className="QuizPage-board">
-          <div className="dish-picture"><img src={gameArr[count].dishImg} alt="dish-img" /></div>
-          <div className="dish-composition">
-            {gameArr[count].UniqueAnswerArr.map((el: string) => (
-              <QuizAnswer
-                key={el}
-                dishesName={el}
-                rigthAnswer={gameArr[count].RigthAnswer}
-                nextStage={nextStage}
-                red={red}
-              />
-            ))}
-            <button className="next_btn" ref={btnRef} onClick={nextQuestion} type="button">next</button>
-          </div>
-        </div>
-      </div>
-    </section>
+    <QuizRander gameArr={gameArr} />
   );
 };
