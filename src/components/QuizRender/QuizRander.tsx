@@ -1,6 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useRef, useEffect } from 'react';
 import { QuizAnswer } from '../QuizAnswer';
+import './QuizRanderStyle.css';
 
 interface IGameStage {
   RigthAnswer: string,
