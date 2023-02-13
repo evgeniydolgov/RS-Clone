@@ -72,7 +72,7 @@ export const AuthorizePage = () => {
           <div className="logo__block">
             <div className="logo__center" />
             <button type="button" className="button__center">
-              <Link className="white__text" to="/recipe"> View recipes</Link>
+              <Link className="white__text" to="/"> View recipes</Link>
             </button>
           </div>
           <div className="signing__block">
@@ -100,29 +100,13 @@ export const AuthorizePage = () => {
         <p>
           <label htmlFor="loginRegister">
             Login&nbsp;
-<<<<<<< HEAD
-            <input type="text" id="login" onChange={(el) => { setLogin(el.target.value); }} required />
-=======
-<<<<<<< HEAD
-            <input type="text" id="login" />
-=======
             <input type="text" id="loginRegister" onChange={(el) => { setLogin(el.target.value); }} required />
->>>>>>> 452703ec52d6ded8ef6f7e44e6cb63cbd3c4d372
->>>>>>> develop
           </label>
         </p>
         <p>
           <label htmlFor="passwordRegister">
             Password&nbsp;
-<<<<<<< HEAD
-            <input type="password" id="password" onChange={(el) => { setPassword(el.target.value); }} required />
-=======
-<<<<<<< HEAD
-            <input type="password" id="password" />
-=======
             <input type="password" id="passwordRegister" onChange={(el) => { setPassword(el.target.value); }} required />
->>>>>>> 452703ec52d6ded8ef6f7e44e6cb63cbd3c4d372
->>>>>>> develop
           </label>
         </p>
         <button type="submit" className="popup__button" onClick={register}>Sign Up</button>
