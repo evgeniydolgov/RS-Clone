@@ -1,6 +1,8 @@
+/* eslint-disable no-new */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useRef, useEffect } from 'react';
 import { QuizAnswer } from '../QuizAnswer';
+import { WinnerPage } from '../WinnerPage';
 import './QuizRanderStyle.css';
 
 interface IGameStage {
@@ -15,11 +17,14 @@ interface IGameArr {
 
 export const QuizRander = (props: IGameArr) => {
   const [count, setCount] = useState(0);
+  const [countScore, setCountScore] = useState(0);
   const [nextStage, setNextStage] = useState(false);
+  const [clickBtn, setClickBtn] = useState(true);
   const btnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setNextStage(false);
+    setClickBtn(true);
   }, [nextStage]);
 
   const nextQuestion = () => {
@@ -36,11 +41,19 @@ export const QuizRander = (props: IGameArr) => {
     (btnRef.current as HTMLButtonElement).style.backgroundColor = '#0E5984';
   };
 
+  const score = () => {
+    if (countScore >= 0) {
+      return countScore;
+    }
+    return 0;
+  };
+
   if (count === 5) {
     return (
-      <div>WE HAVE A WINNER</div>
+      <WinnerPage score={countScore} />
     );
   }
+
   return (
     <section className="QuizPage">
       <div className="QuizPage-container">
@@ -54,9 +67,20 @@ export const QuizRander = (props: IGameArr) => {
                 rigthAnswer={props.gameArr[count].RigthAnswer}
                 nextStage={nextStage}
                 unlockNextBtn={unlockNextBtn}
+                countScore={countScore}
+                setCountScore={setCountScore}
+                clickBtn={clickBtn}
+                setClickBtn={setClickBtn}
               />
             ))}
-            <button className="next_btn" ref={btnRef} onClick={nextQuestion} type="button">next</button>
+            <div className="score_container">
+              <p>
+                Score:
+                {' '}
+                {score()}
+              </p>
+              <button className="next_btn" ref={btnRef} onClick={nextQuestion} type="button">next</button>
+            </div>
           </div>
         </div>
       </div>
