@@ -1,3 +1,10 @@
+.loading_page {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .loader {
   --b: 10px;  /* border thickness */
   --n: 10;    /* number of dashes*/

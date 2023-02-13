@@ -1,0 +1,1 @@
+export { QuizRander } from './QuizRander';
