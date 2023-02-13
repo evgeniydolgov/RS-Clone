@@ -1,12 +1,28 @@
 import React from 'react';
+import { useAppDispatch } from '../../hooks';
+import { loadRecipeById } from '../../store/actions/commonActions';
 import './SortListByAreaStyles.css';
 
-export const SortListByArea = () => (
-  <button type="button" className="one-dish">
-    <img src="https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg" className="dish__img" alt="Dish" />
-    <div className="dish-back">
-      <h3 className="dish-title">name</h3>
-      <div className="dish-logo" />
-    </div>
-  </button>
-);
+interface ISortLIstByArea {
+  url: string;
+  strMeal:string;
+  id: string;
+}
+
+export const SortListByArea = ({ url, strMeal, id }: ISortLIstByArea) => {
+  const dispatch = useAppDispatch();
+
+  const onClick = () => {
+    dispatch(loadRecipeById(id));
+  };
+
+  return (
+    <button type="button" className="one-dish" onClick={onClick}>
+      <img src={url} className="dish__img-cuisine" alt="Dish" />
+      <div className="dish-back">
+        <h3 className="dish-title">{strMeal}</h3>
+        <div className="dish-logo" />
+      </div>
+    </button>
+  );
+};
