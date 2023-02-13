@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../hooks';
 import { loadRandomSelection } from '../../store/actions/commonActions';
 import { getRandomSelection } from '../../store/selectors/commonSelectors';
+import { LoadingAnimation } from '../LoadingAnimation';
 import { QuizAnswer } from '../QuizAnswer';
 import './QuizPageStyles.css';
 
@@ -53,9 +54,11 @@ export const QuizPage = () => {
     }
   };
 
-  if (!iSLoader) {
+  if (!iSLoader || iSLoader) {
     return (
-      <div>Loading...</div>
+      <div className="loading_page">
+        <LoadingAnimation />
+      </div>
     );
   }
 
