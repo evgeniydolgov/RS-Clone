@@ -72,7 +72,7 @@ export const AuthorizePage = () => {
           <div className="logo__block">
             <div className="logo__center" />
             <button type="button" className="button__center">
-              <Link className="white__text" to="/recipe"> View recipes</Link>
+              <Link className="white__text" to="/"> View recipes</Link>
             </button>
           </div>
           <div className="signing__block">
