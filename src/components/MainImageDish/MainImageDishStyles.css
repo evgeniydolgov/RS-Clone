@@ -28,9 +28,9 @@
   transform: scale(1.1);
 }
 .dish-back {
-  background: rgba(25, 22, 47, 0.5);
+  background: rgba(25, 22, 47, 0.75);
   width: 100%;
-  height: 70px;
+  height: 110px;
   position: absolute;
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@
   text-align: start;
   width: 100%;
   font-family: 'Roboto';
-  font-size: 24px;
+  font-size: 20px;
   color: #fafafa;
   transition: 0.5s;
 }

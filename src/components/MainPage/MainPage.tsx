@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks';
-import { loadAllCuisine, loadRandomSelection, loadRecipeById } from '../../store/actions/commonActions';
+import {
+  loadAllCuisine, loadRandomSelection, loadRecipeById, loadRecipesByCuisineName,
+} from '../../store/actions/commonActions';
 import { getAllCuisine, getRandomSelection } from '../../store/selectors/commonSelectors';
+import { saveCountryName } from '../../store/slises/commonSlice';
 import { MainBtnDish } from '../MainBtnDish';
 import { MainImageDish } from '../MainImageDish';
 import './MainPageStyles.css';
@@ -23,32 +26,39 @@ export const MainPage = () => {
   }, []);
 
   const onDishClick = (id: string) => {
-    if (id) { dispatch(loadRecipeById(id)); }
+    dispatch(loadRecipeById(id));
+  };
+
+  const navigate = useNavigate();
+  const onNameOfCuisineClick = ({ target }: any) => {
+    navigate('/recipeCuisine');
+    dispatch(loadRecipesByCuisineName(target.value));
+    dispatch(saveCountryName(target.value));
   };
 
   return (
     <div className="mainpage__container">
       <div className="mainpage__vegetables-board">
-        <div className="mainpage__message" />
+        <h2>
+          We teach you how
+          <br />
+          to cook delicious
+          <br />
+          for happiness at home!
+        </h2>
       </div>
 
       <div className="mainpage__test">
         <h3>
-          Take the test from
+          Try games from
           <span> ShchiBorshci</span>
         </h3>
-        <Link to="/quiz"><button type="button" className="start-test_btn">TEST</button></Link>
+        <Link to="/quiz"><button type="button" className="start-test_btn">Games</button></Link>
       </div>
 
       <div className="mainpage__food-table">
-        <div className="selection-category dish-category">
-          {allCuisine.map(({ strArea }, i) => (
-            <MainBtnDish
-              key={strArea}
-              name={strArea}
-              number={i}
-            />
-          ))}
+        <div className="title-random">
+          <h4>We have picked up some random recipes for you</h4>
         </div>
         <div className="dish-cart">
           {randomSelection.map(({ strMeal, idMeal, strMealThumb }, index) => {
@@ -65,6 +75,25 @@ export const MainPage = () => {
               );
             } return null;
           })}
+        </div>
+        <div className="test">
+          <select
+            name="list"
+            id="select"
+            className="selection-category"
+            onChange={onNameOfCuisineClick}
+          >
+            <optgroup>
+              <option value="">Choose your favorite cuisine</option>
+
+              {allCuisine.map(({ strArea }) => (
+                <MainBtnDish
+                  name={strArea}
+                  key={strArea}
+                />
+              ))}
+            </optgroup>
+          </select>
         </div>
       </div>
     </div>

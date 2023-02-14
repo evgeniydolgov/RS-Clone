@@ -6,12 +6,11 @@ export const Header = () => (
   <header>
     <div className="header__inner">
       <div className="header-info">
-        <div className="header-logo" />
+        <Link className="header-link" to="/"><div className="header-logo" /></Link>
         <nav>
           <ul className="header-list">
-            <li><Link className="header-link" to="/">Home</Link></li>
-            <li><Link className="header-link" to="/quiz">Cooking Quiz</Link></li>
-            <li><Link className="header-link" to="/recipe">Recipes</Link></li>
+            <li><Link className="header-link" to="/quiz">Games</Link></li>
+            {/* <li><Link className="header-link" to="/recipe">Recipes</Link></li> */}
           </ul>
         </nav>
       </div>
