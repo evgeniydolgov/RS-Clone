@@ -10,14 +10,15 @@
   align-items: center;
   margin: 70px auto;
   max-width: 1200px;
-  width: 50%;
+  width: 600px;
   height: 80%;
   border: 1px solid black;
   border-radius: 15px;
   background-color: #C8E8F0;
 }
 
-.winpage_container>h2 {
+.winpage_container>h3 {
+  font-size: 50px;
   margin: 30px 0 10px 0;
 }
 
@@ -37,7 +38,7 @@
   cursor: pointer;
   padding: 10px 25px;
   border-radius: 15px;
-  margin: 50px 0;
+  margin: 60px 0;
   background-color: #0E5984;
 }
 

@@ -4,6 +4,16 @@
 import React, { useEffect, useState } from 'react';
 import './QuizAnswerStyles.css';
 
+export const missClick = () => {
+  const path = require('../../assets/mp3/miss-click.mp3');
+  return new Audio(path).play();
+};
+
+export const winClick = () => {
+  const path = require('../../assets/mp3/winClick.mp3');
+  return new Audio(path).play();
+};
+
 interface IQuizAnswer {
   dishesName: string;
   rigthAnswer: string;
@@ -26,9 +36,11 @@ export const QuizAnswer = ({
       unlockNextBtn();
       setClickBtn(false);
       setCountScore(countScore + 3);
-    } else if (clickBtn) {
+      winClick();
+    } else if (clickBtn && colorBtn === '#0E5984') {
       setColorBtn('#263640');
       setCountScore(countScore - 1);
+      missClick();
     }
   };
 
