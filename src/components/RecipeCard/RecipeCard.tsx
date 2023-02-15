@@ -12,7 +12,7 @@ export const RecipeCard = () => {
       <div className="recipe-card__inner">
         <h1>{activeRecipe?.strMeal}</h1>
         <h3>
-          Cuisine:
+          Cuisine -&nbsp;
           <span>{activeRecipe?.strArea}</span>
         </h3>
         <RecipeDescription />

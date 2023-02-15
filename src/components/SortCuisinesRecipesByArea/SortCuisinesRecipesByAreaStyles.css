@@ -1,4 +1,6 @@
 .sort-by-area {
+    background: url('../../assets/jpeg/back_area_cuisine.jpg') center no-repeat;
+    background-size: cover;
 
 }
 .sort-by-area__inner {
@@ -15,4 +17,13 @@
     margin: 0 auto;
     max-width: 830px;
 
+}
+h3 {
+    font-family: 'Rochester', cursive;
+    font-weight: 400;
+    font-size: 36px;
+
+}
+h3 span {
+    font-size: 40px;
 }
