@@ -10,7 +10,7 @@ export const RecipeVideo = () => {
   return (
     <div className="recipe-video">
       <h3>
-        Video recipe:
+        Video recipe -&nbsp;
         <span>
           {activeRecipe?.strMeal}
         </span>
