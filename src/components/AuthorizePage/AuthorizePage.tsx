@@ -47,7 +47,8 @@ export const AuthorizePage = () => {
       console.log(response);
       console.log(data);
       setLoginStatus('Welcome!');
-      localStorage.setItem('user', JSON.stringify(`${data[0].login} ${data[0].password}`));
+      localStorage.setItem('user', JSON.stringify(`${data[0].login}`));
+      window.dispatchEvent(new Event('storage'));
     } else {
       setLoginStatus('Wrong details');
     }

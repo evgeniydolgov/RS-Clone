@@ -80,15 +80,22 @@ app.get('/', (req, res) => {
   port: 3306,
 }); */
 
-const pool = mysql.createPool({
+/* const pool = mysql.createPool({
   host: 'sql7.freemysqlhosting.net',
   user: 'sql7595528',
   password: 'JHGwZJt4Iz',
   database: 'sql7595528',
   port: 3306,
-});
+}); */
 
 app.post('/register', urlencodedParser, (req, res) => {
+  const pool = mysql.createPool({
+    host: 'sql7.freemysqlhosting.net',
+    user: 'sql7595528',
+    password: 'JHGwZJt4Iz',
+    database: 'sql7595528',
+    port: 3306,
+  });
   if (!req.body) res.sendStatus(400);
   const { login, password } = req.body;
   console.log(req.body);
@@ -106,11 +113,19 @@ app.post('/register', urlencodedParser, (req, res) => {
       } else {
         res.send({ message: 'Enter correct details!' });
       }
+      pool.end();
     },
   );
 });
 
 app.post('/login', urlencodedParser, (req, res) => {
+  const pool = mysql.createPool({
+    host: 'sql7.freemysqlhosting.net',
+    user: 'sql7595528',
+    password: 'JHGwZJt4Iz',
+    database: 'sql7595528',
+    port: 3306,
+  });
   if (!req.body) res.sendStatus(400);
   const { login } = req.body;
   const { password } = req.body;
@@ -127,6 +142,7 @@ app.post('/login', urlencodedParser, (req, res) => {
       } else {
         res.send({ message: 'Enter correct details!' });
       }
+      pool.end();
     },
   );
 });
