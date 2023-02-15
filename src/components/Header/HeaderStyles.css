@@ -43,9 +43,25 @@ header {
     color: #421049;
     text-decoration: underline;
 }
+.header-account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 12%;
+    height: 100%;
+}
+.userpic {
+    width: 50px;
+    height: 50px;
+    background-image: url("./../../assets/svg/userpic.svg");
+    background-repeat: no-repeat;
+}
+.userinfo {
+    display: flex;
+    flex-direction: column;
+}
 .header-authorization {
     display: flex;
-
 }
 .authorization__btn {
     padding: 5px 18px;
