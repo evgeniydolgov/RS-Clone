@@ -12,6 +12,7 @@ export const Header = () => {
       if (localStorage.getItem('user') != null) {
         // console.log('dfgdg');
         setUser(localStorage.getItem('user'));
+        /* change logout */
       }
     };
     window.addEventListener('storage', storageEventHandler);

@@ -4,8 +4,13 @@ html,
 body,
 .root {
     min-height: 100vh;
-
 }
+
+html {
+    width:100vw;
+    overflow-x:hidden;
+}
+
 body{
     max-width: 100%;
     display: flex;
@@ -16,6 +21,7 @@ body{
     flex-direction: column;
     margin: 0 auto;
 }
+
 p, 
 h1,
 h2,
