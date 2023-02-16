@@ -1,16 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthiorizeBtn } from '../AuthiorizeBtn';
 import { AuthorizePopup } from '../AuthiorizePopup';
 import { LoginPopup } from '../LoginPopup/LoginPopup';
 import './AuthorizePageStyles.css';
 
-export const AuthorizePage = () => {
+export const AuthorizePage = (props: any) => {
   const [authorizePopupActive, setAuthorizePopupActive] = useState(false);
   const [loginPopupActive, setLoginPopupActive] = useState(false);
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('');
   const [registerStatus, setRegisterStatus] = useState('');
+  const [userLogged, setUserLogged] = useState('LogIn');
 
   const register = async (el: React.MouseEvent) => {
     el.preventDefault();
@@ -55,6 +58,7 @@ export const AuthorizePage = () => {
         localStorage.setItem('score', JSON.stringify(`${data[0].score}`));
       }
       window.dispatchEvent(new Event('storage'));
+      setUserLogged('LogOut');
     } else {
       setLoginStatus('Wrong details');
     }
@@ -89,14 +93,8 @@ export const AuthorizePage = () => {
               more features!
             </p>
             <div className="signing__buttons">
-              <button type="button" className="authorize__button" onMouseDown={() => setAuthorizePopupActive(true)}>
-                <p className="authorize__button__text">Sign Up</p>
-                <div className="icon__button" />
-              </button>
-              <button type="button" className="authorize__button" onMouseDown={() => setLoginPopupActive(true)}>
-                <p className="authorize__button__text">Login</p>
-                <div className="icon__button" />
-              </button>
+              <AuthiorizeBtn textBtn="Sign Up" className="authorize__button" openPopUp={setAuthorizePopupActive} setUserLogged={setUserLogged} />
+              <AuthiorizeBtn textBtn={userLogged} className="authorize__button" openPopUp={setLoginPopupActive} setUserLogged={setUserLogged} />
             </div>
           </div>
         </div>

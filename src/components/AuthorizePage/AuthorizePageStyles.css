@@ -135,7 +135,7 @@
 
 .authorize__button {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 50%;
   height: 40%;

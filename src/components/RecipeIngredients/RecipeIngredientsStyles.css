@@ -5,6 +5,11 @@
     width: 35%;
 
 }
+.recipe__ingredients-h3 {
+   margin: 0 0 15px 0;
+
+}
+
 .recipe__ingredients::after,
 .recipe__ingredients::before {
     content: "";
@@ -15,7 +20,6 @@
     top: 0px;
     left: 49%;
     display: block;
-    
 }
 .recipe__ingredients::before {
     left: 50%;
@@ -30,8 +34,9 @@
 .ingredients__list li {
     align-items: baseline;
     display: flex;
-    margin-bottom: 0.5em; 
-    
+    margin:0 0.5em 0.2em 0;
+    width: 300px;
+
 }
 .ingredients__list li::before {
     content: '';

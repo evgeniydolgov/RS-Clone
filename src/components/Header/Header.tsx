@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './HeaderStyles.css';
@@ -58,8 +59,9 @@ export const Header = () => {
           </div>
         )}
         <div className="header-authorization">
-          <button type="button" className="btn authorization__btn"><Link className="btn__link" to="/authorize">Login</Link></button>
-          <button type="button" className="btn authorization__btn"><Link className="btn__link" to="/authorize">Sign Up</Link></button>
+          <button type="button" className="btn authorization__btn">
+            <Link className="btn__link" to="/authorize">Join us</Link>
+          </button>
         </div>
       </div>
     </header>

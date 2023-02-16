@@ -17,7 +17,9 @@ export const RecipeDescription = () => {
     <div className="recipe">
       <div className="recipe__description">
         <img src={activeRecipe?.strMealThumb} className="recipe__img" alt="img-dishes" />
-        <RecipeIngredients />
+        <div className="recipe__description-container">
+          <RecipeIngredients />
+        </div>
       </div>
       <RecipeInstruction />
       <RecipeVideo />

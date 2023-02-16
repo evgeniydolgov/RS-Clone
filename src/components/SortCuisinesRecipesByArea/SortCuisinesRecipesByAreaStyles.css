@@ -1,9 +1,11 @@
 .sort-by-area {
+    flex-grow: 1;
     background: url('../../assets/jpeg/back_area_cuisine.jpg') center no-repeat;
     background-size: cover;
 
 }
 .sort-by-area__inner {
+    margin-bottom: 50px;
 
 }
 .sort-by-area__inner h3 {

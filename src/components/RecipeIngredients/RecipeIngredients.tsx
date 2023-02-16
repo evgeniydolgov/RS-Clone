@@ -31,7 +31,7 @@ export const RecipeIngredients = () => {
   });
   return (
     <div className="recipe__ingredients">
-      <h3>Ingredients: &nbsp;</h3>
+      <h3 className="recipe__ingredients-h3">Ingredients: &nbsp;</h3>
       <ul className="ingredients__list">
         {ingredients.map((item, index) => (
           <RecipeIngredientItem strIngredient={item} strMeasure={measure[index]} key={item} />
