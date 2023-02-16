@@ -1,0 +1,16 @@
+.memo {
+    background-size: cover;
+}
+.memo__btn {
+    height: 50px;
+    padding: 5px;
+    text-align: left;
+    font-family: 'Rum Raisin', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 8px;
+    color: #CAEEF2;
+    border-radius: 10px;
+    background-color: #0E5984;
+    cursor: pointer;
+}

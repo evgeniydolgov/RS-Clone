@@ -7,9 +7,11 @@ import { QuizPage } from './components/QuizPage';
 import { AuthorizePage } from './components/AuthorizePage';
 import { SortCuisinesRecipesByArea } from './components/SortCuisinesRecipesByArea';
 import { RecipeCard } from './components/RecipeCard';
+import { MemoPage } from './components/MemoPage';
 
 export const App = () => (
   <>
+    <MemoPage />
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />
