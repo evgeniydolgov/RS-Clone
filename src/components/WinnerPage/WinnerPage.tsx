@@ -8,20 +8,41 @@ interface IScore {
 }
 
 export const WinnerPage = ({ score }: IScore) => {
-  const storageScore = localStorage.getItem('score');
-  if (storageScore) {
-    localStorage.setItem('score', (score + +storageScore).toString());
-  } else {
-    localStorage.setItem('score', (score).toString());
-  }
-  window.dispatchEvent(new Event('storage'));
   const winMusic = () => {
     const path = require('../../assets/mp3/mexicomus.mp3');
     return new Audio(path);
   };
 
+  const updateDataScore = async () => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        login: JSON.parse(localStorage.getItem('user') || ''),
+        score: JSON.parse(localStorage.getItem('score') || ''),
+      }),
+    };
+    const response = await fetch(
+      'http://localhost:3001/updatescore',
+      requestOptions,
+    );
+    const data = await response.json();
+    console.log(response);
+    console.log(data);
+  };
+
   const sendData = () => {
     console.log('данные ушли');
+    const storageScore = JSON.parse(localStorage.getItem('score') || '');
+    if (storageScore) {
+      localStorage.setItem('score', (score + +storageScore).toString());
+      updateDataScore();
+      window.dispatchEvent(new Event('storage'));
+    } else {
+      localStorage.setItem('score', (score).toString());
+      updateDataScore();
+      window.dispatchEvent(new Event('storage'));
+    }
   };
 
   winMusic().play();

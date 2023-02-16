@@ -13,7 +13,6 @@
   outline: solid 2px rgb(178 164 112);
   border: solid 2px rgb(118 113 75);
   overflow: hidden;
-
 }
 
 .dish__img {
@@ -55,5 +54,4 @@
 }
 .dish-title:hover {
   color: #adb8d0;
-  
 }

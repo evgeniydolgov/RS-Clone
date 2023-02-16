@@ -10,12 +10,12 @@ header {
     line-height: 24px;
     display: flex;
     background-size: cover;
-    max-width: 1200px;
+    max-width: 1400px;
     height: 80px;
-    margin: 0 auto;
     padding: 0 60px;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
 }
 .header-info {
     display: flex;
