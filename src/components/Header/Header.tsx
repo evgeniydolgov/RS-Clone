@@ -11,8 +11,10 @@ export const Header = () => {
       // console.log('sdjfhskdf');
       if (localStorage.getItem('user') != null) {
         // console.log('dfgdg');
-        setUser(localStorage.getItem('user'));
+        setUser(JSON.parse(localStorage.getItem('user') || ''));
+        return;
       }
+      setUser('');
     };
     window.addEventListener('storage', storageEventHandler);
 
@@ -24,7 +26,8 @@ export const Header = () => {
       // console.log('sdjfhskdf');
       if (localStorage.getItem('score') != null) {
         // console.log('dfgdg');
-        setScore(localStorage.getItem('score'));
+        setScore(JSON.parse(localStorage.getItem('score') || ''));
+        return;
       }
       setScore('0');
     };

@@ -147,6 +147,35 @@ app.post('/login', urlencodedParser, (req, res) => {
   );
 });
 
+app.put('/updatescore', urlencodedParser, (req, res) => {
+  const pool = mysql.createPool({
+    host: 'sql7.freemysqlhosting.net',
+    user: 'sql7595528',
+    password: 'JHGwZJt4Iz',
+    database: 'sql7595528',
+    port: 3306,
+  });
+  if (!req.body) res.sendStatus(400);
+  const { login } = req.body;
+  const { score } = req.body;
+  console.log(req.body);
+  pool.query(
+    'UPDATE users SET score = ? WHERE login = ?' as string,
+    [score as number, login as string],
+    (error, data) => {
+      if (data) {
+        res.send(data);
+        return;
+      } if (error as Error) {
+        throw error as Error;
+      } else {
+        res.send({ message: 'Enter correct details!' });
+      }
+      pool.end();
+    },
+  );
+});
+
 /* app.delete('/delete/:id', (req, res) => {
   const pool: mysql.Pool = mysql.createPool({
     host: 'sql7.freemysqlhosting.net',

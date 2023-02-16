@@ -25,6 +25,9 @@ export const AuthorizePage = () => {
     const response = await fetch('http://localhost:3001/register', requestOptions);
     const data = await response.json();
     console.log(data);
+    localStorage.setItem('user', JSON.stringify(`${JSON.parse(requestOptions.body).login}`));
+    localStorage.setItem('score', '0');
+    window.dispatchEvent(new Event('storage'));
     setRegisterStatus('Account created!');
   };
 
@@ -48,6 +51,9 @@ export const AuthorizePage = () => {
       console.log(data);
       setLoginStatus('Welcome!');
       localStorage.setItem('user', JSON.stringify(`${data[0].login}`));
+      if (data[0].score) {
+        localStorage.setItem('score', JSON.stringify(`${data[0].score}`));
+      }
       window.dispatchEvent(new Event('storage'));
     } else {
       setLoginStatus('Wrong details');
