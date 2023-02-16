@@ -25,6 +25,8 @@ export const AuthorizePage = () => {
     const response = await fetch('http://localhost:3001/register', requestOptions);
     const data = await response.json();
     console.log(data);
+    localStorage.setItem('user', JSON.stringify(`${JSON.parse(requestOptions.body).login}`));
+    window.dispatchEvent(new Event('storage'));
     setRegisterStatus('Account created!');
   };
 

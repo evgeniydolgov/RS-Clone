@@ -8,19 +8,20 @@ interface IScore {
 }
 
 export const WinnerPage = ({ score }: IScore) => {
-  const storageScore = localStorage.getItem('score');
-  if (storageScore) {
-    localStorage.setItem('score', (score + +storageScore).toString());
-  } else {
-    localStorage.setItem('score', (score).toString());
-  }
-  window.dispatchEvent(new Event('storage'));
   const winMusic = () => {
     const path = require('../../assets/mp3/mexicomus.mp3');
     return new Audio(path);
   };
 
   const sendData = () => {
+    const storageScore = localStorage.getItem('score');
+    if (storageScore) {
+      localStorage.setItem('score', (score + +storageScore).toString());
+      window.dispatchEvent(new Event('storage'));
+    } else {
+      localStorage.setItem('score', (score).toString());
+      window.dispatchEvent(new Event('storage'));
+    }
     console.log('данные ушли');
   };
 

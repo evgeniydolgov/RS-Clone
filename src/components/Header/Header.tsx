@@ -49,7 +49,7 @@ export const Header = () => {
           <div className="header-account">
             <div className="userpic" />
             <div className="userinfo">
-              <p>{user}</p>
+              <p>{user.slice(1, -1)}</p>
               <p>{`Score: ${score || ''}`}</p>
             </div>
           </div>
