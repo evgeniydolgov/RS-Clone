@@ -1,0 +1,23 @@
+.shoppage {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
+}
+
+.shoppage__container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.shop__info {
+  margin-top: 10px;
+  font-size: 28px;
+  font-family: 'Sansita', sans-serif;
+}
+
+.image__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

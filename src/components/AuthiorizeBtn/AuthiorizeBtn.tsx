@@ -13,12 +13,13 @@ export const AuthiorizeBtn = ({
   textBtn, className, openPopUp, setUserLogged,
 }: IloginBtn) => {
   const logOutUser: React.MouseEventHandler<HTMLButtonElement> = (element) => {
-    if (element.currentTarget.textContent === 'LogIn') {
-      openPopUp(true);
+    if (element.currentTarget.textContent === 'LogOut') {
+      localStorage.clear();
+      setUserLogged('LogIn');
+      window.dispatchEvent(new Event('storage'));
       return;
     }
-    localStorage.clear();
-    setUserLogged('LogIn');
+    openPopUp(true);
   };
 
   return (
