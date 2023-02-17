@@ -1,28 +1,24 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface IloginBtn {
   textBtn: string;
   className: string
-  openPopUp: (el: boolean) => void;
-  setUserLogged: (el: string) => void;
+  openSignInPopUp: (el: boolean) => void;
+  setUserRegistered: (el: string) => void;
 }
 
-export const AuthiorizeBtn = ({
-  textBtn, className, openPopUp, setUserLogged,
+export const SignInBtn = ({
+  textBtn, className, openSignInPopUp, setUserRegistered,
 }: IloginBtn) => {
   const logOutUser: React.MouseEventHandler<HTMLButtonElement> = (element) => {
-    if (element.currentTarget.textContent === 'LogOut') {
-      localStorage.clear();
-      setUserLogged('LogIn');
-      window.dispatchEvent(new Event('storage'));
+    if (element.currentTarget.textContent === 'Sign Up') {
+      openSignInPopUp(true);
       return;
     }
-    openPopUp(true);
     localStorage.clear();
     window.dispatchEvent(new Event('storage'));
-    setUserLogged('LogIn');
+    setUserRegistered('Sign In');
   };
 
   return (
