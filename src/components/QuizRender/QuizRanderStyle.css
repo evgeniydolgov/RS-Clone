@@ -11,6 +11,11 @@
   padding: 40px;
 }
 
+.quiz__title{
+  margin-bottom: 20px;
+  font-family: 'Rochester', cursive;
+ }
+
 .QuizPage-board {
   max-width: 1200px;
   border-radius: 25px;
