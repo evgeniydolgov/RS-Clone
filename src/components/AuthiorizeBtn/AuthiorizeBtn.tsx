@@ -18,6 +18,7 @@ export const AuthiorizeBtn = ({
       return;
     }
     localStorage.clear();
+    window.dispatchEvent(new Event('storage'));
     setUserLogged('LogIn');
   };
 
