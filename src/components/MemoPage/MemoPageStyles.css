@@ -44,6 +44,8 @@
 }
 
 .memo__turns {
+    display: none;
+
     font-size: 26px;
     font-family: 'Rufina', serif;
     font-weight: 700;
