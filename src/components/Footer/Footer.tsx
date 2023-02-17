@@ -11,7 +11,7 @@ export const Footer = () => (
         <li><a href="https://github.com/grishanova-oa"><div className="git-img">{}</div></a></li>
       </ul>
       <div className="year-creation">2023 ©</div>
-      <div className="rs-container"><a href="https://github.com/grishanova-oa"><div className="rs-link">{}</div></a></div>
+      <div className="rs-container"><a href="https://rs.school/"><div className="rs-link">{}</div></a></div>
     </div>
   </footer>
 );

@@ -1,0 +1,7 @@
+.play-list {
+  flex-grow: 1;
+  background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
