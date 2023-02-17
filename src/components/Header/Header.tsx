@@ -44,7 +44,7 @@ export const Header = () => {
           <Link className="header-link" to="/"><div className="header-logo" /></Link>
           <nav>
             <ul className="header-list">
-              <li><Link className="header-link" to="/quiz">Games</Link></li>
+              {/* <li><Link className="header-link" to="/quiz">Games</Link></li> */}
               {/* <li><Link className="header-link" to="/recipe">Recipes</Link></li> */}
             </ul>
           </nav>

@@ -1,0 +1,134 @@
+.card__container {
+  margin: 30px;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 15px;
+  background: #eae8d6;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.shaker {
+  transition: all 1s;
+  -webkit-animation: swing 0.6s ease;
+  animation: swing 0.6s ease;
+   -webkit-animation-iteration-count: 1;
+   animation-iteration-count: 1;
+}
+
+.purchase {
+  background: #eae8d6 url(../../assets/png/checked.png) no-repeat;
+}
+
+.card__container>:nth-child(2) {
+  z-index: 0;
+}
+
+.card__container>:nth-child(2):hover {
+  transition: all 2s;
+  scale: 1.4;
+}
+
+.black-line {
+  color: #eae8d6;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  font-size: 20px;
+  line-height: 29px;
+  background-color: rgba(0, 0, 0, 0.835);
+  z-index: 5;
+}
+
+.wrongmessage {
+  color: red;
+}
+.goodmessage {
+  color: green;
+}
+.Burned {
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/png/1-burned.png') 0 0/cover no-repeat;
+}
+.Coolman {
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/png/2-coolman.png') 0 0/cover no-repeat;
+}
+.Rs-studen {
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/png/3-rsStuden.png') 0 0/cover no-repeat;
+}
+.Superman {
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/png/4-superman.png') 0 0/cover no-repeat;
+}
+.Secretive {
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/png/5-secretive.png') 0 0/cover no-repeat;
+}
+.Samurai {
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/png/6-samurai.png') 0 0/cover no-repeat;
+}
+
+@-webkit-keyframes swing {
+  15% {
+    -webkit-transform: translateX(9px);
+    transform: translateX(9px);
+  }
+  30% {
+    -webkit-transform: translateX(-9px);
+    transform: translateX(-9px);
+  }
+  40% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px);
+  }
+  50% {
+    -webkit-transform: translateX(-6px);
+    transform: translateX(-6px);
+  }
+  65% {
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes swing {
+  15% {
+    -webkit-transform: translateX(9px);
+    transform: translateX(9px);
+  }
+  30% {
+    -webkit-transform: translateX(-9px);
+    transform: translateX(-9px);
+  }
+  40% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px);
+  }
+  50% {
+    -webkit-transform: translateX(-6px);
+    transform: translateX(-6px);
+  }
+  65% {
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}

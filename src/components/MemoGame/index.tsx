@@ -1,0 +1,1 @@
+export { MemoGame } from './MemoGame';

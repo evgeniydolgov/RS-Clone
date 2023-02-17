@@ -56,7 +56,10 @@ export const QuizRander = (props: IGameArr) => {
 
   return (
     <section className="QuizPage">
+      <div className="Quiz_question">What dish is shown in the picture?</div>
       <div className="QuizPage-container">
+        <h1 className="quiz__title">Quiz</h1>
+
         <div className="QuizPage-board">
           <div className="dish-picture"><img src={props.gameArr[count].dishImg} alt="dish-img" /></div>
           <div className="dish-composition">
