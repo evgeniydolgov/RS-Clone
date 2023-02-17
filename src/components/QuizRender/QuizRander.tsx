@@ -58,10 +58,11 @@ export const QuizRander = (props: IGameArr) => {
     <section className="QuizPage">
       <div className="Quiz_question">What dish is shown in the picture?</div>
       <div className="QuizPage-container">
-        <h1 className="quiz__title">Quiz</h1>
-
         <div className="QuizPage-board">
-          <div className="dish-picture"><img src={props.gameArr[count].dishImg} alt="dish-img" /></div>
+          <div className="dish-picture">
+            <img src={props.gameArr[count].dishImg} alt="dish-img" />
+            <h1 className="quiz__title">Quiz</h1>
+          </div>
           <div className="dish-composition">
             {props.gameArr[count].UniqueAnswerArr.map((el: string) => (
               <QuizAnswer
