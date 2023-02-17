@@ -1,16 +1,53 @@
 .memo {
     background-size: cover;
+    flex-grow: 1;
 }
+
+.memo__inner {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.memo__title {
+    font-family: 'Rochester', cursive;
+}
+
 .memo__btn {
-    height: 50px;
-    padding: 5px;
-    text-align: left;
-    font-family: 'Rum Raisin', sans-serif;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 8px;
-    color: #CAEEF2;
-    border-radius: 10px;
-    background-color: #0E5984;
     cursor: pointer;
+    padding: 10px 25px;
+    border-radius: 15px 0;
+    color: aliceblue;
+    background-color: #263640;
+    cursor: pointer;
+    font-family: 'Rufina', serif;
+    font-weight: 700;
+}
+
+.memo__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 60%;
+    margin: 0 auto;
+    max-width: 680px;
+    justify-content: center;
+}
+
+.memo__control {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.memo__turns {
+    font-size: 26px;
+    font-family: 'Rufina', serif;
+    font-weight: 700;
+    margin: 10px 0;
+}
+.memo__turns span {
+    font-size: 28px;
 }
