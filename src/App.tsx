@@ -7,6 +7,7 @@ import { QuizPage } from './components/QuizPage';
 import { AuthorizePage } from './components/AuthorizePage';
 import { SortCuisinesRecipesByArea } from './components/SortCuisinesRecipesByArea';
 import { RecipeCard } from './components/RecipeCard';
+import { MemoPage } from './components/MemoPage';
 import { ShopPage } from './components/ShopPage';
 
 export const App = () => (
@@ -15,6 +16,7 @@ export const App = () => (
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />
         <Route path="quiz" element={<QuizPage />} />
+        <Route path="memo" element={<MemoPage />} />
         <Route path="authorize" element={<AuthorizePage />} />
         <Route path="recipe" element={<RecipeCard />} />
         <Route path="recipeCuisine" element={<SortCuisinesRecipesByArea />} />

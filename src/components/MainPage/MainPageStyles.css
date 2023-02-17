@@ -52,9 +52,11 @@ h2 {
 }
 
 .mainpage__test>h3 {
-font-family: 'Sansita', sans-serif;
-font-size: 35px;
-font-weight: 400;
+  font-family: 'Sansita', sans-serif;
+  font-size: 35px;
+  font-weight: 400;
+  margin-right: 20px;
+
 }
 
 .mainpage__test>h3>span {
@@ -85,20 +87,28 @@ h4 {
 
 }
 .start-test_btn {
-  height: 70px;
-  width: 200px;
-  padding-left: 8%;
+  margin-right: 10px;
+  height: 60px;
+  width: 180px;
+  padding-left: 6%;
   text-align: left;
   font-family: 'Rum Raisin', sans-serif;
   font-weight: 400;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 8px;
   color: #CAEEF2;
-  border-radius: 10px;
+  border-radius: 9px;
   background: #0E5984 url('../../assets/svg/main-page/white-pot.svg') 95% 90% no-repeat;
   cursor: pointer;
+  transition: 0.3s;
 }
 
+.start-test_btn:hover {
+  background: #0E5984 url('../../assets/svg/main-page/white-pot.svg') 95% 90% no-repeat;
+  color: #a7b1c1;
+transform: scale(1.05);
+
+}
 .mainpage__food-table {
   margin-top: 50px;
   display: flex;
