@@ -22,7 +22,20 @@ app.use(cors(corsOptions));
 
 const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlencoded | undefined);
 
-/* const pool: mysql.Pool = mysql.createPool({
+app.listen(port as number, () => {
+  console.log(`App listen on port ${port as number}` as string);
+});
+
+/* const conn = mysql.createConnection({
+  host: 'sql7.freemysqlhosting.net',
+  user: 'sql7595528',
+  password: 'JHGwZJt4Iz',
+  database: 'sql7595528',
+  port: 3306,
+}); */
+
+const pool: mysql.Pool = mysql.createPool({
+  connectionLimit: 10,
   host: 'sql7.freemysqlhosting.net',
   user: 'sql7595528',
   password: 'JHGwZJt4Iz',
@@ -30,23 +43,21 @@ const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlenc
   port: 3306,
 });
 
-pool.end(); */
-app.listen(port as number, () => {
-  console.log(`App listen on port ${port as number}` as string);
-});
-
 app.get('/', (req, res) => {
-  const pool: mysql.Pool = mysql.createPool({
-    host: 'sql7.freemysqlhosting.net',
-    user: 'sql7595528',
-    password: 'JHGwZJt4Iz',
-    database: 'sql7595528',
-    port: 3306,
-  });
-  pool.query('SELECT * FROM users' as string, (err: Error, data: Object[]) => {
-    if (err as Error) throw err as Error;
-    res.send(data as Object[]);
-    pool.end();
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      conn.query('SELECT * FROM users' as string, (error: Error, data: Object[]) => {
+        conn.release();
+        if (error as Error) {
+          throw error as Error;
+        } else {
+          res.send(data as Object[]);
+        }
+        conn.release();
+      });
+    }
   });
 });
 
@@ -72,108 +83,87 @@ app.get('/', (req, res) => {
   );
 }); */
 
-/* const conn = mysql.createConnection({
-  host: 'sql7.freemysqlhosting.net',
-  user: 'sql7595528',
-  password: 'JHGwZJt4Iz',
-  database: 'sql7595528',
-  port: 3306,
-}); */
-
-/* const pool = mysql.createPool({
-  host: 'sql7.freemysqlhosting.net',
-  user: 'sql7595528',
-  password: 'JHGwZJt4Iz',
-  database: 'sql7595528',
-  port: 3306,
-}); */
-
 app.post('/register', urlencodedParser, (req, res) => {
-  const pool = mysql.createPool({
-    host: 'sql7.freemysqlhosting.net',
-    user: 'sql7595528',
-    password: 'JHGwZJt4Iz',
-    database: 'sql7595528',
-    port: 3306,
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      const { login, password } = req.body;
+      console.log(req.body);
+      conn.query(
+        'INSERT INTO users (login, password) VALUES (?,?)' as string,
+        [login as string, password as string],
+        (error, data) => {
+          conn.release();
+          if (data) {
+            res.send(data);
+            return;
+          } if (error as Error) {
+            throw error as Error;
+          } else {
+            res.send({ message: 'Enter correct details!' });
+          }
+          conn.release();
+        },
+      );
+    }
   });
-  if (!req.body) res.sendStatus(400);
-  const { login, password } = req.body;
-  console.log(req.body);
-  pool.query(
-    'INSERT INTO users (login, password) VALUES (?,?)' as string,
-    [login as string, password as string],
-    (error, data) => {
-      if (error) {
-        res.send('Error!');
-        // return;
-      } else if (data.length > 0) {
-        res.send(data);
-        // eslint-disable-next-line no-useless-return
-        return;
-      } else {
-        res.send({ message: 'Enter correct details!' });
-      }
-      pool.end();
-    },
-  );
 });
 
 app.post('/login', urlencodedParser, (req, res) => {
-  const pool = mysql.createPool({
-    host: 'sql7.freemysqlhosting.net',
-    user: 'sql7595528',
-    password: 'JHGwZJt4Iz',
-    database: 'sql7595528',
-    port: 3306,
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      const { login } = req.body;
+      const { password } = req.body;
+      console.log(req.body);
+      conn.query(
+        'SELECT * FROM users WHERE login = ? AND password = ?' as string,
+        [login as string, password as string],
+        (error, data) => {
+          conn.release();
+          if (data) {
+            res.send(data);
+            return;
+          } if (error as Error) {
+            throw error as Error;
+          } else {
+            res.send({ message: 'Enter correct details!' });
+          }
+          conn.release();
+        },
+      );
+    }
   });
-  if (!req.body) res.sendStatus(400);
-  const { login } = req.body;
-  const { password } = req.body;
-  console.log(req.body);
-  pool.query(
-    'SELECT * FROM users WHERE login = ? AND password = ?' as string,
-    [login as string, password as string],
-    (error, data) => {
-      if (data) {
-        res.send(data);
-        return;
-      } if (error as Error) {
-        throw error as Error;
-      } else {
-        res.send({ message: 'Enter correct details!' });
-      }
-      pool.end();
-    },
-  );
 });
 
 app.put('/updatescore', urlencodedParser, (req, res) => {
-  const pool = mysql.createPool({
-    host: 'sql7.freemysqlhosting.net',
-    user: 'sql7595528',
-    password: 'JHGwZJt4Iz',
-    database: 'sql7595528',
-    port: 3306,
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      const { login } = req.body;
+      const { score } = req.body;
+      console.log(req.body);
+      conn.query(
+        'UPDATE users SET score = ? WHERE login = ?' as string,
+        [score as number, login as string],
+        (error, data) => {
+          conn.release();
+          if (data) {
+            res.send(data);
+            return;
+          } if (error as Error) {
+            throw error as Error;
+          } else {
+            res.send({ message: 'Enter correct details!' });
+          }
+          conn.release();
+        },
+      );
+    }
   });
-  if (!req.body) res.sendStatus(400);
-  const { login } = req.body;
-  const { score } = req.body;
-  console.log(req.body);
-  pool.query(
-    'UPDATE users SET score = ? WHERE login = ?' as string,
-    [score as number, login as string],
-    (error, data) => {
-      if (data) {
-        res.send(data);
-        return;
-      } if (error as Error) {
-        throw error as Error;
-      } else {
-        res.send({ message: 'Enter correct details!' });
-      }
-      pool.end();
-    },
-  );
 });
 
 /* app.delete('/delete/:id', (req, res) => {

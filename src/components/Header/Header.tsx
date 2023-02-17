@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './HeaderStyles.css';
 
 export const Header = () => {
-  const [user, setUser] = useState(localStorage.getItem('user'));
+  const [user, setUser] = useState(localStorage.getItem('user')?.slice(1, -1));
   const [score, setScore] = useState(localStorage.getItem('score'));
 
   useEffect(() => {

@@ -3,12 +3,18 @@
   background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
 }
 
+.Quiz_question {
+  margin-top: 10px;
+  font-size: 28px;
+  font-family: 'Sansita', sans-serif;
+}
+
 .QuizPage-container {
   /* display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; */
-  padding: 40px;
+  padding: 20px 0 0 0;
 }
 
 .quiz__title{
