@@ -11,11 +11,11 @@ import { MemoPage } from './components/MemoPage';
 
 export const App = () => (
   <>
-    <MemoPage />
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />
         <Route path="quiz" element={<QuizPage />} />
+        <Route path="memo" element={<MemoPage />} />
         <Route path="authorize" element={<AuthorizePage />} />
         <Route path="recipe" element={<RecipeCard />} />
         <Route path="recipeCuisine" element={<SortCuisinesRecipesByArea />} />
