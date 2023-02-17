@@ -55,7 +55,7 @@ export const Header = () => {
             <div className="userpic" />
             <div className="userinfo">
               <p>{user}</p>
-              <p>{`Score: ${score || ''}`}</p>
+              <p>{`Score: ${JSON.parse(score || '')}`}</p>
             </div>
           </div>
         )}

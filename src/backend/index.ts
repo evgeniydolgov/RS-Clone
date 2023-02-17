@@ -57,11 +57,11 @@ app.post('/register', urlencodedParser, (req, res) => {
     if (err) {
       res.send('Error occured!');
     } else {
-      const { login, password } = req.body;
+      const { login, password, score } = req.body;
       console.log(req.body);
       conn.query(
-        'INSERT INTO users (login, password) VALUES (?,?)' as string,
-        [login as string, password as string],
+        'INSERT INTO users (login, password, score) VALUES (?,?,?)' as string,
+        [login as string, password as string, score as number],
         (error, data) => {
           conn.release();
           if (data) {
@@ -118,6 +118,35 @@ app.put('/updatescore', urlencodedParser, (req, res) => {
       conn.query(
         'UPDATE users SET score = ? WHERE login = ?' as string,
         [score as number, login as string],
+        (error, data) => {
+          conn.release();
+          if (data) {
+            res.send(data);
+            return;
+          } if (error as Error) {
+            throw error as Error;
+          } else {
+            res.send({ message: 'Enter correct details!' });
+          }
+          conn.release();
+        },
+      );
+    }
+  });
+});
+
+app.put('/spendscore', urlencodedParser, (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      const { login } = req.body;
+      const { score } = req.body;
+      const { avatar } = req.body;
+      console.log(req.body);
+      conn.query(
+        'UPDATE users SET score = ?, avatar = ? WHERE login = ?' as string,
+        [score as number, avatar as number, login as string],
         (error, data) => {
           conn.release();
           if (data) {
