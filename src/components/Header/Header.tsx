@@ -45,6 +45,7 @@ export const Header = () => {
           <nav>
             <ul className="header-list">
               <li><Link className="header-link" to="/playerList">Players list</Link></li>
+              {/* <li><Link className="header-link" to="/quiz">Games</Link></li> */}
               {/* <li><Link className="header-link" to="/recipe">Recipes</Link></li> */}
             </ul>
           </nav>
