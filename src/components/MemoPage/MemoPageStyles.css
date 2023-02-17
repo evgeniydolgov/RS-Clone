@@ -43,15 +43,12 @@
     margin-bottom: 20px;
 }
 
-.memo__turns {
-    display: none;
-
+.memo__score {
     font-size: 26px;
     font-family: 'Rufina', serif;
     font-weight: 700;
     margin: 10px 0;
 }
-.memo__turns span {
-    display: block;
+.memo__score span {
     font-size: 28px;
 }

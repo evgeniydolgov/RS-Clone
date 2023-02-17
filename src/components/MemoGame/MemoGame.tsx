@@ -9,25 +9,25 @@ interface IMemoGame {
     src: string;
     id: number;
   }
-  handlerChoice: (card: {
+  switching: (card: {
     src: string;
     id: number;
   }) => void;
-  flipped: boolean;
+  rotated: boolean;
   disabled: boolean;
 }
 
 export const MemoGame = ({
-  card, handlerChoice, flipped, disabled,
+  card, switching, rotated, disabled,
 }: IMemoGame) => {
   const handleClick = () => {
     if (!disabled) {
-      handlerChoice(card);
+      switching(card);
     }
   };
   return (
     <div className="card">
-      <div className={flipped ? 'flipped' : ''}>
+      <div className={rotated ? 'rotated' : ''}>
         <img src={card.src} className="card_front" alt="" />
         <img
           src="/png/back_memo.png"
