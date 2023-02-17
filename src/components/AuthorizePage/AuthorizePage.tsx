@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthiorizeBtn } from '../AuthiorizeBtn';
 import { AuthorizePopup } from '../AuthiorizePopup';
 import { LoginPopup } from '../LoginPopup/LoginPopup';
+import { SignInBtn } from '../SignInBtn/SignInBtn';
 import './AuthorizePageStyles.css';
 
 export const AuthorizePage = (props: any) => {
@@ -14,6 +15,7 @@ export const AuthorizePage = (props: any) => {
   const [loginStatus, setLoginStatus] = useState('');
   const [registerStatus, setRegisterStatus] = useState('');
   const [userLogged, setUserLogged] = useState('LogIn');
+  const [userRegistered, setUserRegistered] = useState('Sign Up');
 
   const register = async (el: React.MouseEvent) => {
     el.preventDefault();
@@ -25,13 +27,18 @@ export const AuthorizePage = (props: any) => {
         password,
       }),
     };
-    const response = await fetch('http://localhost:3001/register', requestOptions);
-    const data = await response.json();
-    console.log(data);
-    localStorage.setItem('user', JSON.stringify(`${JSON.parse(requestOptions.body).login}`));
-    localStorage.setItem('score', '0');
-    window.dispatchEvent(new Event('storage'));
-    setRegisterStatus('Account created!');
+    console.log(JSON.parse(requestOptions.body).login);
+    if (JSON.parse(requestOptions.body).login === '' || JSON.parse(requestOptions.body).password === '') {
+      alert('Attention! Login or / and password cannot be empty!');
+    } else {
+      const response = await fetch('http://localhost:3001/register', requestOptions);
+      const data = await response.json();
+      console.log(data);
+      localStorage.setItem('user', JSON.stringify(`${JSON.parse(requestOptions.body).login}`));
+      localStorage.setItem('score', '0');
+      window.dispatchEvent(new Event('storage'));
+      setRegisterStatus('Account created!');
+    }
   };
 
   const loginAction = async (el: React.MouseEvent) => {
@@ -93,7 +100,12 @@ export const AuthorizePage = (props: any) => {
               more features!
             </p>
             <div className="signing__buttons">
-              <AuthiorizeBtn textBtn="Sign Up" className="authorize__button" openPopUp={setAuthorizePopupActive} setUserLogged={setUserLogged} />
+              <SignInBtn
+                textBtn={userRegistered}
+                className="authorize__button"
+                openSignInPopUp={setAuthorizePopupActive}
+                setUserRegistered={setUserRegistered}
+              />
               <AuthiorizeBtn textBtn={userLogged} className="authorize__button" openPopUp={setLoginPopupActive} setUserLogged={setUserLogged} />
             </div>
           </div>
@@ -132,7 +144,7 @@ export const AuthorizePage = (props: any) => {
             <input type="password" id="passwordLogin" onChange={(el) => { setPassword(el.target.value); }} required />
           </label>
         </p>
-        <button type="submit" className="popup__button" onClick={loginAction}>Login</button>
+        <button type="submit" className="popup__button" onClick={loginAction} disabled={!login || !password}>Login</button>
         <p>{loginStatus}</p>
       </LoginPopup>
     </div>
