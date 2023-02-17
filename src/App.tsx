@@ -7,6 +7,7 @@ import { QuizPage } from './components/QuizPage';
 import { AuthorizePage } from './components/AuthorizePage';
 import { SortCuisinesRecipesByArea } from './components/SortCuisinesRecipesByArea';
 import { RecipeCard } from './components/RecipeCard';
+import { ShopPage } from './components/ShopPage';
 
 export const App = () => (
   <>
@@ -17,6 +18,7 @@ export const App = () => (
         <Route path="authorize" element={<AuthorizePage />} />
         <Route path="recipe" element={<RecipeCard />} />
         <Route path="recipeCuisine" element={<SortCuisinesRecipesByArea />} />
+        <Route path="shop" element={<ShopPage />} />
       </Route>
     </Routes>
     {/* <Header />

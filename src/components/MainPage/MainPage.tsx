@@ -53,7 +53,8 @@ export const MainPage = () => {
           Try games from
           <span> ShchiBorshci</span>
         </h3>
-        <Link to="/quiz"><button type="button" className="start-test_btn">Games</button></Link>
+        <Link to="/shop"><button type="button" className="start-test_btn">Shop</button></Link>
+        <Link to="/quiz"><button type="button" className="start-test_btn">Quiz</button></Link>
       </div>
 
       <div className="mainpage__food-table">
