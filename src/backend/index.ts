@@ -1,7 +1,6 @@
 import express from 'express';
 import bodyParser, { OptionsUrlencoded } from 'body-parser';
 import mysql from 'mysql';
-// import mysql2 from 'mysql2';
 import cors from 'cors';
 
 import { IcorsOption } from './interfaces';
@@ -25,14 +24,6 @@ const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlenc
 app.listen(port as number, () => {
   console.log(`App listen on port ${port as number}` as string);
 });
-
-/* const conn = mysql.createConnection({
-  host: 'sql7.freemysqlhosting.net',
-  user: 'sql7595528',
-  password: 'JHGwZJt4Iz',
-  database: 'sql7595528',
-  port: 3306,
-}); */
 
 const pool: mysql.Pool = mysql.createPool({
   connectionLimit: 10,
@@ -60,28 +51,6 @@ app.get('/', (req, res) => {
     }
   });
 });
-
-/* app.post('/create', urlencodedParser, (req, res) => {
-  const pool: mysql.Pool = mysql.createPool({
-    host: 'sql7.freemysqlhosting.net',
-    user: 'sql7595528',
-    password: 'JHGwZJt4Iz',
-    database: 'sql7595528',
-    port: 3306,
-  });
-  if (!req.body) res.sendStatus(400);
-  const { id } = req.body;
-  const { name } = req.body;
-  pool.query(
-    'INSERT INTO users (id, name) VALUES (?,?)' as string,
-    [id as number, name as string],
-    (err, data) => {
-      if (err as Error) throw err as Error;
-      res.send(data as Object[]);
-      pool.end();
-    },
-  );
-}); */
 
 app.post('/register', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
