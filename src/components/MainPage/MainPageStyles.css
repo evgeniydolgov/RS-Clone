@@ -85,16 +85,17 @@ h4 {
 
 }
 .start-test_btn {
-  height: 70px;
-  width: 200px;
-  padding-left: 8%;
+  margin-right: 10px;
+  height: 60px;
+  width: 180px;
+  padding-left: 6%;
   text-align: left;
   font-family: 'Rum Raisin', sans-serif;
   font-weight: 400;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 8px;
   color: #CAEEF2;
-  border-radius: 10px;
+  border-radius: 9px;
   background: #0E5984 url('../../assets/svg/main-page/white-pot.svg') 95% 90% no-repeat;
   cursor: pointer;
 }

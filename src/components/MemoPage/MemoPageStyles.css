@@ -1,5 +1,6 @@
 .memo {
     background-size: cover;
+    background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
     flex-grow: 1;
 }
 
@@ -49,5 +50,6 @@
     margin: 10px 0;
 }
 .memo__turns span {
+    display: block;
     font-size: 28px;
 }
