@@ -12,6 +12,11 @@ interface IloginBtn {
 export const AuthiorizeBtn = ({
   textBtn, className, openPopUp, setUserLogged,
 }: IloginBtn) => {
+  const user = JSON.parse(localStorage.getItem('user') as string);
+
+  if (user) {
+    setUserLogged('LogOut');
+  }
   const logOutUser: React.MouseEventHandler<HTMLButtonElement> = (element) => {
     if (element.currentTarget.textContent === 'LogOut') {
       localStorage.clear();
@@ -22,7 +27,7 @@ export const AuthiorizeBtn = ({
     openPopUp(true);
     localStorage.clear();
     window.dispatchEvent(new Event('storage'));
-    setUserLogged('LogIn');
+    setUserLogged('LogOut');
   };
 
   return (

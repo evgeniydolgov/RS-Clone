@@ -22,10 +22,13 @@ export const ShopCard = ({ nameSloth, index }: ICard) => {
     return new Audio(path);
   };
 
+  const score = Number(JSON.parse(localStorage.getItem('score') as string));
+
   const buyAvatar: React.MouseEventHandler<HTMLElement> = (el) => {
-    if (Number(el.currentTarget.dataset.price) < 35) {
+    if (Number(el.currentTarget.dataset.price) < score) {
       console.log('sell!');
       purchaseApproved().play();
+      localStorage.setItem('avatar', `${index + 1}`);
       el.currentTarget.className = 'card__container purchase';
       el.currentTarget.children[0].className = 'black-line goodmessage';
     } else {

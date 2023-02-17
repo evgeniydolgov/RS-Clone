@@ -9,6 +9,7 @@ import { SortCuisinesRecipesByArea } from './components/SortCuisinesRecipesByAre
 import { RecipeCard } from './components/RecipeCard';
 import { MemoPage } from './components/MemoPage';
 import { ShopPage } from './components/ShopPage';
+import { PlayerList } from './components/PlayerList';
 
 export const App = () => (
   <>
@@ -21,6 +22,7 @@ export const App = () => (
         <Route path="recipe" element={<RecipeCard />} />
         <Route path="recipeCuisine" element={<SortCuisinesRecipesByArea />} />
         <Route path="shop" element={<ShopPage />} />
+        <Route path="playerList" element={<PlayerList />} />
       </Route>
     </Routes>
     {/* <Header />
