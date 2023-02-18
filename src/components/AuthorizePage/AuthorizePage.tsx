@@ -119,7 +119,7 @@ export const AuthorizePage = (props: any) => {
         <p>
           <label htmlFor="loginRegister">
             Login&nbsp;
-            <input type="text" id="loginRegister" onChange={(el) => { setLogin(el.target.value); }} required />
+            <input type="text" id="loginRegister" onChange={(el) => { setLogin(el.target.value); }} maxLength={10} required />
           </label>
         </p>
         <p>

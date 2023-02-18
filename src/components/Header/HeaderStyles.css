@@ -60,6 +60,8 @@ header {
 .userinfo {
     display: flex;
     flex-direction: column;
+    width: 50%;
+    height: 80%;
 }
 .header-authorization {
     display: flex;
