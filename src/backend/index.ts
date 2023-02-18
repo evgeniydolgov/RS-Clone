@@ -26,7 +26,7 @@ app.listen(port as number, () => {
 });
 
 const pool: mysql.Pool = mysql.createPool({
-  connectionLimit: 10,
+  connectionLimit: 5,
   host: 'sql7.freemysqlhosting.net',
   user: 'sql7595528',
   password: 'JHGwZJt4Iz',
@@ -40,7 +40,6 @@ app.get('/', (req, res) => {
       res.send('Error occured!');
     } else {
       conn.query('SELECT * FROM users' as string, (error: Error, data: Object[]) => {
-        conn.release();
         if (error as Error) {
           throw error as Error;
         } else {
@@ -181,3 +180,10 @@ app.put('/spendscore', urlencodedParser, (req, res) => {
     pool.end();
   });
 }); */
+
+/* function eee() {
+  for (let i = 0; i < 34; i += 1) {
+    pool.end();
+  }
+}
+eee(); */
