@@ -51,8 +51,8 @@ header {
     height: 100%;
 }
 .userpic {
-    width: 50px;
-    height: 50px;
+    width: 50%;
+    height: 100%;
     background-image: url("./../../assets/svg/userpic.svg");
     background-repeat: no-repeat;
 }
@@ -79,3 +79,39 @@ header {
 .btn__link {
     color: #F0F0F0;
 }
+
+.burn-arr {
+    width: 50%;
+    height: 100%;
+    background: url('../../assets/png/1-burned.png') 0 0/cover no-repeat;
+  }
+
+  .cool-arr {
+    width: 50%;
+    height: 100%;
+    background: url('../../assets/png/2-coolman.png') 0 0/cover no-repeat;
+  }
+
+  .stud-arr {
+    width: 50%;
+    height: 100%;
+    background: url('../../assets/png/3-rsStuden.png') 0 0/cover no-repeat;
+  }
+
+  .super-arr {
+    width: 50%;
+    height: 100%;
+    background: url('../../assets/png/4-superman.png') 0 0/cover no-repeat;
+  }
+
+  .secret-arr {
+    width: 50%;
+    height: 100%;
+    background: url('../../assets/png/5-secretive.png') 0 0/cover no-repeat;
+  }
+
+  .sam-arr {
+    width: 50%;
+    height: 100%;
+    background: url('../../assets/png/6-samurai.png') 0 0/cover no-repeat;
+  }

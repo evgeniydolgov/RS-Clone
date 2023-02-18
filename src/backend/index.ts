@@ -1,7 +1,6 @@
 import express from 'express';
 import bodyParser, { OptionsUrlencoded } from 'body-parser';
 import mysql from 'mysql';
-// import mysql2 from 'mysql2';
 import cors from 'cors';
 
 import { IcorsOption } from './interfaces';
@@ -26,16 +25,8 @@ app.listen(port as number, () => {
   console.log(`App listen on port ${port as number}` as string);
 });
 
-/* const conn = mysql.createConnection({
-  host: 'sql7.freemysqlhosting.net',
-  user: 'sql7595528',
-  password: 'JHGwZJt4Iz',
-  database: 'sql7595528',
-  port: 3306,
-}); */
-
 const pool: mysql.Pool = mysql.createPool({
-  connectionLimit: 10,
+  connectionLimit: 5,
   host: 'sql7.freemysqlhosting.net',
   user: 'sql7595528',
   password: 'JHGwZJt4Iz',
@@ -49,7 +40,6 @@ app.get('/', (req, res) => {
       res.send('Error occured!');
     } else {
       conn.query('SELECT * FROM users' as string, (error: Error, data: Object[]) => {
-        conn.release();
         if (error as Error) {
           throw error as Error;
         } else {
@@ -61,38 +51,18 @@ app.get('/', (req, res) => {
   });
 });
 
-/* app.post('/create', urlencodedParser, (req, res) => {
-  const pool: mysql.Pool = mysql.createPool({
-    host: 'sql7.freemysqlhosting.net',
-    user: 'sql7595528',
-    password: 'JHGwZJt4Iz',
-    database: 'sql7595528',
-    port: 3306,
-  });
-  if (!req.body) res.sendStatus(400);
-  const { id } = req.body;
-  const { name } = req.body;
-  pool.query(
-    'INSERT INTO users (id, name) VALUES (?,?)' as string,
-    [id as number, name as string],
-    (err, data) => {
-      if (err as Error) throw err as Error;
-      res.send(data as Object[]);
-      pool.end();
-    },
-  );
-}); */
-
 app.post('/register', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
     } else {
-      const { login, password } = req.body;
+      const {
+        login, password, score, avatar,
+      } = req.body;
       console.log(req.body);
       conn.query(
-        'INSERT INTO users (login, password) VALUES (?,?)' as string,
-        [login as string, password as string],
+        'INSERT INTO users (login, password, score, avatar) VALUES (?,?,?,?)' as string,
+        [login as string, password as string, score as number, avatar as number],
         (error, data) => {
           conn.release();
           if (data) {
@@ -166,6 +136,35 @@ app.put('/updatescore', urlencodedParser, (req, res) => {
   });
 });
 
+app.put('/spendscore', urlencodedParser, (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      const { login } = req.body;
+      const { score } = req.body;
+      const { avatar } = req.body;
+      console.log(req.body);
+      conn.query(
+        'UPDATE users SET score = ?, avatar = ? WHERE login = ?' as string,
+        [score as number, avatar as number, login as string],
+        (error, data) => {
+          conn.release();
+          if (data) {
+            res.send(data);
+            return;
+          } if (error as Error) {
+            throw error as Error;
+          } else {
+            res.send({ message: 'Enter correct details!' });
+          }
+          conn.release();
+        },
+      );
+    }
+  });
+});
+
 /* app.delete('/delete/:id', (req, res) => {
   const pool: mysql.Pool = mysql.createPool({
     host: 'sql7.freemysqlhosting.net',
@@ -181,3 +180,10 @@ app.put('/updatescore', urlencodedParser, (req, res) => {
     pool.end();
   });
 }); */
+
+/* function eee() {
+  for (let i = 0; i < 34; i += 1) {
+    pool.end();
+  }
+}
+eee(); */

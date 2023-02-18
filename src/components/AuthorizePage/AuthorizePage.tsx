@@ -25,6 +25,8 @@ export const AuthorizePage = (props: any) => {
       body: JSON.stringify({
         login,
         password,
+        score: 0,
+        avatar: 0,
       }),
     };
     console.log(JSON.parse(requestOptions.body).login);
@@ -35,7 +37,8 @@ export const AuthorizePage = (props: any) => {
       const data = await response.json();
       console.log(data);
       localStorage.setItem('user', JSON.stringify(`${JSON.parse(requestOptions.body).login}`));
-      localStorage.setItem('score', '0');
+      localStorage.setItem('score', JSON.stringify('0'));
+      localStorage.setItem('avatar', JSON.stringify('0'));
       window.dispatchEvent(new Event('storage'));
       setRegisterStatus('Account created!');
     }
@@ -61,9 +64,8 @@ export const AuthorizePage = (props: any) => {
       console.log(data);
       setLoginStatus('Welcome!');
       localStorage.setItem('user', JSON.stringify(`${data[0].login}`));
-      if (data[0].score) {
-        localStorage.setItem('score', JSON.stringify(`${data[0].score}`));
-      }
+      localStorage.setItem('score', JSON.stringify(`${data[0].score}`));
+      localStorage.setItem('avatar', JSON.stringify(`${data[0].avatar}`));
       window.dispatchEvent(new Event('storage'));
       setUserLogged('LogOut');
     } else {

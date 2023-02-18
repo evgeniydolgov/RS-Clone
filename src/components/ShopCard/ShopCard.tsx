@@ -24,11 +24,33 @@ export const ShopCard = ({ nameSloth, index }: ICard) => {
 
   const score = Number(JSON.parse(localStorage.getItem('score') as string));
 
+  const spendScore = async () => {
+    const requestOptions = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        login: JSON.parse(localStorage.getItem('user') || ''),
+        score: JSON.parse(localStorage.getItem('score') || ''),
+        avatar: JSON.parse(localStorage.getItem('avatar') || ''),
+      }),
+    };
+    const response = await fetch(
+      'http://localhost:3001/spendscore',
+      requestOptions,
+    );
+    const data = await response.json();
+    console.log(response);
+    console.log(data);
+  };
+
   const buyAvatar: React.MouseEventHandler<HTMLElement> = (el) => {
     if (Number(el.currentTarget.dataset.price) < score) {
       console.log('sell!');
       purchaseApproved().play();
       localStorage.setItem('avatar', `${index + 1}`);
+      localStorage.setItem('score', `${score - Number(el.currentTarget.dataset.price)}`);
+      spendScore();
+      window.dispatchEvent(new Event('storage'));
       el.currentTarget.className = 'card__container purchase';
       el.currentTarget.children[0].className = 'black-line goodmessage';
     } else {
