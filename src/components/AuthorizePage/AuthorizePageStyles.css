@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-grow: 1;
   background-color: #e8f6f9;
+  flex-grow: 1;
 }
 
 .authorize__vegetables {

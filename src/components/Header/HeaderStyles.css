@@ -10,7 +10,7 @@ header {
     line-height: 24px;
     display: flex;
     background-size: cover;
-    max-width: 1400px;
+    max-width: 1200px;
     height: 70px;
     padding: 0 60px;
     align-items: center;
@@ -52,8 +52,9 @@ header {
 }
 .userpic {
     width: 50%;
-    height: 100%;
+    height: 80%;
     background-image: url("./../../assets/svg/userpic.svg");
+    background-size: 80%;
     background-repeat: no-repeat;
 }
 .userinfo {

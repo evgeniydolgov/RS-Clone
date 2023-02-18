@@ -54,7 +54,6 @@ export const Header = () => {
 
     return () => { window.removeEventListener('storage', avatarHandler); };
   }, [avatar]);
-  console.log(user);
   return (
     <header>
       <div className="header__inner">
