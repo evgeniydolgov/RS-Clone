@@ -57,11 +57,13 @@ app.post('/register', urlencodedParser, (req, res) => {
     if (err) {
       res.send('Error occured!');
     } else {
-      const { login, password, score } = req.body;
+      const {
+        login, password, score, avatar,
+      } = req.body;
       console.log(req.body);
       conn.query(
-        'INSERT INTO users (login, password, score) VALUES (?,?,?)' as string,
-        [login as string, password as string, score as number],
+        'INSERT INTO users (login, password, score, avatar) VALUES (?,?,?,?)' as string,
+        [login as string, password as string, score as number, avatar as number],
         (error, data) => {
           conn.release();
           if (data) {

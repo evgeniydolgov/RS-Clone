@@ -6,6 +6,9 @@ import './HeaderStyles.css';
 export const Header = () => {
   const [user, setUser] = useState(localStorage.getItem('user')?.slice(1, -1));
   const [score, setScore] = useState(localStorage.getItem('score'));
+  const [avatar, setAvatar] = useState((localStorage.getItem('avatar')));
+
+  const nameAvatar = ['userpic', 'burn-arr', 'cool-arr', 'stud-arr', 'super-arr', 'secret-arr', 'sam-arr'];
 
   useEffect(() => {
     const storageEventHandler = () => {
@@ -36,6 +39,21 @@ export const Header = () => {
 
     return () => { window.removeEventListener('storage', scoreHandler); };
   }, [score]);
+
+  useEffect(() => {
+    const avatarHandler = () => {
+      // console.log('sdjfhskdf');
+      if (localStorage.getItem('avatar') != null) {
+        // console.log('dfgdg');
+        setAvatar(JSON.parse(localStorage.getItem('avatar') || ''));
+        return;
+      }
+      setAvatar('0');
+    };
+    window.addEventListener('storage', avatarHandler);
+
+    return () => { window.removeEventListener('storage', avatarHandler); };
+  }, [avatar]);
   console.log(user);
   return (
     <header>
@@ -52,7 +70,7 @@ export const Header = () => {
         </div>
         {user && (
           <div className="header-account">
-            <div className="userpic" />
+            <div className={nameAvatar[JSON.parse(avatar || '')]} />
             <div className="userinfo">
               <p>{user}</p>
               <p>{`Score: ${JSON.parse(score || '')}`}</p>
