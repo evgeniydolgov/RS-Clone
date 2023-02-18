@@ -27,7 +27,6 @@ export const AuthiorizeBtn = ({
     openPopUp(true);
     localStorage.clear();
     window.dispatchEvent(new Event('storage'));
-    setUserLogged('LogOut');
   };
 
   return (
