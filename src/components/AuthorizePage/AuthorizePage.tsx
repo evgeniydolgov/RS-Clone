@@ -29,18 +29,27 @@ export const AuthorizePage = (props: any) => {
         avatar: 0,
       }),
     };
-    console.log(JSON.parse(requestOptions.body).login);
     if (JSON.parse(requestOptions.body).login === '' || JSON.parse(requestOptions.body).password === '') {
       alert('Attention! Login or / and password cannot be empty!');
     } else {
       const response = await fetch('http://localhost:3001/register', requestOptions);
       const data = await response.json();
-      console.log(data);
-      localStorage.setItem('user', JSON.stringify(`${JSON.parse(requestOptions.body).login}`));
-      localStorage.setItem('score', JSON.stringify('0'));
-      localStorage.setItem('avatar', JSON.stringify('0'));
-      window.dispatchEvent(new Event('storage'));
-      setRegisterStatus('Account created!');
+      if (data.message === 'Account is already existed!') {
+        setRegisterStatus('Account is already existed!');
+        setTimeout(() => {
+          setRegisterStatus('');
+        }, 2000);
+      } else {
+        console.log(data);
+        localStorage.setItem('user', JSON.stringify(`${JSON.parse(requestOptions.body).login}`));
+        localStorage.setItem('score', JSON.stringify('0'));
+        localStorage.setItem('avatar', JSON.stringify('0'));
+        window.dispatchEvent(new Event('storage'));
+        setRegisterStatus('Account created!');
+        setTimeout(() => {
+          setRegisterStatus('');
+        }, 2000);
+      }
     }
   };
 
@@ -70,6 +79,9 @@ export const AuthorizePage = (props: any) => {
       setUserLogged('LogOut');
     } else {
       setLoginStatus('Wrong details');
+      setTimeout(() => {
+        setRegisterStatus('');
+      }, 2000);
     }
   };
 
