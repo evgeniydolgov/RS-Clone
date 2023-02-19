@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MemoGame } from '../MemoGame';
 import { cardImages } from '../../cardImages';
+import { WinnerPage } from '../WinnerPage';
 import './MemoPageStyles.css';
 
 interface ICardImages {
@@ -14,6 +15,7 @@ interface ICard {
 }
 export const MemoPage = () => {
   const [cards, setCards] = useState<ICardImages[]>([]);
+  const [count, setCount] = useState(0);
   const [selectOne, setSelectOne] = useState<ICard | null>(null);
   const [selectTwo, setSelectTwo] = useState<ICard | null>(null);
   const [disabled, setDisabled] = useState(false);
@@ -48,6 +50,7 @@ export const MemoPage = () => {
           return card;
         }));
         setScore((prevScore) => prevScore + 3);
+        setCount(count + 1);
         resetTurn();
       } else {
         setTimeout(() => resetTurn(), 1000);
@@ -62,6 +65,12 @@ export const MemoPage = () => {
   useEffect(() => {
     shuffleCards();
   }, []);
+
+  if (count === 8) {
+    return (
+      <WinnerPage score={score} />
+    );
+  }
 
   return (
     <div className="memo">
