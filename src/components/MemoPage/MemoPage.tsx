@@ -3,6 +3,7 @@ import { MemoGame } from '../MemoGame';
 import { cardImages } from '../../cardImages';
 import './MemoPageStyles.css';
 import { WinnerPage } from '../WinnerPage';
+import { missClick, winClick } from '../QuizAnswer/QuizAnswer';
 
 interface ICardImages {
   src: string;
@@ -31,7 +32,14 @@ export const MemoPage = () => {
     setScore(0);
   };
 
-  const switching = (card: any) => (selectOne ? setSelectTwo(card) : setSelectOne(card));
+  const switching = (card: any) => {
+    missClick();
+    if (selectOne) {
+      setSelectTwo(card);
+    } else {
+      setSelectOne(card);
+    }
+  };
 
   const resetTurn = () => {
     setSelectOne(null);
@@ -43,6 +51,7 @@ export const MemoPage = () => {
     if (selectOne && selectTwo) {
       setDisabled(true);
       if (selectOne.src === selectTwo.src) {
+        winClick();
         setCount(count + 1);
         setCards((prevCards) => prevCards.map((card) => {
           if (card.src === selectOne.src) {
