@@ -52,7 +52,7 @@ header {
 }
 .userpic {
     width: 50%;
-    height: 80%;
+    height: 100%;
     background-image: url("./../../assets/svg/userpic.svg");
     background-size: 80%;
     background-repeat: no-repeat;
@@ -61,7 +61,7 @@ header {
     display: flex;
     flex-direction: column;
     width: 50%;
-    height: 80%;
+    height: 100%;
 }
 .header-authorization {
     display: flex;
