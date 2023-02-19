@@ -54,8 +54,9 @@ header {
 .userpic {
     width: 50%;
     height: 100%;
-    background-image: url("./../../assets/svg/userpic.svg");
+    background-image: url("./../../assets/png/3-rsStuden.png");
     background-size: 80%;
+    filter: brightness( 0% );
     background-repeat: no-repeat;
 }
 .userinfo {
