@@ -77,9 +77,9 @@ export const Header = () => {
           </div>
         )}
         <div className="header-authorization">
-          <button type="button" className="btn authorization__btn">
-            <Link className="btn__link" to="/authorize">Join us</Link>
-          </button>
+          <Link className="btn__link" to="/authorize">
+            <button type="button" className="btn authorization__btn">Join us</button>
+          </Link>
         </div>
       </div>
     </header>

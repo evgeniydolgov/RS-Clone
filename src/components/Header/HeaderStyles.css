@@ -71,6 +71,7 @@ header {
     color: #F0F0F0;
     margin-left: 25px;
     transition: .3s;
+    cursor: pointer;
 }
 .authorization__btn:hover {
     transform: scale(1.1);
