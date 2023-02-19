@@ -60,22 +60,31 @@ app.post('/register', urlencodedParser, (req, res) => {
         login, password, score, avatar,
       } = req.body;
       console.log(req.body);
-      conn.query(
-        'INSERT INTO users (login, password, score, avatar) VALUES (?,?,?,?)' as string,
-        [login as string, password as string, score as number, avatar as number],
-        (error, data) => {
+      conn.query('SELECT * FROM users WHERE login = ?', [login as string], (mistake, welcome) => {
+        if (welcome) {
           conn.release();
-          if (data) {
-            res.send(data);
-            return;
-          } if (error as Error) {
-            throw error as Error;
-          } else {
-            res.send({ message: 'Enter correct details!' });
-          }
-          conn.release();
-        },
-      );
+          console.log(mistake);
+        }
+        if (!welcome.length) {
+          conn.query(
+            'INSERT INTO users (login, password, score, avatar) VALUES (?,?,?,?)' as string,
+            [login as string, password as string, score as number, avatar as number],
+            (error, data) => {
+              if (data) {
+                res.send(data);
+                return;
+              } if (error as Error) {
+                throw error as Error;
+              } else {
+                res.send({ message: 'Enter correct details!' });
+              }
+              conn.release();
+            },
+          );
+        } else {
+          res.send({ message: 'Account is already existed!' });
+        }
+      });
     }
   });
 });

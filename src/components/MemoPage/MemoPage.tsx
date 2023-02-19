@@ -60,6 +60,7 @@ export const MemoPage = () => {
           return card;
         }));
         setScore((prevScore) => prevScore + 3);
+        setCount(count + 1);
         resetTurn();
       } else {
         setTimeout(() => resetTurn(), 1000);
