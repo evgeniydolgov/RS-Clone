@@ -12,6 +12,7 @@ import { MainImageDish } from '../MainImageDish';
 import './MainPageStyles.css';
 
 export const MainPage = () => {
+  const user = JSON.parse(localStorage.getItem('user') as string);
   const dispatch = useAppDispatch();
   const allCuisine = useSelector(getAllCuisine);
 
@@ -56,6 +57,7 @@ export const MainPage = () => {
         <Link to="/quiz"><button type="button" className="start-test_btn">Quiz</button></Link>
         <Link to="/memo"><button type="button" className="start-test_btn">Memo</button></Link>
         <Link to="/shop"><button type="button" className="start-test_btn">Shop</button></Link>
+        {!user ? <div className="black__border">Games are available only to registered users</div> : null}
       </div>
 
       <div className="mainpage__food-table">
