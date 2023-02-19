@@ -46,9 +46,6 @@ export const AuthorizePage = (props: any) => {
         localStorage.setItem('avatar', JSON.stringify('0'));
         window.dispatchEvent(new Event('storage'));
         setRegisterStatus('Account created!');
-        setTimeout(() => {
-          setRegisterStatus('');
-        }, 2000);
       }
     }
   };
@@ -79,9 +76,6 @@ export const AuthorizePage = (props: any) => {
       setUserLogged('LogOut');
     } else {
       setLoginStatus('Wrong details');
-      setTimeout(() => {
-        setRegisterStatus('');
-      }, 2000);
     }
   };
 
