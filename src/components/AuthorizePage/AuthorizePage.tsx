@@ -103,9 +103,11 @@ export const AuthorizePage = (props: any) => {
         <div className="middle__container">
           <div className="logo__block">
             <div className="logo__center" />
-            <button type="button" className="button__center">
-              <Link className="white__text" to="/"> View recipes</Link>
-            </button>
+            <Link className="white__text" to="/">
+              <button type="button" className="button__center">
+                View recipes
+              </button>
+            </Link>
           </div>
           <div className="signing__block">
             <p className="signing__text">

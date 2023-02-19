@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { MemoGame } from '../MemoGame';
 import { cardImages } from '../../cardImages';
-import { WinnerPage } from '../WinnerPage';
 import './MemoPageStyles.css';
+import { WinnerPage } from '../WinnerPage';
+import { missClick, winClick } from '../QuizAnswer/QuizAnswer';
 
 interface ICardImages {
   src: string;
@@ -15,11 +16,11 @@ interface ICard {
 }
 export const MemoPage = () => {
   const [cards, setCards] = useState<ICardImages[]>([]);
-  const [count, setCount] = useState(0);
   const [selectOne, setSelectOne] = useState<ICard | null>(null);
   const [selectTwo, setSelectTwo] = useState<ICard | null>(null);
   const [disabled, setDisabled] = useState(false);
   const [score, setScore] = useState(0);
+  const [count, setCount] = useState(0);
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -31,7 +32,14 @@ export const MemoPage = () => {
     setScore(0);
   };
 
-  const switching = (card: any) => (selectOne ? setSelectTwo(card) : setSelectOne(card));
+  const switching = (card: any) => {
+    missClick();
+    if (selectOne) {
+      setSelectTwo(card);
+    } else {
+      setSelectOne(card);
+    }
+  };
 
   const resetTurn = () => {
     setSelectOne(null);
@@ -43,6 +51,8 @@ export const MemoPage = () => {
     if (selectOne && selectTwo) {
       setDisabled(true);
       if (selectOne.src === selectTwo.src) {
+        winClick();
+        setCount(count + 1);
         setCards((prevCards) => prevCards.map((card) => {
           if (card.src === selectOne.src) {
             return { ...card, matched: true };
@@ -68,7 +78,9 @@ export const MemoPage = () => {
 
   if (count === 8) {
     return (
-      <WinnerPage score={score} />
+      <div className="memo">
+        <WinnerPage score={score} />
+      </div>
     );
   }
 

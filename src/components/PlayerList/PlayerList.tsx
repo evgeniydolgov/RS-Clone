@@ -36,7 +36,6 @@ export const PlayerList = () => {
   useEffect(() => {
     getAllUsers();
   }, []);
-  console.log(users);
 
   if (!load) {
     return (
@@ -50,7 +49,7 @@ export const PlayerList = () => {
       <div className="play-list__container">
         <h3>Our The Best culinary experts!</h3>
         <div className="user__table">
-          {users.map((el: IData, i: number) => <PlayerInfo key={el.login} props={el} number={i + 1} />)}
+          {users.map((el: IData, i: number) => <PlayerInfo key={el.login + i.toString()} props={el} />)}
         </div>
       </div>
     </div>

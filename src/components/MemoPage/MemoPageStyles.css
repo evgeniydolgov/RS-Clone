@@ -24,6 +24,10 @@
     font-weight: 700;
 }
 
+.memo__btn:hover {
+    background-color:rgb(14, 89, 132);;
+}
+
 .memo__cards {
     display: flex;
     flex-wrap: wrap;

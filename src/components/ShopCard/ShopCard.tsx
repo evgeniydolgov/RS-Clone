@@ -5,10 +5,10 @@ import './ShopCardStyle.css';
 interface ICard {
   nameSloth: string;
   index: number;
+  setSell: (el: boolean) => void;
 }
 
-export const ShopCard = ({ nameSloth, index }: ICard) => {
-  // const Avatar = 'Avatar: ';
+export const ShopCard = ({ nameSloth, index, setSell }: ICard) => {
   const costs = (index + 1) * 10;
   const priceMessage = `Price: ${costs} scores`;
 
@@ -24,37 +24,16 @@ export const ShopCard = ({ nameSloth, index }: ICard) => {
 
   const score = Number(JSON.parse(localStorage.getItem('score') as string));
 
-  const spendScore = async () => {
-    const requestOptions = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        login: JSON.parse(localStorage.getItem('user') || ''),
-        score: JSON.parse(localStorage.getItem('score') || ''),
-        avatar: JSON.parse(localStorage.getItem('avatar') || ''),
-      }),
-    };
-    const response = await fetch(
-      'http://localhost:3001/spendscore',
-      requestOptions,
-    );
-    const data = await response.json();
-    console.log(response);
-    console.log(data);
-  };
-
   const buyAvatar: React.MouseEventHandler<HTMLElement> = (el) => {
     if (Number(el.currentTarget.dataset.price) < score) {
-      console.log('sell!');
       purchaseApproved().play();
       localStorage.setItem('avatar', `${index + 1}`);
       localStorage.setItem('score', `${score - Number(el.currentTarget.dataset.price)}`);
-      spendScore();
+      setSell(true);
       window.dispatchEvent(new Event('storage'));
       el.currentTarget.className = 'card__container purchase';
       el.currentTarget.children[0].className = 'black-line goodmessage';
     } else {
-      console.log('not enough money');
       el.currentTarget.className = 'card__container shaker';
       noMoneyMusic().play();
       el.currentTarget.children[0].className = 'black-line wrongmessage';
@@ -69,7 +48,6 @@ export const ShopCard = ({ nameSloth, index }: ICard) => {
   return (
     <div role="presentation" data-price={costs} className="card__container" onClick={buyAvatar} onMouseLeave={defautClass}>
       <div className="black-line">
-        {/* <p>{Avatar + nameSloth}</p> */}
         <p>{priceMessage}</p>
       </div>
       <div className={nameSloth} />
