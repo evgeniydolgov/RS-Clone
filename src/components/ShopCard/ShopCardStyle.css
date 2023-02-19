@@ -29,7 +29,7 @@
 }
 
 .card__container>:nth-child(2):hover {
-  transform: scale(0.3);
+  transform: scale(1.4);
   filter: brightness(100%);
 }
 

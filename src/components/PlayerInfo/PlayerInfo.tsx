@@ -9,13 +9,11 @@ interface IUser {
 }
 interface Info {
   props: IUser
-  number: number;
 }
 
-export const PlayerInfo = ({ props, number }: Info) => {
+export const PlayerInfo = ({ props }: Info) => {
   const nameAvatar = ['userpic', 'burn-arr', 'cool-arr', 'stud-arr', 'super-arr', 'secret-arr', 'sam-arr'];
   const avatar = Number(props.avatar);
-  console.log(number);
 
   return (
     <div className="oneplayer__info">
