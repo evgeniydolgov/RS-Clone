@@ -3,15 +3,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import './QuizAnswerStyles.css';
+import { useSound } from '../Layout/Layout';
 
 export const missClick = () => {
   const path = require('../../assets/mp3/miss-click.mp3');
-  return new Audio(path).play();
+  return new Audio(path);
 };
 
 export const winClick = () => {
   const path = require('../../assets/mp3/winClick.mp3');
-  return new Audio(path).play();
+  return new Audio(path);
 };
 
 interface IQuizAnswer {
@@ -29,6 +30,7 @@ export const QuizAnswer = ({
   dishesName, rigthAnswer, nextStage, unlockNextBtn, countScore, setCountScore, clickBtn, setClickBtn,
 }: IQuizAnswer) => {
   const [colorBtn, setColorBtn] = useState('#0E5984');
+  const { sound } = useSound();
 
   const checkigClickBtn: React.MouseEventHandler<HTMLButtonElement> = (element) => {
     if (rigthAnswer === element.currentTarget.name && clickBtn) {
@@ -36,11 +38,11 @@ export const QuizAnswer = ({
       unlockNextBtn();
       setClickBtn(false);
       setCountScore(countScore + 3);
-      winClick();
+      sound ? winClick().play() : winClick;
     } else if (clickBtn && colorBtn === '#0E5984') {
       setColorBtn('#263640');
       setCountScore(countScore - 1);
-      missClick();
+      sound ? missClick().play() : missClick;
     }
   };
 

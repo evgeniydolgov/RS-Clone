@@ -1,8 +1,18 @@
 .loading_page {
   flex-grow: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.loading-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Rochester', cursive;
+  font-size: 30px;
 }
 
 .loader {
@@ -28,4 +38,5 @@
   animation: load 1s infinite steps(var(--n));
 }
 @keyframes load {to{transform: rotate(1turn)}}
+
 

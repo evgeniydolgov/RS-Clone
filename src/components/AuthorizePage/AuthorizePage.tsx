@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthiorizeBtn } from '../AuthiorizeBtn';
 import { AuthorizePopup } from '../AuthiorizePopup';
+import { LoadingAnimation } from '../LoadingAnimation';
 import { LoginPopup } from '../LoginPopup/LoginPopup';
 import { SignInBtn } from '../SignInBtn/SignInBtn';
 import './AuthorizePageStyles.css';
@@ -16,8 +17,10 @@ export const AuthorizePage = (props: any) => {
   const [registerStatus, setRegisterStatus] = useState('');
   const [userLogged, setUserLogged] = useState('LogIn');
   const [userRegistered, setUserRegistered] = useState('Sign Up');
+  const [loading, setLoading] = useState(false);
 
   const register = async (el: React.MouseEvent) => {
+    setLoading(true);
     el.preventDefault();
     const requestOptions = {
       method: 'POST',
@@ -34,6 +37,7 @@ export const AuthorizePage = (props: any) => {
     } else {
       const response = await fetch('http://localhost:3001/register', requestOptions);
       const data = await response.json();
+      setLoading(false);
       if (data.message === 'Account is already existed!') {
         setRegisterStatus('Account is already existed!');
         setTimeout(() => {
@@ -46,11 +50,13 @@ export const AuthorizePage = (props: any) => {
         localStorage.setItem('avatar', JSON.stringify('0'));
         window.dispatchEvent(new Event('storage'));
         setRegisterStatus('Account created!');
+        setUserLogged('LogOut');
       }
     }
   };
 
   const loginAction = async (el: React.MouseEvent) => {
+    setLoading(true);
     el.preventDefault();
     const requestOptions = {
       method: 'POST',
@@ -65,6 +71,7 @@ export const AuthorizePage = (props: any) => {
       requestOptions,
     );
     const data = await response.json();
+    setLoading(false);
     if (data.length > 0) {
       console.log(response);
       console.log(data);
@@ -147,13 +154,32 @@ export const AuthorizePage = (props: any) => {
         <p>
           <label htmlFor="loginRegister">
             Login&nbsp;
-            <input type="text" id="loginRegister" onChange={(el) => { setLogin(el.target.value); }} maxLength={10} ref={loginSignup} required />
+            <input
+              type="text"
+              id="loginRegister"
+              className="loginRegister"
+              onChange={(el) => {
+                setLogin(el.target.value);
+              }}
+              maxLength={10}
+              ref={loginSignup}
+              required
+            />
           </label>
         </p>
         <p>
           <label htmlFor="passwordRegister">
             Password&nbsp;
-            <input type="password" id="passwordRegister" onChange={(el) => { setPassword(el.target.value); }} ref={passwordSignup} required />
+            <input
+              type="password"
+              id="passwordRegister"
+              className="passwordRegister"
+              onChange={(el) => {
+                setPassword(el.target.value);
+              }}
+              ref={passwordSignup}
+              required
+            />
           </label>
         </p>
         <button type="submit" className="popup__button" onClick={register}>Sign Up</button>
@@ -165,18 +191,28 @@ export const AuthorizePage = (props: any) => {
         <p>
           <label htmlFor="loginLogin">
             Login&nbsp;
-            <input type="text" id="loginLogin" onChange={(el) => { setLogin(el.target.value); }} ref={loginInput} required />
+            <input type="text" id="loginLogin" className="loginLogin" onChange={(el) => { setLogin(el.target.value); }} ref={loginInput} required />
           </label>
         </p>
         <p>
           <label htmlFor="passwordLogin">
             Password&nbsp;
-            <input type="password" id="passwordLogin" onChange={(el) => { setPassword(el.target.value); }} ref={passwordInput} required />
+            <input
+              type="password"
+              id="passwordLogin"
+              className="passwordLogin"
+              onChange={(el) => {
+                setPassword(el.target.value);
+              }}
+              ref={passwordInput}
+              required
+            />
           </label>
         </p>
         <button type="submit" className="popup__button" onClick={loginAction} disabled={!login || !password}>Login</button>
         <p>{loginStatus}</p>
       </LoginPopup>
+      {loading ? <div className="authorize__loader"><LoadingAnimation /></div> : null }
     </div>
   );
 };

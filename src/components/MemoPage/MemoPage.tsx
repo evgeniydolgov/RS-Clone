@@ -4,6 +4,7 @@ import { cardImages } from '../../cardImages';
 import './MemoPageStyles.css';
 import { WinnerPage } from '../WinnerPage';
 import { missClick, winClick } from '../QuizAnswer/QuizAnswer';
+import { useSound } from '../Layout/Layout';
 
 interface ICardImages {
   src: string;
@@ -21,6 +22,7 @@ export const MemoPage = () => {
   const [disabled, setDisabled] = useState(false);
   const [score, setScore] = useState(0);
   const [count, setCount] = useState(0);
+  const { sound } = useSound();
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -33,7 +35,9 @@ export const MemoPage = () => {
   };
 
   const switching = (card: any) => {
-    missClick();
+    if (sound) {
+      missClick().play();
+    }
     if (selectOne) {
       setSelectTwo(card);
     } else {
@@ -51,7 +55,9 @@ export const MemoPage = () => {
     if (selectOne && selectTwo) {
       setDisabled(true);
       if (selectOne.src === selectTwo.src) {
-        winClick();
+        if (sound) {
+          winClick().play();
+        }
         setCount(count + 1);
         setCards((prevCards) => prevCards.map((card) => {
           if (card.src === selectOne.src) {

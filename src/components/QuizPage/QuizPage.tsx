@@ -24,7 +24,6 @@ export const QuizPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // @ts-ignore
       await dispatch(loadRandomSelection());
       setLoder(!iSLoader);
     };

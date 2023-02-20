@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 import React from 'react';
+import { useSound } from '../Layout/Layout';
 import './ShopCardStyle.css';
 
 interface ICard {
@@ -9,6 +10,7 @@ interface ICard {
 }
 
 export const ShopCard = ({ nameSloth, index, setSell }: ICard) => {
+  const { sound } = useSound();
   const costs = (index + 1) * 10;
   const priceMessage = `Price: ${costs} scores`;
 
@@ -26,7 +28,9 @@ export const ShopCard = ({ nameSloth, index, setSell }: ICard) => {
 
   const buyAvatar: React.MouseEventHandler<HTMLElement> = (el) => {
     if (Number(el.currentTarget.dataset.price) < score) {
-      purchaseApproved().play();
+      if (sound) {
+        purchaseApproved().play();
+      }
       localStorage.setItem('avatar', `${index + 1}`);
       localStorage.setItem('score', `${score - Number(el.currentTarget.dataset.price)}`);
       setSell(true);
@@ -35,7 +39,9 @@ export const ShopCard = ({ nameSloth, index, setSell }: ICard) => {
       el.currentTarget.children[0].className = 'black-line goodmessage';
     } else {
       el.currentTarget.className = 'card__container shaker';
-      noMoneyMusic().play();
+      if (sound) {
+        noMoneyMusic().play();
+      }
       el.currentTarget.children[0].className = 'black-line wrongmessage';
     }
   };

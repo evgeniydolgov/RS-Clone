@@ -1,19 +1,30 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './HeaderStyles.css';
 
-export const Header = () => {
+interface ISound {
+  sound: boolean;
+  setSound: (el: boolean) => void
+}
+
+export const Header = ({ sound, setSound }: ISound) => {
   const [user, setUser] = useState(localStorage.getItem('user')?.slice(1, -1));
   const [score, setScore] = useState(localStorage.getItem('score'));
   const [avatar, setAvatar] = useState((localStorage.getItem('avatar')));
 
   const nameAvatar = ['userpic', 'burn-arr', 'cool-arr', 'stud-arr', 'super-arr', 'secret-arr', 'sam-arr'];
 
+  const activSound = () => {
+    setSound(true);
+  };
+  const disabledSound = () => {
+    setSound(false);
+  };
+
   useEffect(() => {
     const storageEventHandler = () => {
-      // console.log('sdjfhskdf');
       if (localStorage.getItem('user') != null) {
-        // console.log('dfgdg');
         setUser(JSON.parse(localStorage.getItem('user') || ''));
         return;
       }
@@ -26,9 +37,7 @@ export const Header = () => {
 
   useEffect(() => {
     const scoreHandler = () => {
-      // console.log('sdjfhskdf');
       if (localStorage.getItem('score') != null) {
-        // console.log('dfgdg');
         setScore(JSON.parse(localStorage.getItem('score') || ''));
         return;
       }
@@ -41,9 +50,7 @@ export const Header = () => {
 
   useEffect(() => {
     const avatarHandler = () => {
-      // console.log('sdjfhskdf');
       if (localStorage.getItem('avatar') != null) {
-        // console.log('dfgdg');
         setAvatar(JSON.parse(localStorage.getItem('avatar') || ''));
         return;
       }
@@ -61,8 +68,6 @@ export const Header = () => {
           <nav>
             <ul className="header-list">
               <li><Link className="header-link" to="/playerList">Players list</Link></li>
-              {/* <li><Link className="header-link" to="/quiz">Games</Link></li> */}
-              {/* <li><Link className="header-link" to="/recipe">Recipes</Link></li> */}
             </ul>
           </nav>
         </div>
@@ -76,6 +81,7 @@ export const Header = () => {
           </div>
         )}
         <div className="header-authorization">
+          <button type="button" className={sound ? 'sound_on' : 'sound_off'} onClick={sound ? disabledSound : activSound}>{}</button>
           <Link className="btn__link" to="/authorize">
             <button type="button" className="btn authorization__btn">Join us</button>
           </Link>
