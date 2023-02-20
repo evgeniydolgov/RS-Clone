@@ -21,14 +21,13 @@
 .popup__inner {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-  width: 50vw;
-  height: 50vh;
-  padding: 20px;
+  font-family: 'Sansita', sans-serif;
+  width: 40vw;
+  height: 45vh;
   border-radius: 10px;
-  color: white;
-  background-color: #0e5984;
+  color: black;
+  background-color: #b3dee5;
   z-index: 100;
   transform: scale(0.1);
   transition: 0.4s all;
@@ -36,4 +35,15 @@
 
 .popup__inner.active {
   transform: scale(1);
+}
+
+.loginLogin,
+.passwordLogin,
+.loginRegister,
+.passwordRegister{
+  font-size: 18px;
+  font-family: 'Sansita', sans-serif;
+  border-radius: 5px;
+  border: none;
+  outline: none;
 }

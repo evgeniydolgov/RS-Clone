@@ -154,13 +154,32 @@ export const AuthorizePage = (props: any) => {
         <p>
           <label htmlFor="loginRegister">
             Login&nbsp;
-            <input type="text" id="loginRegister" onChange={(el) => { setLogin(el.target.value); }} maxLength={10} ref={loginSignup} required />
+            <input
+              type="text"
+              id="loginRegister"
+              className="loginRegister"
+              onChange={(el) => {
+                setLogin(el.target.value);
+              }}
+              maxLength={10}
+              ref={loginSignup}
+              required
+            />
           </label>
         </p>
         <p>
           <label htmlFor="passwordRegister">
             Password&nbsp;
-            <input type="password" id="passwordRegister" onChange={(el) => { setPassword(el.target.value); }} ref={passwordSignup} required />
+            <input
+              type="password"
+              id="passwordRegister"
+              className="passwordRegister"
+              onChange={(el) => {
+                setPassword(el.target.value);
+              }}
+              ref={passwordSignup}
+              required
+            />
           </label>
         </p>
         <button type="submit" className="popup__button" onClick={register}>Sign Up</button>
@@ -172,13 +191,22 @@ export const AuthorizePage = (props: any) => {
         <p>
           <label htmlFor="loginLogin">
             Login&nbsp;
-            <input type="text" id="loginLogin" onChange={(el) => { setLogin(el.target.value); }} ref={loginInput} required />
+            <input type="text" id="loginLogin" className="loginLogin" onChange={(el) => { setLogin(el.target.value); }} ref={loginInput} required />
           </label>
         </p>
         <p>
           <label htmlFor="passwordLogin">
             Password&nbsp;
-            <input type="password" id="passwordLogin" onChange={(el) => { setPassword(el.target.value); }} ref={passwordInput} required />
+            <input
+              type="password"
+              id="passwordLogin"
+              className="passwordLogin"
+              onChange={(el) => {
+                setPassword(el.target.value);
+              }}
+              ref={passwordInput}
+              required
+            />
           </label>
         </p>
         <button type="submit" className="popup__button" onClick={loginAction} disabled={!login || !password}>Login</button>

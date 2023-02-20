@@ -183,5 +183,10 @@
   height: 50px;
   background-color: white;
   color: black;
+  border-radius: 15px 0;
   cursor: pointer;
+}
+
+.popup__button:hover {
+  background-color: #eae8d6;
 }
