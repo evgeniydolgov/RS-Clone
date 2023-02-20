@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 interface IloginBtn {
@@ -7,19 +6,28 @@ interface IloginBtn {
   className: string
   openPopUp: (el: boolean) => void;
   setUserLogged: (el: string) => void;
+  setLoginStatus: (el: string) => void;
+  loginElement: any;
+  passwordElement: any;
 }
 
 export const AuthiorizeBtn = ({
-  textBtn, className, openPopUp, setUserLogged,
+  textBtn, className, openPopUp, setUserLogged, setLoginStatus, loginElement, passwordElement,
 }: IloginBtn) => {
   const user = JSON.parse(localStorage.getItem('user') as string);
 
-  if (user) {
-    setUserLogged('LogOut');
-  }
+  useEffect(() => {
+    if (user) {
+      setUserLogged('LogOut');
+    }
+  }, []);
+
   const logOutUser: React.MouseEventHandler<HTMLButtonElement> = (element) => {
     if (element.currentTarget.textContent === 'LogOut') {
       localStorage.clear();
+      setLoginStatus('');
+      loginElement.value = '';
+      passwordElement.value = '';
       setUserLogged('LogIn');
       window.dispatchEvent(new Event('storage'));
       return;

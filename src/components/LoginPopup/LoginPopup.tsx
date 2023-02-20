@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/semi */
 import React from 'react';
 import './LoginPopup.css';
 
-export const LoginPopup = ({ active, setActive, children }: Props) => (
+export const LoginPopup = ({
+  active, setActive, children,
+}: Props) => (
+
   <div className={active ? 'authorize__popup active' : 'authorize__popup'} onMouseDown={() => setActive(false)} role="button" tabIndex={0} aria-label="signup">
     <div
       className={active
@@ -14,7 +18,8 @@ export const LoginPopup = ({ active, setActive, children }: Props) => (
       {children}
     </div>
   </div>
-);
+
+)
 
 interface Props {
   active: boolean;

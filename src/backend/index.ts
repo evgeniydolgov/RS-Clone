@@ -32,6 +32,7 @@ const pool: mysql.Pool = mysql.createPool({
   password: 'JHGwZJt4Iz',
   database: 'sql7595528',
   port: 3306,
+  charset: 'utf8',
 });
 
 app.get('/', (req, res) => {
