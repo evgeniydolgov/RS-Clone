@@ -69,11 +69,11 @@ header {
     display: flex;
 }
 .authorization__btn {
+    width: 100%;
     padding: 5px 18px;
     font-weight: 400;
     font-size: 20px;
     color: #F0F0F0;
-    margin-left: 25px;
     transition: .3s;
     cursor: pointer;
 }
@@ -120,4 +120,21 @@ header {
     width: 80px;
     height: 100%;
     background: url('../../assets/png/6-samurai.png') 0 0/auto 100% no-repeat;
+  }
+
+  .sound_on {
+    background: url('../../assets/png/sound-on.png') 0 0/auto 100% no-repeat;
+    cursor: pointer;
+  }
+
+  .sound_off {
+    background: url('../../assets/png/sound-off.png') 0 0/auto 100% no-repeat;
+    cursor: pointer;
+  }
+
+  .sound_on,
+  .sound_off{
+    margin: 0 2vw;
+    width: 35px;
+    height: 35px;
   }

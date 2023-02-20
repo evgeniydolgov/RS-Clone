@@ -18,6 +18,10 @@
   background-color: rgba(0, 0, 0, 0.822);
 }
 
+.authorize__loader>div>p {
+  color: #e8f6f9;
+}
+
 .authorize__vegetables {
   display: flex;
   flex-direction: column;

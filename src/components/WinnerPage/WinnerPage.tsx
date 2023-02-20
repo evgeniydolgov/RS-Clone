@@ -1,13 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable global-require */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './WinnerPageStyle.css';
+import { useSound } from '../Layout/Layout';
 
 interface IScore {
   score: number
 }
 
 export const WinnerPage = ({ score }: IScore) => {
+  const { sound } = useSound();
   const winMusic = () => {
     const path = require('../../assets/mp3/mexicomus.mp3');
     return new Audio(path);
@@ -27,12 +30,9 @@ export const WinnerPage = ({ score }: IScore) => {
       requestOptions,
     );
     const data = await response.json();
-    console.log(response);
-    console.log(data);
   };
 
   const sendData = () => {
-    console.log('данные ушли');
     const storageScore = JSON.parse(localStorage.getItem('score') || '');
     if (storageScore) {
       localStorage.setItem('score', (score + +storageScore).toString());
@@ -45,7 +45,9 @@ export const WinnerPage = ({ score }: IScore) => {
     }
   };
 
-  winMusic().play();
+  if (sound) {
+    winMusic().play();
+  }
   return (
     <div className="winpage">
       <div className="winpage_container">
