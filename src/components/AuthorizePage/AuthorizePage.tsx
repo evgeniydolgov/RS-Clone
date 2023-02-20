@@ -79,6 +79,15 @@ export const AuthorizePage = (props: any) => {
     }
   };
 
+  const loginInput = React.useRef(null);
+  const loginElement: any = loginInput.current;
+  const passwordInput = React.useRef(null);
+  const passwordElement: any = passwordInput.current;
+  const loginSignup = React.useRef(null);
+  const loginSignupEl: any = loginSignup.current;
+  const passwordSignup = React.useRef(null);
+  const passwordSignupEl: any = passwordSignup.current;
+
   return (
     <div className="authorize__container">
       <div className="authorize__vegetables">
@@ -115,8 +124,19 @@ export const AuthorizePage = (props: any) => {
                 className="authorize__button"
                 openSignInPopUp={setAuthorizePopupActive}
                 setUserRegistered={setUserRegistered}
+                setRegisterStatus={setRegisterStatus}
+                loginSignupEl={loginSignupEl}
+                passwordSignupEl={passwordSignupEl}
               />
-              <AuthiorizeBtn textBtn={userLogged} className="authorize__button" openPopUp={setLoginPopupActive} setUserLogged={setUserLogged} />
+              <AuthiorizeBtn
+                textBtn={userLogged}
+                className="authorize__button"
+                openPopUp={setLoginPopupActive}
+                setUserLogged={setUserLogged}
+                setLoginStatus={setLoginStatus}
+                loginElement={loginElement}
+                passwordElement={passwordElement}
+              />
             </div>
           </div>
         </div>
@@ -127,13 +147,13 @@ export const AuthorizePage = (props: any) => {
         <p>
           <label htmlFor="loginRegister">
             Login&nbsp;
-            <input type="text" id="loginRegister" onChange={(el) => { setLogin(el.target.value); }} maxLength={10} required />
+            <input type="text" id="loginRegister" onChange={(el) => { setLogin(el.target.value); }} maxLength={10} ref={loginSignup} required />
           </label>
         </p>
         <p>
           <label htmlFor="passwordRegister">
             Password&nbsp;
-            <input type="password" id="passwordRegister" onChange={(el) => { setPassword(el.target.value); }} required />
+            <input type="password" id="passwordRegister" onChange={(el) => { setPassword(el.target.value); }} ref={passwordSignup} required />
           </label>
         </p>
         <button type="submit" className="popup__button" onClick={register}>Sign Up</button>
@@ -145,13 +165,13 @@ export const AuthorizePage = (props: any) => {
         <p>
           <label htmlFor="loginLogin">
             Login&nbsp;
-            <input type="text" id="loginLogin" onChange={(el) => { setLogin(el.target.value); }} required />
+            <input type="text" id="loginLogin" onChange={(el) => { setLogin(el.target.value); }} ref={loginInput} required />
           </label>
         </p>
         <p>
           <label htmlFor="passwordLogin">
             Password&nbsp;
-            <input type="password" id="passwordLogin" onChange={(el) => { setPassword(el.target.value); }} required />
+            <input type="password" id="passwordLogin" onChange={(el) => { setPassword(el.target.value); }} ref={passwordInput} required />
           </label>
         </p>
         <button type="submit" className="popup__button" onClick={loginAction} disabled={!login || !password}>Login</button>

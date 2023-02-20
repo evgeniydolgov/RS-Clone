@@ -6,14 +6,20 @@ interface IloginBtn {
   className: string
   openSignInPopUp: (el: boolean) => void;
   setUserRegistered: (el: string) => void;
+  setRegisterStatus: (el: string) => void;
+  loginSignupEl: any;
+  passwordSignupEl: any;
 }
 
 export const SignInBtn = ({
-  textBtn, className, openSignInPopUp, setUserRegistered,
+  textBtn, className, openSignInPopUp, setUserRegistered, setRegisterStatus, loginSignupEl, passwordSignupEl,
 }: IloginBtn) => {
   const logOutUser: React.MouseEventHandler<HTMLButtonElement> = (element) => {
     if (element.currentTarget.textContent === 'Sign Up') {
+      setRegisterStatus('');
       openSignInPopUp(true);
+      loginSignupEl.value = '';
+      passwordSignupEl.value = '';
       return;
     }
     localStorage.clear();

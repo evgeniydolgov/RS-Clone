@@ -6,10 +6,13 @@ interface IloginBtn {
   className: string
   openPopUp: (el: boolean) => void;
   setUserLogged: (el: string) => void;
+  setLoginStatus: (el: string) => void;
+  loginElement: any;
+  passwordElement: any;
 }
 
 export const AuthiorizeBtn = ({
-  textBtn, className, openPopUp, setUserLogged,
+  textBtn, className, openPopUp, setUserLogged, setLoginStatus, loginElement, passwordElement,
 }: IloginBtn) => {
   const user = JSON.parse(localStorage.getItem('user') as string);
 
@@ -22,6 +25,9 @@ export const AuthiorizeBtn = ({
   const logOutUser: React.MouseEventHandler<HTMLButtonElement> = (element) => {
     if (element.currentTarget.textContent === 'LogOut') {
       localStorage.clear();
+      setLoginStatus('');
+      loginElement.value = '';
+      passwordElement.value = '';
       setUserLogged('LogIn');
       window.dispatchEvent(new Event('storage'));
       return;
