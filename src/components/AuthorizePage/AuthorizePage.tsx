@@ -40,9 +40,6 @@ export const AuthorizePage = (props: any) => {
       setLoading(false);
       if (data.message === 'Account is already existed!') {
         setRegisterStatus('Account is already existed!');
-        setTimeout(() => {
-          setRegisterStatus('');
-        }, 2000);
       } else {
         console.log(data);
         localStorage.setItem('user', JSON.stringify(`${JSON.parse(requestOptions.body).login}`));
@@ -74,7 +71,6 @@ export const AuthorizePage = (props: any) => {
     setLoading(false);
     if (data.length > 0) {
       console.log(response);
-      console.log(data);
       setLoginStatus('Welcome!');
       localStorage.setItem('user', JSON.stringify(`${data[0].login}`));
       localStorage.setItem('score', JSON.stringify(`${data[0].score}`));

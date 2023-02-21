@@ -18,11 +18,11 @@ export const SignInBtn = ({
     if (element.currentTarget.textContent === 'Sign Up') {
       setRegisterStatus('');
       openSignInPopUp(true);
-      loginSignupEl.value = '';
-      passwordSignupEl.value = '';
       return;
     }
     localStorage.clear();
+    loginSignupEl.value = '';
+    passwordSignupEl.value = '';
     window.dispatchEvent(new Event('storage'));
     setUserRegistered('Sign In');
   };
