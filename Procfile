@@ -1,1 +1,1 @@
-web: concurrently \"npx nodemon src/backend/index.ts\" \"react-scripts start\"
+web: react-scripts start"
