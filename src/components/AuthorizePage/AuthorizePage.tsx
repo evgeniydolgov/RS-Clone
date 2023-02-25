@@ -35,7 +35,7 @@ export const AuthorizePage = (props: any) => {
     if (JSON.parse(requestOptions.body).login === '' || JSON.parse(requestOptions.body).password === '') {
       alert('Attention! Login or / and password cannot be empty!');
     } else {
-      const response = await fetch('http://localhost:3001/register', requestOptions);
+      const response = await fetch('https://git.heroku.com/shchi-borshci.git/register', requestOptions);
       const data = await response.json();
       setLoading(false);
       if (data.message === 'Account is already existed!') {
@@ -64,7 +64,7 @@ export const AuthorizePage = (props: any) => {
       }),
     };
     const response = await fetch(
-      'http://localhost:3001/login',
+      'https://git.heroku.com/shchi-borshci.git/login',
       requestOptions,
     );
     const data = await response.json();

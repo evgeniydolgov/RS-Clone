@@ -7,7 +7,7 @@ import { IcorsOption } from './interfaces';
 
 const app = express();
 
-const port: number = 3001;
+const port = process.env.port || 3001;
 
 const corsOptions: IcorsOption = {
   origin: '*',
