@@ -26,7 +26,7 @@ export const WinnerPage = ({ score }: IScore) => {
       }),
     };
     const response = await fetch(
-      'https://git.heroku.com/shchi-borshci.git/updatescore',
+      'https://shchi-borshci.herokuapp.com/updatescore',
       requestOptions,
     );
     const data = await response.json();

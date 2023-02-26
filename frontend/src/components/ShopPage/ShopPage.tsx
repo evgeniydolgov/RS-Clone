@@ -18,7 +18,7 @@ export const ShopPage = () => {
       }),
     };
     const response = await fetch(
-      'https://git.heroku.com/shchi-borshci.git/spendscore',
+      'https://shchi-borshci.herokuapp.com/spendscore',
       requestOptions,
     );
     const data = await response.json();
