@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const corsOptions: IcorsOption = {
-  origin: 'https://shchi-borshci.herokuapp.com/',
+  origin: 'http://localhost:3000',
   credentials: true,
   optionSuccessStatus: 200,
 };
