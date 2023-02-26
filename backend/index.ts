@@ -23,14 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true } as OptionsUrlencoded | undefine
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-  next();
-});
-
 const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlencoded | undefined);
 
 app.listen(PORT as number, () => {
@@ -122,6 +114,7 @@ app.post('/login', urlencodedParser, (req, res) => {
     } else {
       const { login } = req.body;
       const { password } = req.body;
+      res.header('Access-Control-Allow-Origin', '*');
       console.log(req.body);
       conn.query(
         'SELECT * FROM users WHERE login = ? AND password = ?' as string,
