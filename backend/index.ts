@@ -13,8 +13,18 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
+const domainsFromEnv = process.env.CORS_DOMAINS || '';
+
+const whitelist = domainsFromEnv.split(',').map((item) => item.trim());
+
 const corsOptions: IcorsOption = {
-  origin: '*',
+  origin(origin: any, callback: any) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   optionSuccessStatus: 200,
   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',

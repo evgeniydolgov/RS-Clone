@@ -1,5 +1,5 @@
 export interface IcorsOption {
-  origin: string;
+  origin: any;
   credentials: boolean;
   optionSuccessStatus: number;
   allowedHeaders: string[];
