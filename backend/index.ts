@@ -17,6 +17,8 @@ const corsOptions: IcorsOption = {
   origin: '*',
   credentials: true,
   optionSuccessStatus: 200,
+  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type'],
 };
 
 app.use(bodyParser.urlencoded({ extended: true } as OptionsUrlencoded | undefined));
@@ -114,7 +116,7 @@ app.post('/login', urlencodedParser, (req, res) => {
     } else {
       const { login } = req.body;
       const { password } = req.body;
-      res.header('Access-Control-Allow-Origin', '*');
+      // res.header('Access-Control-Allow-Origin', '*');
       console.log(req.body);
       conn.query(
         'SELECT * FROM users WHERE login = ? AND password = ?' as string,
