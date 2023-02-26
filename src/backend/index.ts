@@ -7,7 +7,7 @@ import { IcorsOption } from './interfaces';
 
 const app = express();
 
-const port = process.env.port || 3001;
+const PORT = process.env.PORT || 5000;
 
 const corsOptions: IcorsOption = {
   origin: '*',
@@ -21,8 +21,8 @@ app.use(cors(corsOptions));
 
 const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlencoded | undefined);
 
-app.listen(port as number, () => {
-  console.log(`App listen on port ${port as number}` as string);
+app.listen(PORT as number, () => {
+  console.log(`App listen on port ${PORT as number}` as string);
 });
 
 const pool: mysql.Pool = mysql.createPool({
