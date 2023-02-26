@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "node src/backend/index.js",
+    "build": "node src/backend/index.ts",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "go": "concurrently \"npx nodemon src/backend/index.ts\" \"react-scripts start\"",
