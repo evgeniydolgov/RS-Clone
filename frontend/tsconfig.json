@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
+      "useUnknownInCatchVariables": false,
+      "esModuleInterop": true,
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "jsx": "react",
+      "strict": true,
+      "noImplicitAny": true,
+    },
+    "include": [
+      "src/**/*",
+      "backend",
+      "./.d.ts", ]
+  }
