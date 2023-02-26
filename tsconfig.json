@@ -10,9 +10,8 @@
       "noImplicitAny": true,
     },
     "include": [
-      "src",
+      "frontend/src",
+      "backend",
       "./.d.ts"
-    ],
-    "target": "ES5",                         
-    "module": "CommonJS",
+, "backend"    ]
   }

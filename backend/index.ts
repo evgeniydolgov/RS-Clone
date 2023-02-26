@@ -1,4 +1,6 @@
 import express from 'express';
+import path from 'path';
+
 import bodyParser, { OptionsUrlencoded } from 'body-parser';
 import mysql from 'mysql';
 import cors from 'cors';
@@ -34,6 +36,19 @@ const pool: mysql.Pool = mysql.createPool({
   port: 3306,
   charset: 'utf8',
 });
+
+// eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
+const __dirname1 = path.resolve();
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname1, '/frontend')));
+
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname1, 'frontend', 'index.html')));
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running..');
+  });
+}
 
 app.get('/', (req, res) => {
   pool.getConnection((err, conn) => {
