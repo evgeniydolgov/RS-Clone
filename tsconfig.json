@@ -4,6 +4,9 @@
       "noUnusedParameters": false,
       "useUnknownInCatchVariables": false,
       "esModuleInterop": true,
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
       "jsx": "react",
       "strict": true,
@@ -12,6 +15,5 @@
     "include": [
       "frontend/src",
       "backend",
-      "./.d.ts"
-, "backend"    ]
+      "./.d.ts", ]
   }
