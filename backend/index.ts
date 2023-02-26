@@ -81,7 +81,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/register', urlencodedParser, (req, res) => {
+app.post('https://shchi-borshci.herokuapp.com/register', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -119,7 +119,7 @@ app.post('/register', urlencodedParser, (req, res) => {
   });
 });
 
-app.post('/login', urlencodedParser, (req, res) => {
+app.post('https://shchi-borshci.herokuapp.com/login', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
