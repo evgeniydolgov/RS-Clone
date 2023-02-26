@@ -12,5 +12,7 @@
     "include": [
       "src",
       "./.d.ts"
-    ]
+    ],
+    "target": "ES5",                         
+    "module": "CommonJS",
   }
