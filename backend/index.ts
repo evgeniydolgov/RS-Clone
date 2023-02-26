@@ -3,25 +3,42 @@ import path from 'path';
 
 import bodyParser, { OptionsUrlencoded } from 'body-parser';
 import mysql from 'mysql';
-import cors from 'cors';
+// import cors from 'cors';
 import dotenv from 'dotenv';
 
-import { IcorsOption } from './interfaces';
+// import { IcorsOption } from './interfaces';
 
 dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-const corsOptions: IcorsOption = {
-  origin: 'http://localhost:3000',
+/* const corsOptions: IcorsOption = {
+  origin: '*',
   credentials: true,
   optionSuccessStatus: 200,
-};
+}; */
 
 app.use(bodyParser.urlencoded({ extended: true } as OptionsUrlencoded | undefined));
 app.use(bodyParser.json());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+// eslint-disable-next-line consistent-return
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested, Content-Type, Accept Authorization',
+  );
+  if (req.method === 'OPTIONS') {
+    res.header(
+      'Access-Control-Allow-Methods',
+      'POST, PUT, PATCH, GET, DELETE',
+    );
+    return res.status(200).json({});
+  }
+  next();
+});
 
 const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlencoded | undefined);
 
