@@ -18,7 +18,7 @@ const corsOptions: IcorsOption = {
   credentials: true,
   optionSuccessStatus: 200,
   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type', 'Access-Control-Allow-Origin'],
 };
 
 app.use(bodyParser.urlencoded({ extended: true } as OptionsUrlencoded | undefined));
@@ -109,7 +109,7 @@ app.post('/register', urlencodedParser, (req, res) => {
   });
 });
 
-app.post('https://shchi-borshci.herokuapp.com/login', urlencodedParser, (req, res) => {
+app.post('/login', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
