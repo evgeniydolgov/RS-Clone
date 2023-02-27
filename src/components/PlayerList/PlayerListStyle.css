@@ -1,0 +1,24 @@
+.play-list {
+  flex-grow: 1;
+  background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
+
+}
+
+.play-list__container{
+  margin: 20px auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Rochester', cursive;
+  font-size: 30px;
+  border-radius: 15px;
+  border: 1px solid black;
+  background-color: #eae8d6;
+}
+
+.user__table {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}

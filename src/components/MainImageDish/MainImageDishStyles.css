@@ -1,0 +1,57 @@
+.dish__cart {
+  display: flex;
+  flex-wrap: wrap;
+}
+.one-dish {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: solid 2px rgb(178 164 112);
+  border: solid 2px rgb(118 113 75);
+  overflow: hidden;
+}
+
+.dish__img {
+  border-radius: 10px;
+  width: 315px;
+  height: 315px;
+  display: block;
+  transition: 0.5s;
+}
+.dish__img:hover {
+  filter: brightness(60%);
+  transform: scale(1.1);
+}
+.dish-back {
+  background: rgba(25, 22, 47, 0.75);
+  width: 100%;
+  height: 110px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 0px 0px 10px 10px;
+  transition: 0.5s;
+}
+.dish-logo {
+  background: url('../../assets/svg/logo_dish_img.svg') no-repeat;
+  width: 65px;
+  height: 35px;
+  z-index: 10;
+  transition: 0.5s;
+}
+.dish-title {
+  text-align: start;
+  width: 100%;
+  font-family: 'Roboto';
+  font-size: 20px;
+  color: #fafafa;
+  transition: 0.5s;
+}
+.dish-title:hover {
+  color: #adb8d0;
+}

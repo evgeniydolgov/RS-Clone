@@ -1,0 +1,1 @@
+export { SortCuisinesRecipesByArea } from './SortCuisinesRecipesByArea';

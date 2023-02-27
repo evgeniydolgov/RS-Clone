@@ -1,0 +1,17 @@
+.dish-change{
+  margin: 5px 3%;
+  padding: 6px 22px;
+  font-family: 'Sansita', sans-serif;
+  font-size: 22px;
+  color: #FFFFFF;
+  background-color: #0E5984;
+  border: 1px solid #BDC3C7;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.first-btn {
+  margin: 0 4%;
+  flex-grow: 1;
+}
+

@@ -1,0 +1,57 @@
+.footer {
+  width: 100%;
+  background: url('../../assets/jpeg/back_header.jpg') center no-repeat;
+  background-size: cover;
+  background-color: #A7DCE5;
+}
+
+.footer-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  margin: 0 auto;
+}
+
+.github-list{
+  margin: 5px 0 5px 0;
+  display: grid;
+  gap: 5px 5px;
+  grid-template-areas:
+    "authors authors authors"
+    "git-image git-image git-image";
+}
+
+.github-list__name {
+  font-family: 'Rufina', serif;
+  font-size: 20px;
+  font-weight: 700;
+  grid-area: authors;
+}
+
+.git-img {
+  grid-area: git-image;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: url('../../assets/svg/github.svg')0 50%/cover no-repeat;
+}
+
+.year-creation {
+  font-family: 'Rufina', serif;
+  font-weight: 700;
+}
+
+.rs-container {
+  display: flex;
+  align-items: center;
+}
+
+.rs-link {
+  height: 40px;
+  width: 100px;
+  background: url('../../assets/svg/rs-logo.svg') 0 0/contain no-repeat;
+}

@@ -1,0 +1,15 @@
+.oneplayer__info {
+  display: flex;
+  align-items: center;
+  width: 40vw;
+  justify-content: space-between;
+}
+
+.oneplayer__info>div {
+  width: 30%;
+}
+
+.avatar_container>div {
+  width: 100px;
+  height: 100px;
+}

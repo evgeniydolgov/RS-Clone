@@ -1,0 +1,1 @@
+export { MainImageDish } from './MainImageDish';

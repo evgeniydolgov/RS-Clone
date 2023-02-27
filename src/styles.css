@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Rum+Raisin&family=Sansita&display=swap');
+
+html,
+body,
+.root {
+    min-height: 100vh;
+}
+
+html {
+    width:100vw;
+    overflow-x:hidden;
+}
+
+body{
+    max-width: 100%;
+    display: flex;
+    font-size: 22px;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+p, 
+h1,
+h2,
+h4, 
+li,
+ul {
+    margin: 0;
+    padding: 0;
+}
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+li {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+.btn {
+    background-color: #0E5984;
+    border-radius: 20px;
+    border: 2px solid #1C6189;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    user-select: none;
+}
+
+.example {
+    display: none;
+}

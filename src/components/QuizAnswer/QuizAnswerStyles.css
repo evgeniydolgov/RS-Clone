@@ -1,0 +1,12 @@
+.product {
+  cursor: pointer;
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px 20px 10px 10px;
+  border-radius: 10px;
+  font-family: Rufina;
+  font-size: 20px;
+  text-align: center;
+  background-color: #0E5984;
+  color: #FCFCFC;
+}

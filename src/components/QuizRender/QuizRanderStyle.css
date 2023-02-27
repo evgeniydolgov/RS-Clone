@@ -1,0 +1,79 @@
+.QuizPage {
+  flex-grow: 1;
+  background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
+}
+
+.Quiz_question {
+  margin-top: 10px;
+  font-size: 28px;
+  font-family: 'Sansita', sans-serif;
+}
+
+.QuizPage-container {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  padding: 20px 0 0 0;
+}
+
+.quiz__title{
+  margin-bottom: 20px;
+  font-family: 'Rochester', cursive;
+ }
+
+.QuizPage-board {
+  max-width: 1200px;
+  border-radius: 25px;
+  width: 100%;
+  margin: 0 auto;
+  /* padding: 50px; */
+  /* background: url("../../assets/svg/recipe-page/strip-board.svg") 0 0/100% auto no-repeat; */
+}
+
+.dish-picture {
+  display: flex;
+  align-items: end;
+  gap: 30px;
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+  /* background: url("../../assets/svg/recipe-page/recipe-demo.svg")0 0/100% auto no-repeat;; */
+}
+
+.dish-picture>img {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.dish-composition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px auto;
+  max-width: 60%;
+}
+
+.next_btn {
+  cursor: pointer;
+  margin: 5px;
+  padding: 10px 25px;
+  border-radius: 15px 0;
+  color: aliceblue;
+  background-color: #263640;
+  pointer-events: none;
+}
+
+.score_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.score_container>p {
+  font-size: 28px;
+  margin-left: 5px;
+  font-family: 'Sansita', sans-serif;
+}

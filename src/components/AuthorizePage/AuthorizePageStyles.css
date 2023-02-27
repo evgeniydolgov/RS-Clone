@@ -1,0 +1,196 @@
+.authorize__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e8f6f9;
+  flex-grow: 1;
+}
+
+.authorize__loader {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.822);
+}
+
+.authorize__loader>div>p {
+  color: #e8f6f9;
+}
+
+.authorize__vegetables {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  background: url("../../assets//jpeg/back_authorize.jpg") 80% 0 / cover
+    no-repeat;
+}
+
+.upper__container {
+  display: flex;
+  justify-content: flex-end;
+  width: 60%;
+  height: 40%;
+}
+
+.motto__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 70%;
+  height: 100%;
+  margin-right: 100px;
+}
+
+.motto {
+  font-family: "Rufina", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 133%;
+  text-align: right;
+  color: #0d2f63;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.submotto {
+  font-family: "Rufina", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 150%;
+  text-align: right;
+  color: #0d2f63;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.middle__container {
+  display: flex;
+  justify-content: space-between;
+  width: 60.5%;
+  height: 45%;
+  margin-top: 30px;
+}
+
+.logo__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 35%;
+  height: 100%;
+}
+
+.logo__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 85%;
+  background-image: url("../../assets/svg/authorize-page/logo_big.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 0px auto;
+}
+
+.button__center {
+  width: 100%;
+  height: 100%;
+  padding: 15px 20px;
+  border-radius: 20px;
+  color: white;
+  background-color: #0e5984;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.white__text {
+  color: white;
+}
+
+.button__center:hover {
+  transform: scale(1.1);
+  background-color: #111266;
+}
+
+.signing__block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 30%;
+  height: 100%;
+  margin-right: 38px;
+}
+
+.signing__text {
+  font-family: "Rufina", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: right;
+  color: #0d2f63;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.signing__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
+  height: 40%;
+  margin-top: 20px;
+}
+
+.authorize__button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  height: 40%;
+  border-radius: 20px;
+  color: white;
+  background-color: #0e5984;
+  margin-right: 60px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.authorize__button:hover {
+  transform: scale(1.1);
+  background-color: #111266;
+}
+
+.authorize__button__text {
+  margin-right: 10px;
+}
+
+.icon__button {
+  width: 30px;
+  height: 30px;
+  background-image: url("../../assets/svg/main-page/white-pot.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right bottom;
+}
+
+.popup__button {
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border-radius: 15px 0;
+  cursor: pointer;
+}
+
+.popup__button:hover {
+  background-color: #eae8d6;
+}

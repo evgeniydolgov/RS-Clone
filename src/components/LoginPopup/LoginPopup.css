@@ -1,0 +1,49 @@
+.authorize__popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  opacity: 0;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.authorize__popup.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.popup__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Sansita', sans-serif;
+  width: 40vw;
+  height: 45vh;
+  border-radius: 10px;
+  color: black;
+  background-color: #b3dee5;
+  z-index: 100;
+  transform: scale(0.1);
+  transition: 0.4s all;
+}
+
+.popup__inner.active {
+  transform: scale(1);
+}
+
+.loginLogin,
+.passwordLogin,
+.loginRegister,
+.passwordRegister{
+  font-size: 18px;
+  font-family: 'Sansita', sans-serif;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}

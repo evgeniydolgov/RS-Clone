@@ -1,0 +1,58 @@
+.memo {
+    background-size: cover;
+    background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
+    flex-grow: 1;
+}
+
+.memo__inner {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.memo__title {
+    font-family: 'Rochester', cursive;
+}
+
+.memo__btn {
+    cursor: pointer;
+    padding: 10px 25px;
+    border-radius: 15px 0;
+    color: aliceblue;
+    background-color: #263640;
+    cursor: pointer;
+    font-family: 'Rufina', serif;
+    font-weight: 700;
+}
+
+.memo__btn:hover {
+    background-color:rgb(14, 89, 132);;
+}
+
+.memo__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 60%;
+    margin: 0 auto;
+    max-width: 680px;
+    justify-content: center;
+}
+
+.memo__control {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.memo__score {
+    font-size: 26px;
+    font-family: 'Rufina', serif;
+    font-weight: 700;
+    margin: 10px 0;
+}
+.memo__score span {
+    font-size: 28px;
+}

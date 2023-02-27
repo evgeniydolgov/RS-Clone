@@ -1,0 +1,34 @@
+.recipe__description {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    margin-top: 35px;
+    margin-bottom: 50px;
+}
+.recipe__img {
+    width: 270px;
+    height: 270px;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+}
+.recipe__description-container {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.recipe__description-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .recipe__description-container::-webkit-scrollbar-track {
+    background: rgba(255, 166, 0, 0);        /* цвет зоны отслеживания */
+  }
+  
+  .recipe__description-container::-webkit-scrollbar-thumb {
+    background-color: #AFE2EC;    /* цвет бегунка */
+    border-radius: 20px;       /* округлось бегунка */
+    border: 1px solid rgb(0, 0, 0);  /* отступ вокруг бегунка */
+  }
+

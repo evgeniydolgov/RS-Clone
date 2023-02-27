@@ -1,0 +1,1 @@
+export { WinnerPage } from './WinnerPage';
