@@ -44,7 +44,7 @@ const pool: mysql.Pool = mysql.createPool({
 // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
 const __dirname1 = path.resolve();
 
-app.get('/api/', (req, res) => {
+app.get('/api', (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
