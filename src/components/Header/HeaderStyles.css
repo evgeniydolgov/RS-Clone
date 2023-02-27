@@ -2,6 +2,8 @@ header {
     width: 100%;
     background: url('../../assets/jpeg/back_header.jpg') center no-repeat;
     background-size: cover;
+    position: fixed;
+    z-index: 30;
 }
 .header__inner {
     font-family: 'Rufina', serif;
@@ -25,15 +27,15 @@ header {
     background: url('../../assets/svg/logo.svg') center no-repeat;
     width: 77px;
     height: 65px;
-    margin-right: 45px;
+    margin-top: 5px;
     cursor: pointer;
 }
 .header-list {
     display: flex;
     transition: 0.5s;
+    padding-left: 20px;
 }
 .header-link {
-    margin-right: 35px;
     font-size: 24px;
     line-height: 24px;
     color: #062B4D;
@@ -63,6 +65,9 @@ header {
     justify-content: center;
     width: 50%;
     height: 100%;
+    font-size: 22px;
+    text-align: start;
+
 }
 
 .header-authorization {
@@ -88,7 +93,7 @@ header {
 
 .burn-arr {
     width: 80px;
-    height: 100%;
+    height: 65px;
     background: url('../../assets/png/1-burned.png') 0 0/auto 100% no-repeat;
   }
 
@@ -135,6 +140,27 @@ header {
   .sound_on,
   .sound_off{
     margin: 0 2vw;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
   }
+  .header-info__tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0px 15px;
+    margin-top: 5px;
+    height: 65px;
+  }
+  .header__tablet {
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 450px){
+    .userinfo {
+      font-size: 17px;
+    }
+    
+  }
+

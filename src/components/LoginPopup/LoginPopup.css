@@ -47,3 +47,8 @@
   border: none;
   outline: none;
 }
+@media (max-width: 450px){
+  .popup__inner{
+     width: 300px;
+  }
+}

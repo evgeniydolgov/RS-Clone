@@ -43,6 +43,7 @@
 .year-creation {
   font-family: 'Rufina', serif;
   font-weight: 700;
+  display: block;
 }
 
 .rs-container {
@@ -54,4 +55,15 @@
   height: 40px;
   width: 100px;
   background: url('../../assets/svg/rs-logo.svg') 0 0/contain no-repeat;
+}
+@media (max-width: 450px){
+  .year-creation {
+    display: none;
+  }
+  .rs-link {
+    height: 30px;
+    width: 75px;
+  }
+  .github-list__name{ display: none;}
+  
 }

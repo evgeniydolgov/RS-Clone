@@ -1,6 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import { BurgerMenu } from '../BurgerMenu';
 import './HeaderStyles.css';
 
 interface ISound {
@@ -12,6 +14,14 @@ export const Header = ({ sound, setSound }: ISound) => {
   const [user, setUser] = useState(localStorage.getItem('user')?.slice(1, -1));
   const [score, setScore] = useState(localStorage.getItem('score'));
   const [avatar, setAvatar] = useState((localStorage.getItem('avatar')));
+
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 786px)',
+  });
+
+  const isMobile = useMediaQuery({
+    query: '(max-width: 786px)',
+  });
 
   const nameAvatar = ['userpic', 'burn-arr', 'cool-arr', 'stud-arr', 'super-arr', 'secret-arr', 'sam-arr'];
 
@@ -62,31 +72,52 @@ export const Header = ({ sound, setSound }: ISound) => {
   }, [avatar]);
   return (
     <header>
-      <div className="header__inner">
-        <div className="header-info">
-          <Link className="header-link" to="/"><div className="header-logo" /></Link>
-          <nav>
-            <ul className="header-list">
-              <li><Link className="header-link" to="/playerList">Players list</Link></li>
-            </ul>
-          </nav>
-        </div>
-        {user && (
-          <div className="header-account">
-            <div className={nameAvatar[JSON.parse(avatar || '')]} />
-            <div className="userinfo">
-              <p>{user}</p>
-              <p>{`Score: ${JSON.parse(score || '')}`}</p>
+      {
+        isDesktop && (
+          <div className="header__inner">
+            <div className="header-info">
+              <Link className="header-link" to="/"><div className="header-logo" /></Link>
+              <nav>
+                <ul className="header-list">
+                  <li><Link className="header-link" to="/playerList">Players</Link></li>
+                </ul>
+              </nav>
+            </div>
+            {user && (
+              <div className="header-account">
+                <div className={nameAvatar[JSON.parse(avatar || '')]} />
+                <div className="userinfo">
+                  <p>{user}</p>
+                  <p>{`Score: ${JSON.parse(score || '')}`}</p>
+                </div>
+              </div>
+            )}
+            <div className="header-authorization">
+              <button type="button" className={sound ? 'sound_on' : 'sound_off'} onClick={sound ? disabledSound : activSound}>{}</button>
+              <Link className="btn__link" to="/authorize">
+                <button type="button" className="btn authorization__btn">Join us</button>
+              </Link>
             </div>
           </div>
-        )}
-        <div className="header-authorization">
-          <button type="button" className={sound ? 'sound_on' : 'sound_off'} onClick={sound ? disabledSound : activSound}>{}</button>
-          <Link className="btn__link" to="/authorize">
-            <button type="button" className="btn authorization__btn">Join us</button>
-          </Link>
+        )
+      }
+      { isMobile && (
+        <div className="header-info__tablet">
+          <div className="header__tablet">
+            {user && (
+            <div className="header-account">
+              <div className={nameAvatar[JSON.parse(avatar || '')]} />
+              <div className="userinfo">
+                <p>{user}</p>
+                <p>{`Score: ${JSON.parse(score || '')}`}</p>
+              </div>
+            </div>
+            )}
+            <button type="button" className={sound ? 'sound_on' : 'sound_off'} onClick={sound ? disabledSound : activSound}>{}</button>
+          </div>
+          <BurgerMenu />
         </div>
-      </div>
+      )}
     </header>
   );
 };
