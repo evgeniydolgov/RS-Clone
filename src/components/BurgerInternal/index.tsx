@@ -1,0 +1,1 @@
+export { BurgerInternal } from './BurgerInternal';

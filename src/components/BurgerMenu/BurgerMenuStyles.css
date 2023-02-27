@@ -1,0 +1,36 @@
+.burger {
+    z-index: 50;
+    position:relative;
+    display: flex;
+    align-items: center;
+}
+.burger__btn {
+    width: 30px;
+    height: 26px;
+    margin-right: 20px;
+    position: relative;
+    cursor: pointer;
+}
+.burger__btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 30px;
+    background-color: black;
+    height: 3px;
+}
+.burger__btn span {
+    position: absolute;
+    top: 11px;
+    width: 30px;
+    background-color: black;
+    height: 3px;
+}
+.burger__btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    background-color: black;
+    height: 3px;
+}
