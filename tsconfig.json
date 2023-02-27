@@ -1,19 +1,18 @@
 {
-    "compilerOptions": {
-      "noUnusedLocals": false,
-      "noUnusedParameters": false,
-      "useUnknownInCatchVariables": false,
-      "esModuleInterop": true,
-      "target": "es6",
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "allowSyntheticDefaultImports": true,
-      "jsx": "react",
-      "strict": true,
-      "noImplicitAny": true,
-    },
-    "include": [
-      "frontend/src",
-      "backend",
-      "./.d.ts", ]
-  }
+  "compilerOptions": {
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "useUnknownInCatchVariables": false,
+    "esModuleInterop": true,
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "strict": true,
+    "noImplicitAny": true,
+    "outDir": "./backend/build"
+  },
+  "include": ["backend", "./.d.ts"],
+  "exclude": ["frontend"]
+}

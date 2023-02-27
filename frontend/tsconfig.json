@@ -12,8 +12,7 @@
       "strict": true,
       "noImplicitAny": true,
     },
-    "include": [
-      "src/**/*",
-      "backend",
-      "./.d.ts", ]
+    "exclude": [
+      "node_modules"
+    ]
   }

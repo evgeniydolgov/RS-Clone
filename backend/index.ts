@@ -18,13 +18,7 @@ const domainsFromEnv = process.env.CORS_DOMAINS || '';
 const whitelist = domainsFromEnv.split(',').map((item) => item.trim());
 
 const corsOptions: IcorsOption = {
-  origin(origin: any, callback: any) {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: '*',
   credentials: true,
   optionSuccessStatus: 200,
   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
@@ -36,10 +30,6 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlencoded | undefined);
-
-app.listen(PORT as number, () => {
-  console.log(`App listen on port ${PORT as number}` as string);
-});
 
 const pool: mysql.Pool = mysql.createPool({
   connectionLimit: 5,
@@ -54,17 +44,7 @@ const pool: mysql.Pool = mysql.createPool({
 // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
 const __dirname1 = path.resolve();
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname1, '/frontend/build')));
-
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname1, 'frontend', 'build', 'index.html')));
-} else {
-  app.get('/', (req, res) => {
-    res.send('API is running..');
-  });
-}
-
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -81,7 +61,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('https://shchi-borshci.herokuapp.com/register', urlencodedParser, (req, res) => {
+app.post('/api/register', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -119,7 +99,7 @@ app.post('https://shchi-borshci.herokuapp.com/register', urlencodedParser, (req,
   });
 });
 
-app.post('https://shchi-borshci.herokuapp.com/login', urlencodedParser, (req, res) => {
+app.post('/api/login', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -148,7 +128,7 @@ app.post('https://shchi-borshci.herokuapp.com/login', urlencodedParser, (req, re
   });
 });
 
-app.put('/updatescore', urlencodedParser, (req, res) => {
+app.put('/api/updatescore', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -176,7 +156,7 @@ app.put('/updatescore', urlencodedParser, (req, res) => {
   });
 });
 
-app.put('/spendscore', urlencodedParser, (req, res) => {
+app.put('/api/spendscore', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -203,6 +183,16 @@ app.put('/spendscore', urlencodedParser, (req, res) => {
       );
     }
   });
+});
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname1, '/frontend/build')));
+
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname1, 'frontend', 'build', 'index.html')));
+}
+
+app.listen(PORT as number, () => {
+  console.log(`App listen on port ${PORT as number}` as string);
 });
 
 /* app.delete('/delete/:id', (req, res) => {
