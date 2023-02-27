@@ -3,6 +3,7 @@
   justify-content: center;
   flex-grow: 1;
   background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
+  padding-top: 70px;
 }
 
 .shoppage__container {

@@ -70,7 +70,6 @@ export const AuthorizePage = (props: any) => {
     const data = await response.json();
     setLoading(false);
     if (data.length > 0) {
-      console.log(response);
       setLoginStatus('Welcome!');
       localStorage.setItem('user', JSON.stringify(`${data[0].login}`));
       localStorage.setItem('score', JSON.stringify(`${data[0].score}`));
@@ -94,17 +93,12 @@ export const AuthorizePage = (props: any) => {
   return (
     <div className="authorize__container">
       <div className="authorize__vegetables">
-        <div className="upper__container">
-          <div className="motto__block">
-            <p className="motto">
-              We`ve been waiting for you!
-            </p>
-            <p className="submotto">
-              Here you will find many
-              <br />
-              interesting recipes!
-            </p>
-          </div>
+        <div className="motto__block">
+          We`ve been waiting for you!
+          <br />
+          Here you will find many
+          <br />
+          interesting recipes!
         </div>
         <div className="middle__container">
           <div className="logo__block">

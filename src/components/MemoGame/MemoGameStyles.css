@@ -9,7 +9,6 @@
 }
 .card_back,
 .card_front {
-    /* width: 150px; */
     height: 130px;
 }
 .card .card_front {
@@ -30,3 +29,10 @@
     transition-delay: 0s;
 
 }
+
+@media (max-width: 450px){
+    .memo__title {
+        font-size: 25px;
+    }
+}
+

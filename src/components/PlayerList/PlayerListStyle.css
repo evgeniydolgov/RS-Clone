@@ -1,12 +1,13 @@
 .play-list {
   flex-grow: 1;
   background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
-
+  padding-top: 0;
+  padding-top: 70px;
 }
 
 .play-list__container{
   margin: 20px auto;
-  width: 50%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,9 +17,49 @@
   border: 1px solid black;
   background-color: #eae8d6;
 }
+.play-list__container h3  {
+  font-size: 36px;
+}
 
 .user__table {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+@media (max-width: 1024px){
+  
+  .play-list__container {
+    width: 85%;
+  }
+  .oneplayer__info {
+    width: 70vw;
+  }
+}
+@media (max-width: 786px){
+  .oneplayer__info>div {
+    font-size: 18px;
+  }
+  .oneplayer__info {
+    width: 80vw;
+  }
+
+}
+@media (max-width: 450px){
+
+  .play-list__container {
+  width: 95%;
+  }
+  .play-list__container h3  {
+    font-size: 24px;
+  }
+  .avatar_container>div {
+    height: 80px;
+  }
+  .oneplayer__info {
+    width: 90vw;
+  }
+  .oneplayer__info>div {
+    font-size: 18px;
+    }
+
 }

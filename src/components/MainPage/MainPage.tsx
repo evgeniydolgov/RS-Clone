@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks';
 import {
@@ -36,6 +37,8 @@ export const MainPage = () => {
     dispatch(loadRecipesByCuisineName(target.value));
     dispatch(saveCountryName(target.value));
   };
+  const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)' });
+  const isBigScreen = useMediaQuery({ query: '(max-width: 1223px)' });
 
   return (
     <div className="mainpage__container">
@@ -50,13 +53,22 @@ export const MainPage = () => {
       </div>
 
       <div className="mainpage__test">
+        { isDesktopOrLaptop && (
         <h3>
           Try games from
           <span> ShchiBorshci</span>
         </h3>
-        <Link to="/quiz"><button type="button" className="start-test_btn">Quiz</button></Link>
-        <Link to="/memo"><button type="button" className="start-test_btn">Memo</button></Link>
-        <Link to="/shop"><button type="button" className="start-test_btn">Shop</button></Link>
+        )}
+        { isBigScreen && (
+        <h3>
+          Try games
+        </h3>
+        )}
+        <div className="all-test__btns">
+          <Link to="/quiz"><button type="button" className="start-test_btn">Quiz</button></Link>
+          <Link to="/memo"><button type="button" className="start-test_btn">Memo</button></Link>
+          <Link to="/shop"><button type="button" className="start-test_btn">Shop</button></Link>
+        </div>
         {!user ? <div className="black__border">Games are available only to registered users</div> : null}
       </div>
 

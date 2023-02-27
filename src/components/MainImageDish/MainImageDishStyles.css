@@ -17,8 +17,8 @@
 
 .dish__img {
   border-radius: 10px;
-  width: 315px;
-  height: 315px;
+  width: 305px;
+  height: 305px;
   display: block;
   transition: 0.5s;
 }
@@ -27,6 +27,7 @@
   transform: scale(1.1);
 }
 .dish-back {
+  display: block;
   background: rgba(25, 22, 47, 0.75);
   width: 100%;
   height: 110px;
@@ -38,6 +39,7 @@
   transition: 0.5s;
 }
 .dish-logo {
+  display: block;
   background: url('../../assets/svg/logo_dish_img.svg') no-repeat;
   width: 65px;
   height: 35px;
@@ -54,4 +56,16 @@
 }
 .dish-title:hover {
   color: #adb8d0;
+}
+@media (max-width: 1024px){
+  .dish__img {
+    width: 290px;
+    height: 290px;
+  }
+  .dish-back {
+    height: 95px;
+  }
+  .dish-title {
+    font-size: 19px;
+  }
 }
