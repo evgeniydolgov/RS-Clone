@@ -2,6 +2,7 @@
     flex-grow: 1;
     background: url('../../assets/jpeg/back_area_cuisine.jpg') center no-repeat;
     background-size: cover;
+    padding-top: 70px;
 
 }
 .sort-by-area__inner {
@@ -28,4 +29,13 @@ h3 {
 }
 h3 span {
     font-size: 40px;
+}
+@media (max-width: 786px){
+    .dish-logo {
+        display: none;
+    }
+    .dish__img-cuisine {
+        width: 220px;
+        height: 220px;
+    }
 }

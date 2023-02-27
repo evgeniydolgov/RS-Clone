@@ -7,6 +7,10 @@
 
 .oneplayer__info>div {
   width: 30%;
+  font-size: 23px;
+  font-family: "Rufina", sans-serif;
+  text-transform: capitalize;
+
 }
 
 .avatar_container>div {

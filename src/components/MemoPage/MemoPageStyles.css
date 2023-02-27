@@ -2,6 +2,7 @@
     background-size: cover;
     background: url("../../assets/svg/recipe-page/Recipe-background.svg") 0 0/100% auto;
     flex-grow: 1;
+    padding-top: 70px;
 }
 
 .memo__inner {
@@ -55,4 +56,29 @@
 }
 .memo__score span {
     font-size: 28px;
+}
+/* @media (max-width: 1024px){
+    .memo__cards {
+        max-width: 720px;
+    }
+} */
+@media (max-width: 786px){
+    .memo__cards {
+        max-width: 430px;
+    }
+    .card_back, .card_front {
+        height: 80px;
+    }
+
+}
+@media (max-width: 450px){
+    .memo__title {
+        font-size: 25px;
+    }
+    .memo__cards {
+        max-width: 320px;
+    }
+    .card_back, .card_front {
+        height: 70px;
+    }
 }
