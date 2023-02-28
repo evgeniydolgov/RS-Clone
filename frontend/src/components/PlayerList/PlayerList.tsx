@@ -20,7 +20,7 @@ export const PlayerList = () => {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     };
-    const response = await fetch('http://localhost:3001/', requestOptions);
+    const response = await fetch('/api', requestOptions);
     const data = await response.json();
     const result: IData[] = Array.from(data);
     const dataArr: object[] = [];

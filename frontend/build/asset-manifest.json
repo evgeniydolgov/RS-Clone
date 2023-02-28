@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ef412909.css",
+    "main.js": "/static/js/main.ea08d0f4.js",
+    "static/media/Recipe-background.svg": "/static/media/Recipe-background.28002180bb6e78f6dc5f.svg",
+    "static/media/back_area_cuisine.jpg": "/static/media/back_area_cuisine.675080dc27f2359bb229.jpg",
+    "static/media/back_authorize.jpg": "/static/media/back_authorize.3247479a93d45e6705f5.jpg",
+    "static/media/back_recipу-card.jpg": "/static/media/back_recipу-card.ebf27481336400364937.jpg",
+    "static/media/mexicomus.mp3": "/static/media/mexicomus.6f567070edaec8bc29bc.mp3",
+    "static/media/wood-table.webp": "/static/media/wood-table.b1158bcd293c7ff82b5a.webp",
+    "static/media/main-board.webp": "/static/media/main-board.e9437f9fc7fbd70a3355.webp",
+    "static/media/6-samurai.png": "/static/media/6-samurai.a434746b10b27b9e6bbf.png",
+    "static/media/1-burned.png": "/static/media/1-burned.8107709f1b7d82b53ade.png",
+    "static/media/sloth-winner.png": "/static/media/sloth-winner.6676717232e04b5e47ab.png",
+    "static/media/4-superman.png": "/static/media/4-superman.4435f56fd1234eb72f92.png",
+    "static/media/5-secretive.png": "/static/media/5-secretive.e2c4104284a0725a6e10.png",
+    "static/media/2-coolman.png": "/static/media/2-coolman.beff148885ff416a16ab.png",
+    "static/media/logo_big.svg": "/static/media/logo_big.1110dad54eb7fc1b81bf.svg",
+    "static/media/logo.svg": "/static/media/logo.96baeaceba41a09b4439.svg",
+    "static/media/logo_dish_img.svg": "/static/media/logo_dish_img.81b4d6185f5475e9a1f6.svg",
+    "static/media/white-pot.svg": "/static/media/white-pot.bc865cdd5dc12e2830d9.svg",
+    "static/media/back_header.jpg": "/static/media/back_header.84346ee12f1e906918ba.jpg",
+    "static/media/3-rsStuden.png": "/static/media/3-rsStuden.e59354bf5729e8939e0d.png",
+    "static/media/github.svg": "/static/media/github.0bbe7bd91f5431c54fb6.svg",
+    "static/media/necromancernogold1.mp3": "/static/media/necromancernogold1.9913712897c638d81a8a.mp3",
+    "static/media/winClick.mp3": "/static/media/winClick.245089657ee1a52d1119.mp3",
+    "static/media/rs-logo.svg": "/static/media/rs-logo.707d13a2fd8b088426cd.svg",
+    "static/media/cash-sound.mp3": "/static/media/cash-sound.59f50a0e63baba8d5bc3.mp3",
+    "static/media/miss-click.mp3": "/static/media/miss-click.400e8b56d307200f24f9.mp3",
+    "index.html": "/index.html",
+    "main.ef412909.css.map": "/static/css/main.ef412909.css.map",
+    "main.ea08d0f4.js.map": "/static/js/main.ea08d0f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ef412909.css",
+    "static/js/main.ea08d0f4.js"
+  ]
+}

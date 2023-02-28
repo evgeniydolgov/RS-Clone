@@ -2,12 +2,16 @@ import express from 'express';
 import bodyParser, { OptionsUrlencoded } from 'body-parser';
 import mysql from 'mysql';
 import cors from 'cors';
+import path from 'path';
+import dotenv from 'dotenv';
 
 import { IcorsOption } from './interfaces';
 
+dotenv.config();
+
 const app = express();
 
-const port: number = 3001;
+const PORT = process.env.PORT || 5000;
 
 const corsOptions: IcorsOption = {
   origin: '*',
@@ -21,10 +25,6 @@ app.use(cors(corsOptions));
 
 const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlencoded | undefined);
 
-app.listen(port as number, () => {
-  console.log(`App listen on port ${port as number}` as string);
-});
-
 const pool: mysql.Pool = mysql.createPool({
   connectionLimit: 5,
   host: 'sql7.freemysqlhosting.net',
@@ -35,7 +35,9 @@ const pool: mysql.Pool = mysql.createPool({
   charset: 'utf8',
 });
 
-app.get('/', (req, res) => {
+const __dirname1 = path.resolve();
+
+app.get('/api', (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -52,7 +54,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/register', urlencodedParser, (req, res) => {
+app.post('/api/register', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -90,7 +92,7 @@ app.post('/register', urlencodedParser, (req, res) => {
   });
 });
 
-app.post('/login', urlencodedParser, (req, res) => {
+app.post('/api/login', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -118,7 +120,7 @@ app.post('/login', urlencodedParser, (req, res) => {
   });
 });
 
-app.put('/updatescore', urlencodedParser, (req, res) => {
+app.put('/api/updatescore', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -146,7 +148,7 @@ app.put('/updatescore', urlencodedParser, (req, res) => {
   });
 });
 
-app.put('/spendscore', urlencodedParser, (req, res) => {
+app.put('/api/spendscore', urlencodedParser, (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) {
       res.send('Error occured!');
@@ -173,6 +175,16 @@ app.put('/spendscore', urlencodedParser, (req, res) => {
       );
     }
   });
+});
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname1, '/frontend/build')));
+
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname1, 'frontend', 'build', 'index.html')))
+}
+
+app.listen(PORT as number, () => {
+  console.log(`App listen on port ${PORT as number}` as string);
 });
 
 /* app.delete('/delete/:id', (req, res) => {

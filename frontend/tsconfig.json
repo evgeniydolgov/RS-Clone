@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
+      "useUnknownInCatchVariables": false,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "target": "es6",
+      "module": "commonJS",
+      "moduleResolution": "node",
+      "jsx": "react",
+      "strict": true,
+      "noImplicitAny": true,
+    },
+    "exclude": [
+      "node_modules"
+    ]
+  }

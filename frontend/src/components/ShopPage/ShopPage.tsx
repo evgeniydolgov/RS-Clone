@@ -18,7 +18,7 @@ export const ShopPage = () => {
       }),
     };
     const response = await fetch(
-      'http://localhost:3001/spendscore',
+      '/api/spendscore',
       requestOptions,
     );
     const data = await response.json();
