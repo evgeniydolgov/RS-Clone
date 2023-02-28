@@ -4,18 +4,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+
+const path_1 = __importDefault(require("path"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const mysql_1 = __importDefault(require("mysql"));
 const cors_1 = __importDefault(require("cors"));
-const path_1 = __importDefault(require("path"));
+
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 5000;
+
+const domainsFromEnv = process.env.CORS_DOMAINS || '';
+const whitelist = domainsFromEnv.split(',').map((item) => item.trim());
+
 const corsOptions = {
     origin: '*',
     credentials: true,
     optionSuccessStatus: 200,
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'Access-Control-Allow-Origin'],
 };
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use(body_parser_1.default.json());
@@ -30,8 +38,10 @@ const pool = mysql_1.default.createPool({
     port: 3306,
     charset: 'utf8',
 });
+
+// eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle
 const __dirname1 = path_1.default.resolve();
-app.get('/api', (req, res) => {
+app.get('/api/', (req, res) => {
     pool.getConnection((err, conn) => {
         if (err) {
             res.send('Error occured!');

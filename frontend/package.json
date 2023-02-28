@@ -43,6 +43,7 @@
     "eject": "react-scripts eject",
     "go": "concurrently \"npx nodemon src/backend/index.ts\" \"react-scripts start\""
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {},
   "browserslist": {
     "production": [

@@ -1,8 +1,9 @@
 import express from 'express';
+import path from 'path';
+
 import bodyParser, { OptionsUrlencoded } from 'body-parser';
 import mysql from 'mysql';
 import cors from 'cors';
-import path from 'path';
 import dotenv from 'dotenv';
 
 import { IcorsOption } from './interfaces';
@@ -13,10 +14,16 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
+const domainsFromEnv = process.env.CORS_DOMAINS || '';
+
+const whitelist = domainsFromEnv.split(',').map((item) => item.trim());
+
 const corsOptions: IcorsOption = {
   origin: '*',
   credentials: true,
   optionSuccessStatus: 200,
+  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Access-Control-Allow-Origin'],
 };
 
 app.use(bodyParser.urlencoded({ extended: true } as OptionsUrlencoded | undefined));
@@ -99,6 +106,7 @@ app.post('/api/login', urlencodedParser, (req, res) => {
     } else {
       const { login } = req.body;
       const { password } = req.body;
+      // res.header('Access-Control-Allow-Origin', '*');
       console.log(req.body);
       conn.query(
         'SELECT * FROM users WHERE login = ? AND password = ?' as string,
@@ -177,10 +185,11 @@ app.put('/api/spendscore', urlencodedParser, (req, res) => {
   });
 });
 
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname1, '/frontend/build')));
 
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname1, 'frontend', 'build', 'index.html')))
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname1, 'frontend', 'build', 'index.html')));
+
 }
 
 app.listen(PORT as number, () => {
