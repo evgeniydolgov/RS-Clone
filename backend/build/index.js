@@ -32,9 +32,9 @@ const urlencodedParser = express_1.default.urlencoded({ extended: false });
 const pool = mysql_1.default.createPool({
     connectionLimit: 5,
     host: 'sql7.freemysqlhosting.net',
-    user: 'sql7595528',
-    password: 'JHGwZJt4Iz',
-    database: 'sql7595528',
+    user: 'sql7603519',
+    password: 'kRpqKybJBq',
+    database: 'sql7603519',
     port: 3306,
     charset: 'utf8',
 });
