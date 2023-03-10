@@ -1,0 +1,29 @@
+{   "root": true,
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb",
+        "airbnb-typescript"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "import/prefer-default-export": "off",
+        "react/function-component-definition": "off",
+        "linebreak-style": 0,
+        "no-param-reassign": 0,
+        "max-len": ["error", { "code": 160 }]
+    },
+    "ignorePatterns": [
+        "*.js"
+    ]
+}

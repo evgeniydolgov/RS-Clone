@@ -10,9 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "strict": true,
-    "noImplicitAny": true,
-    "outDir": "./backend/build"
+    "noImplicitAny": true
   },
-  "include": ["backend", "./.d.ts"],
-  "exclude": ["frontend"]
+  "exclude": ["node_modules"]
 }

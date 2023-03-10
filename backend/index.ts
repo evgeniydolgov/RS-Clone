@@ -1,0 +1,220 @@
+import express from 'express';
+import path from 'path';
+
+import bodyParser, { OptionsUrlencoded } from 'body-parser';
+import mysql from 'mysql';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+import { IcorsOption } from './interfaces';
+
+dotenv.config();
+
+const app = express();
+
+const PORT = process.env.PORT || 5000;
+
+const domainsFromEnv = process.env.CORS_DOMAINS || '';
+
+const whitelist = domainsFromEnv.split(',').map((item) => item.trim());
+
+const corsOptions: IcorsOption = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200,
+  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Access-Control-Allow-Origin'],
+};
+
+app.use(bodyParser.urlencoded({ extended: true } as OptionsUrlencoded | undefined));
+app.use(bodyParser.json());
+app.use(cors(corsOptions));
+
+const urlencodedParser = express.urlencoded({ extended: false } as OptionsUrlencoded | undefined);
+
+const pool: mysql.Pool = mysql.createPool({
+  connectionLimit: 5,
+  host: 'sql7.freemysqlhosting.net',
+  user: 'sql7603519',
+  password: 'kRpqKybJBq',
+  database: 'sql7603519',
+  port: 3306,
+  charset: 'utf8',
+});
+
+const __dirname1 = path.resolve();
+
+app.get('/api', (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      conn.query('SELECT * FROM users' as string, (error: Error, data: Object[]) => {
+        if (error as Error) {
+          throw error as Error;
+        } else {
+          res.send(data as Object[]);
+        }
+        conn.release();
+      });
+    }
+  });
+});
+
+app.post('/api/register', urlencodedParser, (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      const {
+        login, password, score, avatar,
+      } = req.body;
+      console.log(req.body);
+      conn.query('SELECT * FROM users WHERE login = ?', [login as string], (mistake, welcome) => {
+        if (welcome) {
+          conn.release();
+          console.log(mistake);
+        }
+        if (!welcome.length) {
+          conn.query(
+            'INSERT INTO users (login, password, score, avatar) VALUES (?,?,?,?)' as string,
+            [login as string, password as string, score as number, avatar as number],
+            (error, data) => {
+              if (data) {
+                res.send(data);
+                return;
+              } if (error as Error) {
+                throw error as Error;
+              } else {
+                res.send({ message: 'Enter correct details!' });
+              }
+              conn.release();
+            },
+          );
+        } else {
+          res.send({ message: 'Account is already existed!' });
+        }
+      });
+    }
+  });
+});
+
+app.post('/api/login', urlencodedParser, (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      const { login } = req.body;
+      const { password } = req.body;
+      // res.header('Access-Control-Allow-Origin', '*');
+      console.log(req.body);
+      conn.query(
+        'SELECT * FROM users WHERE login = ? AND password = ?' as string,
+        [login as string, password as string],
+        (error, data) => {
+          conn.release();
+          if (data) {
+            res.send(data);
+            return;
+          } if (error as Error) {
+            throw error as Error;
+          } else {
+            res.send({ message: 'Enter correct details!' });
+          }
+          conn.release();
+        },
+      );
+    }
+  });
+});
+
+app.put('/api/updatescore', urlencodedParser, (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      const { login } = req.body;
+      const { score } = req.body;
+      console.log(req.body);
+      conn.query(
+        'UPDATE users SET score = ? WHERE login = ?' as string,
+        [score as number, login as string],
+        (error, data) => {
+          conn.release();
+          if (data) {
+            res.send(data);
+            return;
+          } if (error as Error) {
+            throw error as Error;
+          } else {
+            res.send({ message: 'Enter correct details!' });
+          }
+          conn.release();
+        },
+      );
+    }
+  });
+});
+
+app.put('/api/spendscore', urlencodedParser, (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) {
+      res.send('Error occured!');
+    } else {
+      const { login } = req.body;
+      const { score } = req.body;
+      const { avatar } = req.body;
+      console.log(req.body);
+      conn.query(
+        'UPDATE users SET score = ?, avatar = ? WHERE login = ?' as string,
+        [score as number, avatar as number, login as string],
+        (error, data) => {
+          conn.release();
+          if (data) {
+            res.send(data);
+            return;
+          } if (error as Error) {
+            throw error as Error;
+          } else {
+            res.send({ message: 'Enter correct details!' });
+          }
+          conn.release();
+        },
+      );
+    }
+  });
+});
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname1, '/frontend/build')));
+
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname1, 'frontend', 'build', 'index.html')));
+
+}
+
+app.listen(PORT as number, () => {
+  console.log(`App listen on port ${PORT as number}` as string);
+});
+
+/* app.delete('/delete/:id', (req, res) => {
+  const pool: mysql.Pool = mysql.createPool({
+    host: 'sql7.freemysqlhosting.net',
+    user: 'sql7595528',
+    password: 'JHGwZJt4Iz',
+    database: 'sql7595528',
+    port: 3306,
+  });
+  const id: number = +req.params.id;
+  pool.query('DELETE FROM users WHERE id=?' as string, [id as number], (err, data) => {
+    if (err as Error) throw err as Error;
+    res.send(data as Object[]);
+    pool.end();
+  });
+}); */
+
+/* function eee() {
+  for (let i = 0; i < 34; i += 1) {
+    pool.end();
+  }
+}
+eee(); */
