@@ -1,4 +1,4 @@
-# Deploy https://github.com/evgeniydolgov/online-store
+# Deploy https://shchi-borshci.herokuapp.com/
 
 # Getting Started with Create React App
 
